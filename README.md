@@ -1,4 +1,4 @@
-# LostAndFound
+# Lost And Found Project
 Projetão 2016.2  UFRPE-UAG
 
 Professora: Thaís Burity
