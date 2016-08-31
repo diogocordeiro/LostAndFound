@@ -12,4 +12,4 @@ Integrantes:
   
 Lost and Found Project Wiki- http://bit.ly/2bK0184
 
-Pivotal Tracker - 
+Pivotal Tracker - http://goo.gl/iXO1u3
