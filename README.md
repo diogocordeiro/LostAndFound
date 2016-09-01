@@ -12,8 +12,6 @@ Integrantes:
   
 Lost and Found Project Wiki- http://bit.ly/2bK0184
 
-Pivotal Tracker - 
-
 Documento de Visão: http://goo.gl/Lj2KhD
 
 Outros documentos estão localizados na pasta Documentos. 
