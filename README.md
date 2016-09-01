@@ -12,7 +12,7 @@ Integrantes:
   
 Lost and Found Project Wiki- http://bit.ly/2bK0184
 
-Pivotal Tracker - http://goo.gl/iXO1u3
+Pivotal Tracker - 
 
 Documento de Visão: http://goo.gl/Lj2KhD
 
