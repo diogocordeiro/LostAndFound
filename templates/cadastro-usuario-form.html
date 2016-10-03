@@ -1,61 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Cadastro de Usuário</title>
 
-    <link rel="stylesheet" href="static/css/cadastro-usuario-form.css">
+
+    <!-- BOOTSTRAP 3.3.7 -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Custom Theme CSS -->
+    <link href="../static/css/cadastro-usuario-form.css" rel="stylesheet">
+
+
+
     <script src="static/bower_components/angular/angular.min.js"></script>
 
     <script src="static/js/CadastroUsuario/CadastroUsuario.js"></script>
 </head>
+
+
 <body>
 
-<div ng-app="CadastroUsuario" ng-controller="CadastroUsuarioController">
-    <form role="form" method="post" ng-submit="cadastrarUsuario()">
+    <nav class="navbar navbar-default navbar-fixed-top">
 
-        <label>Nome</label>
-        <input type="text" ng-model="nome" required>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">
+                    <img width="150px" alt="Brand" src="../static/img/Logo2.png">
+                </a>
 
-        <label>Sobrenome</label>
-        <input type="text" ng-model="sobrenome" required>
-
-        <label>E=mail</label>
-        <input type="email" ng-model="email" required>
-
-
-        <label>Senha</label>
-        <input type="password" ng-model="senha" required>
-
-
-        <label>Data Nascimento</label>
-        <input type="date" ng-model="dataNascimento" required>
-
-        <label>Sexo</label>
-        <input type="radio" ng-model="sexo" value="masculino">Masculino
-        <input type="radio" ng-model="sexo" value="feminino">Feminino
-
-        <label>Cidade</label>
-        <input type="text" ng-model="cidade" required>
-
-        <label>Celular</label>
-        <input type="number" ng-model="celular" required>
-
-        <label>Telefone</label>
-        <input type="number" ng-model="telefone" required>
-
-        <label>Facebook Link</label>
-        <input type="text" ng-model="facebookLink" required>
-
-        <label>Situação</label>
-        <input type="text" ng-model="situacao" required>
-
-        <input type="submit" value="Cadastrar">
-
-    </form>
-</div>
+            </div>
+        </div>
+    </nav>
 
 
+    <div class="container container-form">
+
+        <div class="row">
+
+            <div ng-app="CadastroUsuario" ng-controller="CadastroUsuarioController">
+                <form role="form" method="post" ng-submit="cadastrarUsuario()">
+
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Nome</label>
+                        <input class="form-control input-lg" type="text" ng-model="nome" required>
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control input-lg" ng-model="sobrenome" required>
+
+                    </div>
+
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+
+
+                        <label>E-mail</label>
+
+
+
+                        <input type="email" class="form-control input-lg " ng-model="email" required />
+                    </div>
+
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Senha</label>
+                        <input type="password" class="form-control input-lg" ng-model="senha" required>
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Confirmar Senha</label>
+                        <input type="password" class="form-control input-lg" ng-model="senha" required>
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Data Nascimento</label>
+                        <input type="date" class="form-control input-lg" ng-model="dataNascimento" required>
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12 ">
+
+                        <label>Sexo</label>
+
+                        <div class="radio-inline">
+
+                            <label><input type="radio" ng-model="sexo" value="masculino"> Masculino</label>
+
+                        </div>
+
+                        <div class="radio-inline">
+
+                            <label><input type="radio" ng-model="sexo" value="feminino"> Feminino</label>
+
+                        </div>
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Cidade</label>
+                        <input type="text" class="form-control input-lg" ng-model="cidade" required>
+
+                    </div>
+
+
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Celular</label>
+                        <input class="form-control input-lg" type="number" ng-model="celular" required>
+
+
+
+                    </div>
+
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Telefone</label>
+                        <input class="form-control input-lg" type="number" ng-model="telefone" required>
+
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Facebook Link</label>
+                        <input class="form-control input-lg" type="text" ng-model="facebookLink" required>
+
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <label>Situação</label>
+                        <input class="form-control input-lg" type="text" ng-model="situacao" required>
+
+
+                    </div>
+
+                    <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
+
+                        <input class="btn-block btn btn-lg btn-primary btn-cadastrar" type="submit" value="Cadastrar">
+
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+
+                <div class="row">
+
+
+                    <div class="footer-col col-md-12">
+                        <h4>Contato</h4>
+                        <p>blablabla@blablabla.com</a>.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Lost and Found Project 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Latest compiled and minified JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
