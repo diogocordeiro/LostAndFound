@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+
+    <link rel="stylesheet" href="static/css/cadastro-usuario-form.css">
+    <script src="static/bower_components/angular/angular.min.js"></script>
+
+    <script src="static/js/CadastroUsuario/CadastroUsuario.js"></script>
+</head>
+<body>
+
+<div ng-app="CadastroUsuario" ng-controller="CadastroUsuarioController">
+    <form role="form" method="post" ng-submit="cadastrarUsuario()">
+
+        <label>Nome</label>
+        <input type="text" ng-model="nome" required>
+
+        <label>Sobrenome</label>
+        <input type="text" ng-model="sobrenome" required>
+
+        <label>E=mail</label>
+        <input type="email" ng-model="email" required>
+
+
+        <label>Senha</label>
+        <input type="password" ng-model="senha" required>
+
+
+        <label>Data Nascimento</label>
+        <input type="date" ng-model="dataNascimento" required>
+
+        <label>Sexo</label>
+        <input type="radio" ng-model="sexo" value="masculino">Masculino
+        <input type="radio" ng-model="sexo" value="feminino">Feminino
+
+        <label>Cidade</label>
+        <input type="text" ng-model="cidade" required>
+
+        <label>Celular</label>
+        <input type="number" ng-model="celular" required>
+
+        <label>Telefone</label>
+        <input type="number" ng-model="telefone" required>
+
+        <label>Facebook Link</label>
+        <input type="text" ng-model="facebookLink" required>
+
+        <label>Situação</label>
+        <input type="text" ng-model="situacao" required>
+
+        <input type="submit" value="Cadastrar">
+
+    </form>
+</div>
+
+
+
+</body>
+</html>
