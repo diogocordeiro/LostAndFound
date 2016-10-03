@@ -1,0 +1,47 @@
+html {
+    font-family: Roboto, sans-serif;
+    color: #3d3d3d;
+    background-color: #fafafa;
+}
+
+.navbar {
+    border-radius: 0;
+    height: auto;
+    background-color: #FDD803;
+}
+
+.navbar-brand {
+    height: auto;
+    padding: 15px;
+}
+
+.container-conteudo{
+  width: 100%;
+  height: 1920px;
+}
+
+.nav-custom{
+  background-color: #3d3d3d;
+}
+
+footer {
+    color: #3d3d3d;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+}
+
+footer .footer-above {
+    padding-top: 15px;
+    background-color: #FDD803;
+}
+
+footer .footer-col {
+    margin-bottom: 25px;
+}
+
+footer .footer-below {
+    padding: 15px 0;
+    background-color: #e6c616;
+}

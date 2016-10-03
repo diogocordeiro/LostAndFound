@@ -4,7 +4,8 @@ form label {
 
 body {
     font-family: Roboto, sans-serif;
-    color: #3d3d3d
+    color: #3d3d3d;
+    background-color: #fafafa;
 }
 
 .container-form {
@@ -14,6 +15,15 @@ body {
 
 .input-group {
     padding: 30px;
+}
+
+.form-control:hover {
+
+  border-color: #FDD803;
+}
+
+.form-control:focus {
+  border-color: #3d3d3d;
 }
 
 .btn-cadastrar {
@@ -29,6 +39,61 @@ body {
     background-color: #262626;
     border-color: #494F57;
 }
+
+.btn-primary {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #262626;
+}
+.btn-primary:hover,
+.btn-primary.hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #494F57;
+  border-color: #494F57;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background: #494F57;
+  border-color: #494F57;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled.hover,
+.btn-primary[disabled].hover,
+fieldset[disabled] .btn-primary.hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #bdc3c7;
+  border-color: #494F57;
+}
+.btn-primary .badge {
+  color: #494F57;
+  background-color: #ffffff;
+}
+
+  .pagination > .btn:first-child.btn-primary {
+    border-bottom-color: #494F57;
+  }
+
+  .pagination > .btn + ul + .btn.btn-primary {
+    border-bottom-color: #494F57;
+  }
 
 .navbar {
     border-radius: 0;
