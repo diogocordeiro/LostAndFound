@@ -18,7 +18,16 @@ app.controller('CadastroController', ['$scope', '$http', '$log', function ($scop
             $scope.senha == null || $scope.confirmar_senha == null;
     };
 
+    var verifyUserAge = function (birthday) {
 
+        /*Método verifica se idade de usuário é maior que 18.*/
+
+        var ageDifferenceMs = Date.now() - birthday.getTime();
+        // miliseconds from epoch
+        var ageDate = new Date(ageDifferenceMs);
+        return (Math.abs(ageDate.getUTCFullYear() - 1970) >= 18) ? true : false;
+
+    };
 
 }]);
 
