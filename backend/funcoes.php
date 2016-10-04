@@ -61,7 +61,7 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 }//function getData()
 
 //Função para validar queries strings, assegurando contra Cross-Side Scripting (XSS)
-function validarQString($qString){
+function validarString($qString){
 
 	//Remove tags <>
 	$str = strip_tags($qString);
