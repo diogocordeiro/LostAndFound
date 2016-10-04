@@ -7,7 +7,7 @@ html {
 .navbar {
     border-radius: 0;
     height: auto;
-    background-color: #FDD803;
+    background-color: #FFC107;
 }
 
 .navbar-brand {
@@ -21,8 +21,25 @@ html {
 }
 
 .nav-custom{
-  background-color: #3d3d3d;
+  background-color: #FFC107;
 }
+
+.navbar-default .navbar-toggle {
+  border-color: transparent; /* Removes border color */
+
+}
+
+.navbar-default  .navbar-toggle:hover, .navbar-toggle:active  {
+  background-color: #FFC107; /* Changes toggle color on hover */
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #3d3d3d; /* Changes regular toggle color */
+}
+
+
+
+
 
 footer {
     color: #3d3d3d;
@@ -34,7 +51,7 @@ footer h3 {
 
 footer .footer-above {
     padding-top: 15px;
-    background-color: #FDD803;
+    background-color: #FFC107;
 }
 
 footer .footer-col {
@@ -43,5 +60,5 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 15px 0;
-    background-color: #e6c616;
+    background-color: #FFCA28;
 }
