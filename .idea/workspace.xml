@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6ffc80cf-d1c6-40a0-81c8-528392ef0a74" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/test.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/static/js/Usuario/Usuario.js" afterPath="$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js" afterPath="$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js" afterPath="$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/cadastro-usuario-form.html" afterPath="$PROJECT_DIR$/templates/cadastro-usuario-form.html" />
     </list>
     <ignored path="projetao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +43,8 @@
       <file leaf-file-name="PerfilUsuario.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="39" column="10" selection-start-line="30" selection-start-column="8" selection-end-line="39" selection-end-column="10" />
+            <state relative-caret-position="722">
+              <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -51,8 +53,8 @@
       <file leaf-file-name="cadastro-usuario-form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/cadastro-usuario-form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="32" column="62" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="62" />
+            <state relative-caret-position="540">
+              <caret line="30" column="77" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -61,8 +63,8 @@
       <file leaf-file-name="CadastroUsuario.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
+            <state relative-caret-position="88">
+              <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -71,8 +73,8 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+            <state relative-caret-position="144">
+              <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -100,9 +102,10 @@
         <option value="$PROJECT_DIR$/projetao.py" />
         <option value="$PROJECT_DIR$/static/js/CadastroUsuario/CadastroUsuario.js" />
         <option value="$PROJECT_DIR$/static/js/CadastroUsuario/Login.js" />
-        <option value="$PROJECT_DIR$/templates/cadastro-usuario-form.html" />
         <option value="$PROJECT_DIR$/static/js/Usuario/Usuario.js" />
+        <option value="$PROJECT_DIR$/templates/cadastro-usuario-form.html" />
         <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js" />
         <option value="$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js" />
       </list>
     </option>
@@ -590,34 +593,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="10" selection-start-line="30" selection-start-column="8" selection-end-line="39" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/cadastro-usuario-form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" column="62" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="62" />
+        <state relative-caret-position="540">
+          <caret line="30" column="77" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+        <state relative-caret-position="144">
+          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/Usuario/PerfilUsuario.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/Usuario/CadastroUsuario.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
+        <state relative-caret-position="88">
+          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
           <folding />
         </state>
       </provider>

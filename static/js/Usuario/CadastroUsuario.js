@@ -29,11 +29,70 @@ app.controller('CadastroController', ['$scope', '$http', '$log', function ($scop
 
     };
 
+    var verifyPasswordsMatch = function () {
+
+        /*Método que verifica se ambas as senhas são iguais.*/
+        return $scope.confirmar_senha.localeCompare($scope.senha) == 0;
+    };
+
+
+    $scope.cadastrarUsuario = function () {
+
+        if (verifyFieldsNull()) {
+
+            $scope.statusNull = true;
+            $scope.mesageNull = "Por favor, preencha os campos em branco.";
+        }
+
+        if (verifyUserAge($scope.data_nascimento)) {
+
+            $scope.statusIdade = true;
+            $scope.messageIdade = "Você deve ter mais de 18 anos para cadastrar-se!";
+        }
+
+        if (verifyPasswordsMatch()) {
+
+            $scope.statusSenha = true;
+            $scope.messageSenha = "As senhas devem ser iguais!";
+        }
+
+        if (!verifyFieldsNull() && verifyUserAge() && verifyPasswordsMatch()) {
+
+            $scope.statusIdade = false;
+            $scope.statusNull = false;
+            $scope.statusSenha = false;
+
+           //chamar post aqui.
+        }
+    }
+
 }]);
 
-app.factory('CadastroService', ['$http', '$log', function ($http, $log) {
+app.factory('CadastroService', ['$http', '$log', 'UrlService', function ($http, $log, UrlService) {
 
     return {
 
+        cadastrarUsuario: function (email, data_nascimento, senha) {
+
+            $http.post(UrlService.cadastrarUrl(),
+                {email: email, data_nascimetno: data_nascimento, senha: senha},
+                {headers: {'Content-Type': 'application/json'}})
+                .success(function (data) {
+                    $log.log(data);
+                })
+                .error(function (err) {
+                    $log.log(err);
+                })
+        }
+    }
+}]);
+
+app.factory('UrlService', ['$log', function ($log) {
+
+    return {
+        cadastrarUrl: function () {
+            var localUrl = 'cadastrar/usuario';
+            return localUrl;
+        }
     }
 }]);

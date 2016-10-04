@@ -77,7 +77,7 @@ app.factory('UrlService', ['$log', function ($log) {
 
     return {
         updateUrl: function () {
-            var localUrl = 'cadastrar/usuario';
+            var localUrl = 'update/usuario';
             return localUrl;
         }
     }
