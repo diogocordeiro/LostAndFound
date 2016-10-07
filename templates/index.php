@@ -49,7 +49,7 @@ Aliquam tincidunt tincidunt nunc. Sed placerat, eros nec semper tincidunt, nulla
           <h3 class="margin-base-vertical texto-panel">Criei agora mesmo é gratuito!</h3>
 
 
-  				<form class="margin-base-vertical">
+  				<form class="margin-base-vertical" method="POST" action="../backend/usuario.php?tipo=novo" >
   					<p class="input-group">
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
@@ -59,28 +59,28 @@ Aliquam tincidunt tincidunt nunc. Sed placerat, eros nec semper tincidunt, nulla
 
 
 
-                  <input type="email" class="form-control input-lg " ng-model="email" required />
+                  <input type="email" class="form-control input-lg " name="formCadastro[email]" ng-model="email" required />
               </div>
 
 
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
                   <label>Senha</label>
-                  <input type="password" class="form-control input-lg" ng-model="senha" required>
+                  <input type="password" class="form-control input-lg" name="formCadastro[senha]" ng-model="senha" required>
 
               </div>
 
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
                   <label>Confirmar Senha</label>
-                  <input type="password" class="form-control input-lg" ng-model="senha" required>
+                  <input type="password" class="form-control input-lg" name="formCadastro[confirmaSenha]" ng-model="confirmar_senha" required>
 
               </div>
 
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
                   <label>Data Nascimento</label>
-                  <input type="date" class="form-control input-lg" ng-model="dataNascimento" required>
+                  <input type="date" class="form-control input-lg" name="formCadastro[dNascimento]" ng-model="data_nascimento" required>
 
               </div>
 
