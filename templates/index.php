@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="login">
   <head>
 
     <?php require 'header.php'; ?>
@@ -7,10 +7,10 @@
     <!-- Custom Theme CSS -->
     <link href="../static/css/index.css" rel="stylesheet">
 
-
+    
 
   </head>
-  <body>
+  <body ng-controller="CadastroController">
 
     <?php require 'top-menu.php'; ?>
 
@@ -49,7 +49,7 @@ Aliquam tincidunt tincidunt nunc. Sed placerat, eros nec semper tincidunt, nulla
           <h3 class="margin-base-vertical texto-panel">Criei agora mesmo é gratuito!</h3>
 
 
-  				<form class="margin-base-vertical" method="POST" action="../backend/usuario.php?tipo=novo" >
+  				<form class="margin-base-vertical" method="POST" >
   					<p class="input-group">
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
@@ -89,11 +89,14 @@ Aliquam tincidunt tincidunt nunc. Sed placerat, eros nec semper tincidunt, nulla
 
               <div class="center-block input-group col-md-6 col-sm-12 col-xs-12">
 
-                  <input class="btn-block btn btn-lg btn-primary btn-cadastrar" type="submit" value="Cadastrar">
+                  <input class="btn-block btn btn-lg btn-primary btn-cadastrar" type="submit" ng-click="cadastrarUsuario()"
+                   value="Cadastrar">
 
               </div>
 
+              <div ng-bind="messageNull">
 
+              </div>
 
   				</form>
 
@@ -104,7 +107,6 @@ Aliquam tincidunt tincidunt nunc. Sed placerat, eros nec semper tincidunt, nulla
 
 
     </div>
-
 
     <?php require 'footer.php'; ?>
   </body>

@@ -101,7 +101,9 @@ app.controller('CadastroController', ['$scope', '$http', '$log', 'CadastroServic
                 $scope.statusSenha = false;
 
                 CadastroService.cadastrarUsuario($scope.email, $scope.data_nascimento, $scope.senha);
+                $log.log("Submitted.");
             }
+            $log.log("Submitted.");
         }
 
     }]);
@@ -129,7 +131,7 @@ app.factory('UrlService', ['$log', function ($log) {
 
     return {
         cadastrarUrl: function () {
-            var localUrl = 'cadastrar/usuario';
+            var localUrl = '../../../backend/usuario.php?tipo=novo';
             return localUrl;
         }
     }
