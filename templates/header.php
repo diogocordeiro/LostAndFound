@@ -18,10 +18,16 @@
 
 <!-- Fonte utilizada em todo local do site -->
 <!-- Google Fonts -->
+<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 <!-- Custom Theme CSS -->
+
 <link href="../static/css/master-template.css" rel="stylesheet">
+<link rel="stylesheet" href="../static/css/material-kit.css">
 
 <!-- Latest compiled and minified JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -31,7 +37,3 @@
 
 <script src="../static/js/Usuario/CadastroUsuario.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
-

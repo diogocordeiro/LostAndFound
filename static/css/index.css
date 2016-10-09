@@ -4,6 +4,13 @@ body {
     background-color: #FAFAFA;
 }
 
+.card-signup{
+
+  margin-top: 300px;
+  margin-bottom: 300px;
+
+}
+
 
 .img-effects{
   width: 100%;
@@ -23,6 +30,7 @@ body {
   width: 100%;
   height: 100%;
 
+
 }
 
 .texto-informativo{
@@ -34,6 +42,7 @@ body {
 .container-panel{
   margin-top: 100px;
   margin-bottom: 100px;
+  padding: 30px;
 
 }
 
@@ -113,3 +122,69 @@ fieldset[disabled] .btn-primary.active {
     text-align: center;
 
   }
+
+
+  .signup-header {
+	margin: 150px 0 100px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 4px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.signup-header h3{
+	padding: 20px 0 10px;
+	color: white;
+	font-weight: 300;
+}
+.form-header input {
+	position: relative;
+	padding: 5px 15px;
+}
+.form-header .form-control {
+	border-radius: 0;
+	border: solid 1px #dadada;
+	background-color: #fff;
+	color: #333;
+	height: 55px;
+}
+.form-header .btn {
+	border-radius: 0;
+	height: 55px;
+	width: 100%;
+	background-color: #3eb0f7;
+	color: white;
+	font-size: 17px !important;
+	padding: 0 33px;
+	border: none;
+	margin: 0;
+	-webkit-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.form-header .btn:hover {
+	background-color: #1f96e0;
+	-webkit-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.privacy {
+	padding-top: 0;
+	font-size: 13px;
+}
+.signup-header p {
+	color: white;
+}
+
+.btn:active, .btn:focus {
+
+  background: #262626 !important;
+
+
+}
+
+.btn-cadastrar:hover{
+  will-change: box-shadow, transform !important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    box-shadow: 0 4px 4px 0 rgba(38,38,38, 1), 0 3px 1px -2px rgba(38,38,38, 1), 0 1px 5px 0 rgba(38,38,38, 1) !important;
+
+
+}

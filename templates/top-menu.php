@@ -1,5 +1,5 @@
 <!-- Barra de navegação fixa, no topo do site e responsiva -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top meu-menu">
 
     <div class="container-fluid">
         <div class="navbar-header">
