@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="text-center container-fluid">
+<footer class="text-center">
     <div class="footer-above">
         <div class="container-fluid">
 

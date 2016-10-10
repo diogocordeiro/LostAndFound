@@ -1,7 +1,7 @@
 html {
-    font-family: Roboto, sans-serif !important;
-    color: #3d3d3d!important;
-    background-color: #FAFAFA!important;
+    font-family: Roboto, sans-serif;
+    color: #3d3d3d;
+    background-color: #FAFAFA;
 }
 
 .navbar {
@@ -42,23 +42,23 @@ html {
 
 
 footer {
-    color: #3d3d3d !important;
+    color: #3d3d3d;
 }
 
 footer h3 {
-    margin-bottom: 15px !important;
+    margin-bottom: 15px;
 }
 
 footer .footer-above {
-    padding-top: 15px !important;
-    background-color: #FFC107 !important;
+    padding-top: 15px;
+    background-color: #FFC107;
 }
 
 footer .footer-col {
-    margin-bottom: 25px !important;
+    margin-bottom: 25px;
 }
 
 footer .footer-below {
-    padding: 15px 0 !important;
-    background-color: #FFCA28 !important;
+    padding: 15px 0;
+    background-color: #FFCA28;
 }

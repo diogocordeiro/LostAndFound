@@ -36,12 +36,7 @@ body {
 .texto-informativo{
   text-align: justify;
   margin-top: 250px;
-  color: white;
 
-}
-
-.title-informativo{
-  color: white;
 }
 
 .container-panel{
@@ -56,7 +51,62 @@ body {
     padding: 30px;
 }
 
+.btn-cadastrar:hover, .btn-cadastrar:focus, .btn-cadastrar:active, .btn-cadastrar.active {
+    background: #262626
+}
 
+.btn-cadastrar.active.focus, .btn-cadastrar.active:focus, .btn-cadastrar.active:hover, .btn-cadastrar:active.focus, .btn-cadastrar:active:focus, .btn-cadastrar:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff;
+    background-color: #262626;
+    border-color: #494F57;
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #262626;
+}
+.btn-primary:hover,
+.btn-primary.hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #494F57;
+  border-color: #494F57;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background: #494F57;
+  border-color: #494F57;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled.hover,
+.btn-primary[disabled].hover,
+fieldset[disabled] .btn-primary.hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #bdc3c7;
+  border-color: #494F57;
+}
+.btn-primary .badge {
+  color: #494F57;
+  background-color: #ffffff;
+}
 
   .pagination > .btn:first-child.btn-primary {
     border-bottom-color: #494F57;
