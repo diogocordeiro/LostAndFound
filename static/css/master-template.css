@@ -1,7 +1,7 @@
 html {
-    font-family: Roboto, sans-serif;
-    color: #3d3d3d;
-    background-color: #FAFAFA;
+  font-family: Roboto, sans-serif !important;
+ color: #3d3d3d!important;
+ background-color: #FAFAFA!important;
 }
 
 .navbar {
