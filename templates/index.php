@@ -15,10 +15,14 @@
     <?php require 'top-menu.php'; ?>
 
 
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('../static/img/bg14.jpg'); background-size: cover; background-position: top center;">
+
     <div class="container">
       <div class="row">
 
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">
+
 						<div class="card card-signup">
 							<form class="form" method="" action="">
 								<div class="header header-primary text-center">
@@ -70,18 +74,69 @@
                     <input class=" btn-block btn btn-lg btn-primary btn-cadastrar" type="submit" ng-click="cadastrarUsuario()"
                              value="Cadastrar">
 
-                  
+
 
 								</div>
 							</form>
 						</div>
 					</div>
 
+
+
+
+
+      </div><!-- Row -->
+
+    </div><!-- Container -->
+
+  </div><!-- Header Image Background -->
+
+  <div class="container-fluid">
+      <div class="section text-center section-landing">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                      <h2 class="title">Lost & Found</h2>
+                      <h5 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ex quam, mattis ac nisl sed, commodo dapibus quam. In fermentum auctor lacus, id imperdiet magna pellentesque egestas. Cras at arcu nec lectus rutrum tempor. Vivamus semper dolor eros, non imperdiet nulla vulputate id. Duis sit amet nisi sapien. Proin vitae dolor nec leo sagittis mollis. Vestibulum in tempor lectus. Fusce ut justo placerat, aliquet tortor sed, suscipit sem. Sed aliquam scelerisque magna, et viverra tortor congue at. Sed purus lacus, lobortis sed mollis eget, pellentesque eget lorem. Phasellus id posuere nunc. Phasellus vel vehicula sapien. Sed vel sapien mollis mi placerat hendrerit. Cras eget consectetur risus.</h5>
+                  </div>
+              </div>
+
+      <div class="features">
+        <div class="row">
+                    <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-primary">
+                <i class="material-icons">person</i>
+              </div>
+              <h4 class="info-title">First Feature</h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+                    </div>
+                    <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-success">
+                <i class="material-icons">map</i>
+              </div>
+              <h4 class="info-title">Second Feature</h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+                    </div>
+                    <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="material-icons">view_agenda</i>
+              </div>
+              <h4 class="info-title">Third Feature</h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+                    </div>
+                </div>
       </div>
 
-    </div>
+</div><!-- Wrapper -->
 
 
-    <?php require 'footer.php'; ?>
+<?php require 'footer.php'; ?>
+
+
   </body>
 </html>
