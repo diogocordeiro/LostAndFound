@@ -1,5 +1,5 @@
 deploy:
 	provider: heroku
-	api_key:
+	api_key: 61edd5e4-dfb9-4cdc-a6af-fb39350d65bf
 		secure: "YOUR ENCRYPTED API KEY"
-	app: "nome_app"
+	app: "lostandfoundproject"
