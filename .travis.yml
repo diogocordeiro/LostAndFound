@@ -1,5 +1,11 @@
 deploy:
-	provider: heroku
-	api_key: 
-		secure: "61edd5e4-dfb9-4cdc-a6af-fb39350d65bf"
-	app: "lostandfoundproject"
+ provider: heroku
+ api_key: 
+  secure: "61edd5e4-dfb9-4cdc-a6af-fb39350d65bf"
+ app: "lostandfoundproject"
+language: php
+php:
+- 5.5
+- 5.4
+- hhvm
+script: phpunit UsuarioTestes.php
