@@ -12,7 +12,7 @@
     <script type="text/javascript">
 $(document).ready(function() {
     $(function() {
-        $("#resultados").dialog({
+        $("#sucesso").dialog({
                 autoOpen: false
         });
     });
@@ -31,6 +31,11 @@ $(document).ready(function() {
       <div class="header header-filter" style="background-image: url('../static/img/bg14.jpg'); background-size: cover; background-position: top center;">
 
 
+        <div id="sucesso" align="center">
+
+</div>
+
+
 
 
 
@@ -41,6 +46,12 @@ $(document).ready(function() {
 
               <div class="card card-signup">
 
+                <!-- <div id="teste" class="resultados-function">
+
+                  AUHDUSHUIAOHDIUHSO
+
+                </div>
+ -->
 
                 <!-- <div id="resultados" class="resultados">
 
