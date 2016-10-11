@@ -11,7 +11,7 @@
 
     <script type="text/javascript">
     $(function btnResponse(){
-      $("#btn-div-response").addClass('hidden');
+      $("#card-resultaos").addClass('hidden');
     });
 </script>
 
@@ -27,8 +27,9 @@
       <div class="header header-filter" style="background-image: url('../static/img/bg14.jpg'); background-size: cover; background-position: top center;">
 
 
-        <!-- Modal Core -->
+        <div class="resultados">
 
+        </div>
 
 
 
@@ -43,7 +44,13 @@
 
               <div id="card-resultaos" class="card card-resultados hidden ">
 
-                <h3 id="resultados">
+                <div class="resultados">
+
+                  TESTE
+
+                </div>
+
+                <h3 id="resultados" class="resultados">
 
                 </h3>
 
