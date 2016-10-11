@@ -3,7 +3,11 @@ body {
     color: #3d3d3d;
     background-color: #FAFAFA;
 }
-
+.x{
+  width: 400px;
+  height: 400px;
+  background-color: green;
+}
 .card-signup{
 
   margin-top: 300px;
@@ -205,7 +209,7 @@ fieldset[disabled] .btn-primary.active {
 
 .password-login{
 
-  
+
   margin-right: 30px !important;
 }
 

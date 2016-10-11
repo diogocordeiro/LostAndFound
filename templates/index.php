@@ -9,6 +9,16 @@
     <!-- Custom Theme CSS -->
     <link href="../static/css/index.css" rel="stylesheet">
 
+    <script type="text/javascript">
+$(document).ready(function() {
+    $(function() {
+        $("#resultados").dialog({
+                autoOpen: false
+        });
+    });
+});
+</script>
+
 
 
 </head>
@@ -30,7 +40,18 @@
             <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">
 
               <div class="card card-signup">
-                <div class="resultados"></div>
+
+
+                <!-- <div id="resultados" class="resultados">
+
+                  TESTETESFADJNOSAHODIOISUHJD
+
+
+
+                </div> -->
+
+
+
                 <form class="form">
                   <div class="header header-primary text-center">
                     <h4>Cadastro</h4>
