@@ -10,7 +10,7 @@ $(document).ready(function() {
 		function(response){
 
 			// $("body").html("<div class=\"x\" id=\"alert\">"+response+"</div>");
-		  $(".myModal").html(response);
+		  $(".resultados").html(response);
 		 }
 		 , "html");
 	});
