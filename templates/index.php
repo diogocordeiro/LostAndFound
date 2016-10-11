@@ -10,28 +10,22 @@
     <link href="../static/css/index.css" rel="stylesheet">
 
     <script type="text/javascript">
-    $(function btnResponse(){
-      $("#card-resultaos").addClass('hidden');
-    });
+function Nova()
+{
+location.href=" index.html"
+}
 </script>
-
-
 
 </head>
 
 <body ng-controller="CadastroController">
 
+  <button onclick="Nova()" class="btn btn-default" type="button" name="button">Ok!</button>
+
   <?php require 'top-menu.php'; ?>
 
     <div class="wrapper">
       <div class="header header-filter" style="background-image: url('../static/img/bg14.jpg'); background-size: cover; background-position: top center;">
-
-
-        <div class="resultados">
-
-        </div>
-
-
 
         <div class="container">
           <div class="row">
@@ -39,27 +33,6 @@
             <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">
 
               <div class="card card-signup">
-
-
-
-              <div id="card-resultaos" class="card card-resultados hidden ">
-
-                <div class="resultados">
-
-                  TESTE
-
-                </div>
-
-                <h3 id="resultados" class="resultados">
-
-                </h3>
-
-                <button onclick="btnResponse()" class="btn btn-default" type="button" name="button">Ok!</button>
-
-
-                </div>
-
-
 
                 <form class="form">
                   <div class="header header-primary text-center">

@@ -4,15 +4,15 @@ body {
     background-color: #FAFAFA;
 }
 
-.hidden {
-  display: none !important;
-  visibility: hidden !important;
-}
 
-.card-resultados{
-  width: 400px;
-  height: 400px;
+
+.mensagem-alerta{
+  width: 200px;
+  height: 100px;
   background-color: green;
+  text-align: center;
+  margin-top: 50%;
+  margin-left: 50%;
 }
 .card-signup{
 

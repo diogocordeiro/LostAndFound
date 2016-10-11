@@ -11,8 +11,10 @@ $(document).ready(function() {
 
 			// $("resultados").html("<div class=\"modal fade bs-example-modal-sm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\" > <div class=\"modal-dialog modal-sm\" role=\"document\"> <div class=\"modal-content\">"+response+"</div> </div> </div>");
 
-			// $("body").html("<div class=\"x\" id=\"alert\">"+response+"</div>");
-		  $(".resultados").html(response);
+			$("body").html("<div class=\"card mensagem-alerta\" id=\"alert\"> <button onclick=\"Nova()\" class=\"btn btn-default\" type=\"button\" name=\"button\">Ok!</button>"+response+"</div>");
+
+
+		  // $(".resultados").html(response);
 		 }
 		 , "html");
 	});
