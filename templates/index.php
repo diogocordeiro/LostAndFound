@@ -12,7 +12,7 @@
     <script type="text/javascript">
 function Nova()
 {
-location.href=" index.html"
+location.href=" index.php"
 }
 </script>
 
@@ -20,7 +20,7 @@ location.href=" index.html"
 
 <body ng-controller="CadastroController">
 
-  
+
 
   <?php require 'top-menu.php'; ?>
 
@@ -33,6 +33,10 @@ location.href=" index.html"
             <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">
 
               <div class="card card-signup">
+
+                <div class="resultados">
+
+                </div>
 
                 <form class="form">
                   <div class="header header-primary text-center">

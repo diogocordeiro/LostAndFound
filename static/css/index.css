@@ -7,12 +7,12 @@ body {
 
 
 .mensagem-alerta{
-  width: 200px;
+  width: 300px;
   height: 100px;
-  background-color: green;
+  background-color: #3d3d3d;
   text-align: center;
-  margin-top: 50%;
-  margin-left: 50%;
+  color: #FAFAFA;
+  
 }
 .card-signup{
 
