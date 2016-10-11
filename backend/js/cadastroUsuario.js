@@ -9,22 +9,8 @@ $(document).ready(function() {
 		$.post("/backend/Usuario.php?tipo=novo", {email: emailP, senha: senhaP, confirmaSenha: confirmaSenhaP, dNascimento: dNascimentoP},
 		function(response){
 
-
-                          autoOpen: false,
-                          height: 180,
-                          width: 250,
-                          title: "Sucesso!",
-                          modal: true,
-                          buttons: {
-                              "OK": function(){
-                                  dialog.dialog( "close" );
-                              }
-                          }
-                      });
-                    dialog.dialog("open");
-
 			// $("body").html("<div class=\"x\" id=\"alert\">"+response+"</div>");
-		  $(".resultados-function").html(response);
+		  $(".myModal").html(response);
 		 }
 		 , "html");
 	});
