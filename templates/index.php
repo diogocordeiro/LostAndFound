@@ -12,7 +12,7 @@
     <script type="text/javascript">
 $(document).ready(function() {
     $(function() {
-        $("#sucesso").dialog({
+        $("#resultado").dialog({
                 autoOpen: false
         });
     });
@@ -32,6 +32,8 @@ $(document).ready(function() {
 
 
         <div id="sucesso" align="center">
+
+          PPSPDASKODKKASODKOKPASD
 
 </div>
 
