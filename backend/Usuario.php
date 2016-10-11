@@ -20,7 +20,14 @@ if (isset($_GET['tipo'])) {
 
 	//POST para inclusão de novo usuário
 	if ($tipo == "novo") {
-		$sucesso = incluirUsuario(BaseDados::conBdUser(), $_POST['formCadastro']);
+		$arr = [];
+
+		array_push($arr, $_POST['email']);
+		array_push($arr, $_POST['senha']);
+		array_push($arr, $_POST['confirmaSenha']);
+		array_push($arr, $_POST['dNascimento']);
+
+		$sucesso = incluirUsuario(BaseDados::conBdUser(), $arr);
 
 		if ($sucesso) {
 			echo "Novo usuário inserido com sucesso!";
@@ -72,13 +79,13 @@ function incluirUsuario($myDb, $arrDados){
 	validarDadosCadastro($arrDados);
 
 	//Checa se o e-mail informado está disponível
-	if(!emailDisponivel($arrDados['email'])){
+	if(!emailDisponivel($arrDados[0])){
 		echo "Erro: e-mail indisponível.";
 		exit;
 	} 
 
-	$arrDados['dNascimento'] = date('Y-m-d', strtotime($arrDados['dNascimento']));
-	$arrDados['senha'] = md5($arrDados['dNascimento']);
+	$arrDados[3] = date('Y-m-d', strtotime($arrDados[3]));
+	$arrDados[1] = md5($arrDados[1]);
 
 	//Situacao inicial dos usuários
 	$situacao = 1;
@@ -97,7 +104,7 @@ function incluirUsuario($myDb, $arrDados){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $arrDados['email'], $arrDados['senha'], $arrDados['dNascimento'], $situacao);
+	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao);
 
 	//Executa o statement
 	return $stmt->execute();
@@ -106,26 +113,26 @@ function incluirUsuario($myDb, $arrDados){
 //Função para validar todos os campos passados nos formulários de cadastro
 function validarDadosCadastro($arrDados){
 
-	foreach ($arrDados as $key => $value) {
+	for ($i=0; $i < count($arrDados); $i++) { 
 		
 		//Valida contra XSS
-		$arrDados[$key] = validarString($value);
+		$arrDados[$i] = validarString($arrDados[$i]);
 
 		//Valida campos em branco
-		if ($key == "email" && strlen($arrDados['email']) == 0) {
+		if ($i == 0 && strlen($arrDados[$i]) == 0) {
 			echo "Erro: E-mail não pode ficar vazio.";
 			exit;
-		} elseif ($key == "senha" && strlen($arrDados['senha']) == 0) {
+		} elseif ($i == 1 && strlen($arrDados[$i]) == 0) {
 			echo "Erro: senha não pode ficar vazia.";
 			exit;
-		  } elseif ($key == "confirmaSenha" && strlen($arrDados['confirmaSenha']) != strlen($arrDados['senha'])) {
+		  } elseif ($arrDados[1] != $arrDados[2]) {
 		  		echo "Erro: as senhas devem ser iguais.";
 				exit;
-		    } elseif ($key == "dNascimento" && strlen($arrDados['dNascimento']) == 0) {
+		    } elseif ($i == 3 && strlen($arrDados[$i]) == 0) {
 		  		echo "Erro: Data de nascimento não pode ficar vazia.";
 				exit;
 		  	  }
-	}//foreach
+	}//for
 }//validarDadosCadastro()
 
 //Método para alterar o usuário

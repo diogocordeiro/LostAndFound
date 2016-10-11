@@ -31,6 +31,7 @@
 
 <!-- Latest compiled and minified JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="../static/bower_components/angular/angular.min.js"></script>
 <script src="../static/bower_components/angular-datetime/dist/datetime.js"></script>

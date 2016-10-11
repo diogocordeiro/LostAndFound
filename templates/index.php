@@ -3,10 +3,11 @@
   <head>
 
     <?php require 'header.php'; ?>
+    <script type="text/javascript" language="javascript" src="../backend/js/cadastroUsuario.js"></script>
 
     <!-- Custom Theme CSS -->
     <link href="../static/css/index.css" rel="stylesheet">
-
+    
 
 
   </head>
@@ -25,8 +26,10 @@
       <div class="row">
 
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">
+          
 						<div class="card card-signup">
-							<form class="form" method="" action="">
+              <div class="resultados"></div>
+							<form class="form">
 								<div class="header header-primary text-center">
 									<h4>Cadastro</h4>
 
@@ -39,7 +42,7 @@
 										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-										<input type="email" class="form-control input-lg " name="formCadastro[email]" ng-model="email" placeholder="Email..." required />
+										<input type="email" class="form-control input-lg " id="email" ng-model="email" placeholder="Email..." required />
 									</div>
 
 									<div class="input-group">
@@ -47,7 +50,7 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
 
-										<input type="password" class="form-control input-lg" name="formCadastro[senha]" ng-model="senha"  placeholder="Senha..." required>
+										<input type="password" class="form-control input-lg" id="senha" ng-model="senha"  placeholder="Senha..." required>
 									</div>
 
                   <div class="input-group">
@@ -55,7 +58,7 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
 
-										<input type="password" class="form-control input-lg" name="formCadastro[confirmaSenha]" ng-model="confirmar_senha" placeholder="Confirmar Senha..." required>
+										<input type="password" class="form-control input-lg" id="confirmaSenha" ng-model="confirmar_senha" placeholder="Confirmar Senha..." required>
 									</div>
 
                   <div class="input-group">
@@ -63,7 +66,7 @@
 											<i class="material-icons">today</i>
 										</span>
 
-										<input type="date" class="form-control input-lg" name="formCadastro[dNascimento]" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
+										<input type="date" class="form-control input-lg" id="dNascimento" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
 									</div>
 
 
@@ -73,8 +76,7 @@
 
 
 
-                    <input class=" btn-block btn btn-lg btn-primary btn-cadastrar" type="submit" ng-click="cadastrarUsuario()"
-                             value="Cadastrar">
+                    <input class=" btn-block btn btn-lg btn-primary btn-cadastrar" id="btnCadastrarUsuario" type="submit" value="Cadastrar">
 
 
 
