@@ -20,7 +20,7 @@ location.href=" index.html"
 
 <body ng-controller="CadastroController">
 
-  <button onclick="Nova()" class="btn btn-default" type="button" name="button">Ok!</button>
+  
 
   <?php require 'top-menu.php'; ?>
 
