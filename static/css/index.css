@@ -12,7 +12,15 @@ body {
   background-color: #3d3d3d;
   text-align: center;
   color: #FAFAFA;
-  
+  position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-50px;
+}
+
+.btn-alerta{
+  background-color: #2196F3 !important;
 }
 .card-signup{
 
