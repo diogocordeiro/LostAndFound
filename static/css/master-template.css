@@ -4,6 +4,15 @@ html {
  background-color: #FAFAFA!important;
 }
 
+.usuario-icon{
+  color: #1E88E5;
+}
+
+.footer-custom{
+  padding-top: 20px;
+padding-bottom: 0px;
+}
+
 .navbar {
     border-radius: 0;
     height: auto;

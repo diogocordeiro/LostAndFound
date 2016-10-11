@@ -10,20 +10,6 @@ body {
   margin-bottom: 300px;
 
 }
-
-
-.img-effects{
-  width: 100%;
-  height: 1024px;
-  filter: blur(8px);
-}
-
-.container-img{
-  margin-bottom: 150px;
-  padding: inherit;
-
-}
-
 .container-form{
 
   margin-top: 80px;
@@ -49,6 +35,22 @@ body {
 
 .input-group {
     padding: 30px;
+}
+
+.btn-cadastrar{
+  margin-bottom: 30px !important;
+}
+
+.btn-cadastrar:hover{
+  will-change: box-shadow, transform !important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /*-webkit-box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;
+    -moz-box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;
+    box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;*/
+
+    box-shadow: 0 4px 4px 0 rgba(38,38,38, 1), 0 5px 1px -2px rgba(38,38,38, 1), 0 1px 5px 0 rgba(38,38,38, 1) !important;
+
 }
 
 .btn-cadastrar:hover, .btn-cadastrar:focus, .btn-cadastrar:active, .btn-cadastrar.active {
@@ -180,11 +182,35 @@ fieldset[disabled] .btn-primary.active {
 
 }
 
-.btn-cadastrar:hover{
-  will-change: box-shadow, transform !important;
-    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.btn-login{
+  background-color: #3d3d3d !important;
+}
 
-    box-shadow: 0 4px 4px 0 rgba(38,38,38, 1), 0 3px 1px -2px rgba(38,38,38, 1), 0 1px 5px 0 rgba(38,38,38, 1) !important;
+.btn-login.active.focus, .btn-login.active:focus, .btn-login.active:hover, .btn-login:active.focus, .btn-login:active:focus, .btn-login:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff !important;
+    background-color: #262626 !important;
+    border-color: #494F57 !important;
+}
 
+.btn-login:hover{
+
+  background-color: #494F57 !important;
+
+}
+
+.btn-login{
+
+  margin-top: 10px !important;
+}
+
+.password-login{
+
+  
+  margin-right: 30px !important;
+}
+
+.email-login{
+
+  margin-right: 50px !important;
 
 }
