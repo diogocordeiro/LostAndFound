@@ -11,10 +11,9 @@
 		$email = $_SESSION['Lost_Found']["email"];
 		$nome = $_SESSION['Lost_Found']["nome"];
 		$chave = "3a1cf8gk78ej64gf784kh89fo9";
-		$ip = $_SERVER["REMOTE_ADR"];
+		$ip = $_SERVER['REMOTE_ADDR'];
 		$situacao = $_SESSION['Lost_Found']['situacao'];
-		$hora = time();
-
+		$hora = $_SESSION['Lost_Found']["hora"];
 		
 		if ($_SESSION['Lost_Found']['chave'] != md5($email . $chave . $ip . $hora)) {
 			echo "<meta charset='UTF-8'>Erro: chave da session é iválida.";
@@ -25,7 +24,7 @@
 		$hora = time();
 		$chave = md5($email . $chave . $ip . $hora);
 		
-		session_start();
+		//session_start();
 		
 		//Salvando os novos dados na session
 		$_SESSION['Lost_Found'] = array("id" => $id, "nome" => $nome, "email" => $email, "situacao" => $situacao, "chave" => $chave, "hora" => $hora);

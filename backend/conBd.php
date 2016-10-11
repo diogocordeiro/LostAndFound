@@ -12,10 +12,10 @@ class BaseDados{
 	// }
 	//Função que retorna uma conexão com o banco que tem a tabela de usuários
 	static function conBdUser(){
-		$dbHost = "localhost";
-		$dbUser = "root";
-		$dbPwd = "654321";
-		$db = "lostandfound";
+		$dbHost = "z37udk8g6jiaqcbx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+		$dbUser = "mfq6jgrmyzj9p0lx";
+		$dbPwd = "mqg8ln28l4fgjbrh";
+		$db = "n6tab27cmhizxmgg";
 
 		return new mysqli($dbHost, $dbUser, $dbPwd, $db);
 	}//function objBdUser()

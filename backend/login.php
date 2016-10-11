@@ -97,7 +97,7 @@ if (count($dados) > 0) {
 	$email = $dados[0]["email"];
 	$nome = $dados[0]["nome"];
 	$chave = "3a1cf8gk78ej64gf784kh89fo9";
-	$ip = $_SERVER["REMOTE_ADR"];
+	$ip = $_SERVER['REMOTE_ADDR'];
 	$hora = time();
 	$chave = md5($email . $chave . $ip . $hora);
 	    
