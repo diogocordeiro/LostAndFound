@@ -1,5 +1,10 @@
 <?
+// $postdata = file_get_contents("php://input");
+// $request = json_decode($postdata);
+// echo $request->name;
+// echo $request->email;
 
+// exit;
 //Verifica se o tipo do POST foi passado
 if (isset($_GET['tipo'])) {
 
@@ -60,7 +65,7 @@ function emailDisponivel($email){
 	$nomeAttEmail = "email";
 
 	//Tenta coletar o usuário com o e-mail passado
-	$myUser = getData(BaseDados::conBdUser(), $tabUsuarios, $nomeAttEmail, $email, 's');
+	$myUser = getData(BaseDados::conBdUser(), $tabUsuarios, $nomeAttEmail, $email, "s");
 
 	//Caso o e-mail já exista retorna falso
 	if(count($myUser) > 0){

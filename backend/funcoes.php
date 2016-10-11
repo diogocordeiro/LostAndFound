@@ -36,6 +36,10 @@ function fetch($result){
 //$attType i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
 function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 
+	//Postgres
+	// $result = pg_prepare($myDb, "query_id", "SELECT * FROM ".$dbTable." WHERE ".$comparisonBdAtt." = $1");
+	// $result = pg_execute($myDb, "query_id", array($att));
+	// $myArr = pg_fetch_array($result);
 	//Essa query coleta dados específicos da tabela passada por argumento
 	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` = ? ORDER BY `id` ASC";
 
@@ -46,6 +50,10 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	if(!$stmt){
 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 	}
+	// if (!$myDb->status()){
+	// 	die("Sem conexao");
+	// }
+	
 
 	//Validas o atributo
 	$stmt->bind_param($tipoAtt, $att);
@@ -57,7 +65,7 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	$myArr = fetch($stmt);
 
 	//Retornar apenas um item
-	return $myArr[0];
+	return $myArr;
 }//function getData()
 
 //Função para validar queries strings, assegurando contra Cross-Side Scripting (XSS)

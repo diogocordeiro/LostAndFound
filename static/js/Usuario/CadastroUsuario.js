@@ -103,7 +103,7 @@ app.controller('CadastroController', ['$scope', '$http', '$log', 'CadastroServic
                 CadastroService.cadastrarUsuario($scope.email, $scope.data_nascimento, $scope.senha);
                 $log.log("Submitted.");
             }
-            $log.log("Submitted.");
+            //$log.log("111Submitted.");
         }
 
     }]);
@@ -116,7 +116,7 @@ app.factory('CadastroService', ['$http', '$log', 'UrlService', function ($http, 
 
             $http.post(UrlService.cadastrarUrl(),
                 {email: email, data_nascimetno: data_nascimento, senha: senha},
-                {headers: {'Content-Type': 'application/json'}})
+                {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                 .success(function (data) {
                     $log.log(data);
                 })
@@ -131,7 +131,7 @@ app.factory('UrlService', ['$log', function ($log) {
 
     return {
         cadastrarUrl: function () {
-            var localUrl = '../../../backend/usuario.php?tipo=novo';
+            var localUrl = "../backend/usuario.php?tipo=novo";
             return localUrl;
         }
     }
