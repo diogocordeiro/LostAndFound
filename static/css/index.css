@@ -3,7 +3,13 @@ body {
     color: #3d3d3d;
     background-color: #FAFAFA;
 }
-.x{
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.card-resultados{
   width: 400px;
   height: 400px;
   background-color: green;

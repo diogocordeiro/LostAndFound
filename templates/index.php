@@ -10,13 +10,9 @@
     <link href="../static/css/index.css" rel="stylesheet">
 
     <script type="text/javascript">
-$(document).ready(function() {
-    $(function() {
-        $("#resultado").dialog({
-                autoOpen: false
-        });
+    $(function btnResponse(){
+      $("#btn-div-response").addClass('hidden');
     });
-});
 </script>
 
 
@@ -45,10 +41,13 @@ $(document).ready(function() {
 
 
 
-              <div id="resultados" class="resultados">
+              <div id="card-resultaos" class="card card-resultados hidden ">
 
+                <h3 id="resultados">
 
+                </h3>
 
+                <button onclick="btnResponse()" class="btn btn-default" type="button" name="button">Ok!</button>
 
 
                 </div>
