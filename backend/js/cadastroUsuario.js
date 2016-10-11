@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var confirmaSenhaP = $("#confirmaSenha").val();
 		var dNascimentoP = $("#dNascimento").val();
 		  
-		$.post("/backend/usuario.php?tipo=novo", {email: emailP, senha: senhaP, confirmaSenha: confirmaSenhaP, dNascimento: dNascimentoP},
+		$.post("/templates/backend/usuario.php?tipo=novo", {email: emailP, senha: senhaP, confirmaSenha: confirmaSenhaP, dNascimento: dNascimentoP},
 		function(response){
 		 $(".resultados").html(response);
 		 }
