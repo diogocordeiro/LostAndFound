@@ -1,4 +1,4 @@
-<?
+<?php
 
 //from http://br1.php.net/manual/en/mysqli-stmt.bind-result.php
 function fetch($result){

@@ -1,4 +1,4 @@
-<?
+<?php
 	//$dtz = "America/Sao_Paulo";
 	$dtz = "America/Recife";
 

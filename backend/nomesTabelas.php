@@ -1,4 +1,4 @@
-<?
+<?php
 
 //Nome das tabelas no bd
 global $tabUsuarios;
