@@ -2,12 +2,13 @@
 
 // use PHPUnit\Framework\TestCase;
 require __DIR__."/.."."/Usuario.php";
+require __DIR__."/.."."/login.php";
 require __DIR__."/.."."/funcoes.php";
 require __DIR__."/.."."/nomesTabelas.php";
 require __DIR__."/.."."/default_timezone.php";
 	
 // class TestesUsuario extends TestCase
-class TestesUsuario extends PHPUnit_Framework_TestCase{
+class TestesLogin extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
 	private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
@@ -30,21 +31,35 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 		$this->mysqli->query("DROP TABLE usuarios");
 	}
 
-	//Funcao para testar a insercao de uma novo usuario
-	public function testeIncluirUsuario(){
+	//Funcao para testar login (legitimidade dos dados)
+	public function testeFazLogin(){
+	
+		//Insere usuario para fazer verificacao do login
+		incluirUsuario($this->mysqli, $this->dadosForm);
 
 		//Assert
-		$this->assertEquals("sucesso", incluirUsuario($this->mysqli, $this->dadosForm));
+		$this->assertEquals("sucesso", fazLogin($this->mysqli, $this->dadosForm[0], $this->dadosForm[1]));
 	}
 
-	/**
-	* @depends testeIncluirUsuario
-	*/
-	//Funcao para testar indisponibilidade do e-mail
-	public function testeEmailDisponivel(){
-
+	//Funcao para testar login com um e-mail invalido e uma senha invalida
+	public function testeFazLoginInexistente(){
+		
 		//Assert
-		$this->assertFalse(emailDisponivel($this->mysqli, $this->dadosForm[0]));
+		$this->assertEquals("invalido", fazLogin($this->mysqli, "a", "a"));
+	}
+
+	//Funcao para testar login com um e-mail invalido e uma senha valida
+	public function testeFazLoginEmailInexistente(){
+		
+		//Assert
+		$this->assertEquals("invalido", fazLogin($this->mysqli, "a", $this->dadosForm[1]));
+	}
+
+	//Funcao para testar login com um e-mail valido e uma senha invalida
+	public function testeFazLoginSenhaInexistente(){
+		
+		//Assert
+		$this->assertEquals("invalido", fazLogin($this->mysqli, $this->dadosForm[0], "a"));
 	}
 
 }

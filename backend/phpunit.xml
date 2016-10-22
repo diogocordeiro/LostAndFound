@@ -14,6 +14,7 @@
             
             <!-- ordem que os arquivos serao executados -->
             <file>Testes/TestesUsuario.php</file>
+            <file>Testes/TestesLogin.php</file>
         </testsuite>
     </testsuites>
 
