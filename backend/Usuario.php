@@ -34,10 +34,10 @@ if (isset($_GET['tipo'])) {
 		$sucesso = incluirUsuario(BaseDados::conBdUser(), $arr);
 
 		if ($sucesso == "sucesso") {
-			echo "Novo usuário inserido com sucesso!";
+			echo "<br/>Novo usuário inserido com sucesso!";
 			exit;
 		} else {
-			echo "Erro: usuário não cadastrado!";
+			echo "<br/>Erro: usuário não cadastrado!";
 			exit;
 		  }
 
@@ -133,7 +133,7 @@ function incluirUsuario($myDb, $arrDados){
 	//Checa se o e-mail informado está disponível
 	if(!emailDisponivel($myDb, $arrDados[0])){
 		echo "Erro: e-mail indisponível.";
-		exit;
+		return "falha";
 	} 
 
 	$arrDados[3] = date('Y-m-d', strtotime($arrDados[3]));
