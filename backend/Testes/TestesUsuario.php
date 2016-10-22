@@ -34,7 +34,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	public function testeIncluirUsuario(){
 
 		//Assert
-		$$this->assertTrue(incluirUsuario($this->mysqli, $this->dadosForm));
+		$$this->assertEquals("1", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 
 	/**
@@ -44,7 +44,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	public function testeIncluirUsuarioEmailJaEmUso(){
 
 		//Assert
-		$this->assertEquals("Erro: e-mail indisponível.", incluirUsuario($this->mysqli, $this->dadosForm));
+		$this->assertEquals("", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 }
 	
