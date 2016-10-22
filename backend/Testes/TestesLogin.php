@@ -33,9 +33,6 @@ class TestesLogin extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar login (legitimidade dos dados)
 	public function testeFazLogin(){
-	
-		//Insere usuario para fazer verificacao do login
-		incluirUsuario($this->mysqli, $this->dadosForm);
 
 		//Assert
 		$this->assertEquals("sucesso", fazLogin($this->mysqli, $this->dadosForm[0], $this->dadosForm[1]));
