@@ -26,7 +26,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	}
 
 	//Funcao para que a tabela seja eliminada pelo garbage collector
-	public function tearDown(){
+	public function __destruct(){
 		$this->mysqli->query("DROP TABLE usuarios");
 	}
 
@@ -41,7 +41,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	* @depends testeIncluirUsuario
 	*/
 	//Funcao para testar indisponibilidade do e-mail
-	public function testeEmailJaEmUso(){
+	public function testeEmailDisponivel(){
 
 		//Assert
 		$this->assertFalse(emailDisponivel($this->mysqli, $this->dadosForm[0]));
