@@ -37,9 +37,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 		$this->assertEquals("Novo usuário inserido com sucesso!", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 
-	/**
-	* @depends testeIncluirUsuario
-	*/
+
 	//Funcao para testar indisponibilidade do e-mail
 	public function testeIncluirUsuarioEmailJaEmUso(){
 
