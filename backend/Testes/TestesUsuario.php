@@ -27,7 +27,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar a insercao de uma novo usuario
 	public function testeIncluirUsuario(){
-		$dadosForm = ["teste123@teste123.com", "teste123", "teste123", "1995-01-10"];
+		$dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
 
 		//Assert
 		$this->assertEquals("Novo usuário inserido com sucesso!", incluirUsuario($this->mysqli, $dadosForm));
@@ -35,7 +35,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar indisponibilidade do e-mail
 	public function testeIncluirUsuarioEmailJaEmUso(){
-		$dadosForm = ["teste123@teste123.com", "teste123", "teste123", "1989-06-30"];
+		$dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1989-06-30"];
 
 		//Assert
 		$this->assertEquals("Erro: e-mail indisponível.", incluirUsuario($this->mysqli, $dadosForm));
