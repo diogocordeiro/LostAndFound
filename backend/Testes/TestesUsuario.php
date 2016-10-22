@@ -1,13 +1,13 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+// use PHPUnit\Framework\TestCase;
 require __DIR__."/.."."/Usuario.php";
 require __DIR__."/.."."/funcoes.php";
 require __DIR__."/.."."/nomesTabelas.php";
 require __DIR__."/.."."/default_timezone.php";
 	
-class TestesUsuario extends TestCase
-// class TestesUsuario extends PHPUnit_Framework_TestCase{
+// class TestesUsuario extends TestCase
+class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
 	private $dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
