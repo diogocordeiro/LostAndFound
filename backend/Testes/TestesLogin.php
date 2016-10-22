@@ -2,16 +2,16 @@
 
 // use PHPUnit\Framework\TestCase;
 // require __DIR__."/.."."/Usuario.php";
-require __DIR__."/.."."/login.php";
 // require __DIR__."/.."."/funcoes.php";
 // require __DIR__."/.."."/nomesTabelas.php";
 // require __DIR__."/.."."/default_timezone.php";
+require __DIR__."/.."."/login.php";
 	
 // class TestesUsuario extends TestCase
 class TestesLogin extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
-	private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
+	// private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
 
 	//Funcao que prepara o ambiente
 	public function setUp(){
@@ -34,6 +34,7 @@ class TestesLogin extends PHPUnit_Framework_TestCase{
 	//Funcao para testar login (legitimidade dos dados)
 	public function testeFazLogin(){
 
+		// incluirUsuario($this->mysqli, $this->dadosForm);
 		//Assert
 		$this->assertEquals("sucesso", fazLogin($this->mysqli, $this->dadosForm[0], $this->dadosForm[1]));
 	}
