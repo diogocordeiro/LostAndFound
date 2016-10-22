@@ -3,9 +3,9 @@
 // use PHPUnit\Framework\TestCase;
 // require __DIR__."/.."."/Usuario.php";
 require __DIR__."/.."."/login.php";
-require __DIR__."/.."."/funcoes.php";
-require __DIR__."/.."."/nomesTabelas.php";
-require __DIR__."/.."."/default_timezone.php";
+// require __DIR__."/.."."/funcoes.php";
+// require __DIR__."/.."."/nomesTabelas.php";
+// require __DIR__."/.."."/default_timezone.php";
 	
 // class TestesUsuario extends TestCase
 class TestesLogin extends PHPUnit_Framework_TestCase{
