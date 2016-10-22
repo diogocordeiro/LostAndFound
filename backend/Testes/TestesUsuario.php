@@ -3,6 +3,8 @@
 // use PHPUnit\Framework\TestCase;
 require __DIR__."/.."."/Usuario.php";
 require __DIR__."/.."."/funcoes.php";
+require __DIR__."/.."."/nomesTabelas.php.php";
+require __DIR__."/.."."/default_timezone.php";
 	
 // class TestesUsuario extends TestCase
 class TestesUsuario extends PHPUnit_Framework_TestCase{

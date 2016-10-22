@@ -104,7 +104,7 @@ function validarDadosCadastro($arrDados){
 }//validarDadosCadastro()
 
 //Função para checar a disponibilidade do e-mail
-function emailDisponivel($email){
+function emailDisponivel($myDb, $email){
 	
 	global $tabUsuarios;
 
@@ -112,7 +112,7 @@ function emailDisponivel($email){
 	$nomeAttEmail = "email";
 
 	//Tenta coletar o usuário com o e-mail passado
-	$myUser = getData(BaseDados::conBdUser(), $tabUsuarios, $nomeAttEmail, $email, "s");
+	$myUser = getData($myDb, $tabUsuarios, $nomeAttEmail, $email, "s");
 
 	//Caso o e-mail já exista retorna falso
 	if(count($myUser) > 0){
@@ -131,7 +131,7 @@ function incluirUsuario($myDb, $arrDados){
 	validarDadosCadastro($arrDados);
 
 	//Checa se o e-mail informado está disponível
-	if(!emailDisponivel($arrDados[0])){
+	if(!emailDisponivel($myDb, $arrDados[0])){
 		echo "Erro: e-mail indisponível.";
 		exit;
 	} 
