@@ -8,10 +8,9 @@ require __DIR__."/.."."/default_timezone.php";
 	
 // class TestesUsuario extends TestCase
 class TestesUsuario extends PHPUnit_Framework_TestCase{
-	/**
-	* @var mysqli
-	*/
+
 	private $mysqli;
+	private $dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
 
 	public function setUp(){
 
@@ -27,18 +26,19 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar a insercao de uma novo usuario
 	public function testeIncluirUsuario(){
-		$dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
 
 		//Assert
-		$this->assertEquals("Novo usuário inserido com sucesso!", incluirUsuario($this->mysqli, $dadosForm));
+		$this->assertEquals("Novo usuário inserido com sucesso!", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 
+	/**
+	* @depends testeIncluirUsuario
+	*/
 	//Funcao para testar indisponibilidade do e-mail
 	public function testeIncluirUsuarioEmailJaEmUso(){
-		$dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1989-06-30"];
 
 		//Assert
-		$this->assertEquals("Erro: e-mail indisponível.", incluirUsuario($this->mysqli, $dadosForm));
+		$this->assertEquals("Erro: e-mail indisponível.", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 }
 	
