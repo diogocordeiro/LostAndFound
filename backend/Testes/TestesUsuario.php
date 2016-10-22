@@ -34,7 +34,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	public function testeIncluirUsuario(){
 
 		//Assert
-		$$this->assertEquals("sucesso", incluirUsuario($this->mysqli, $this->dadosForm));
+		$this->assertEquals("sucesso", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 
 	/**
