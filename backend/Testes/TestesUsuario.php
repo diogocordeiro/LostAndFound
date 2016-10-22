@@ -26,9 +26,9 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	}
 
 	//Funcao para que a tabela seja eliminada pelo garbage collector
-	public function tearDown(){
-		$this->mysqli->query("DROP TABLE usuarios");
-	}
+	// public function tearDown(){
+	// 	$this->mysqli->query("DROP TABLE usuarios");
+	// }
 
 	//Funcao para testar a insercao de uma novo usuario
 	public function testeIncluirUsuario(){
