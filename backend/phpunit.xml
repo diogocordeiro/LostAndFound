@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Testes/bootstrap.php" colors="true">
+    <php>
+        <var name="dbHost" value="localhost"/>
+        <var name="dbUser" value="root"/>
+        <var name="dbPwd" value=""/>
+        <var name="db" value="lostandfound_testes"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Backend Testes - Lost and Found Project">
+            <directory>./Testes/</directory>
+            
+            <!-- ordem que os arquivos serao executados -->
+            <file>Testes/TestesUsuario.php</file>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Testes</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
