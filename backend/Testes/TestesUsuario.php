@@ -2,7 +2,7 @@
 
 // use PHPUnit\Framework\TestCase;
 require __DIR__."/.."."/Usuario.php";
-require __DIR__."/.."."/Funcoes.php";
+require __DIR__."/.."."/funcoes.php";
 	
 // class TestesUsuario extends TestCase
 class TestesUsuario extends PHPUnit_Framework_TestCase{

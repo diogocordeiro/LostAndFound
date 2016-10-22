@@ -37,6 +37,8 @@ matrix:
  #   - php: hhvm
  #     env: DB=pgsql  # PDO driver for pgsql is unsupported by HHVM (3rd party install for support)
  allow_failures:
+  - php: 5.2
+  - php: 5.3
   - php: 7.0
   - php: hhvm
 
