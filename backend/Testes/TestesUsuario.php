@@ -10,7 +10,7 @@ require __DIR__."/.."."/default_timezone.php";
 class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
-	private $dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
+	private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
 
 	//Funcao que prepara o ambiente
 	public function setUp(){
