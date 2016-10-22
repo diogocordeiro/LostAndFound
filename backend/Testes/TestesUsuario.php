@@ -1,13 +1,13 @@
 <?php
 
-// use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 require __DIR__."/.."."/Usuario.php";
 require __DIR__."/.."."/funcoes.php";
 require __DIR__."/.."."/nomesTabelas.php";
 require __DIR__."/.."."/default_timezone.php";
 	
-// class TestesUsuario extends TestCase
-class TestesUsuario extends PHPUnit_Framework_TestCase{
+class TestesUsuario extends TestCase
+// class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
 	private $dadosForm = ["teste567@teste567.com", "teste567", "teste567", "1995-01-10"];
@@ -26,9 +26,9 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	}
 
 	//Funcao para que a tabela seja eliminada pelo garbage collector
-	// public function tearDown(){
-	// 	$this->mysqli->query("DROP TABLE usuarios");
-	// }
+	public function tearDown(){
+		$this->mysqli->query("DROP TABLE usuarios");
+	}
 
 	//Funcao para testar a insercao de uma novo usuario
 	public function testeIncluirUsuario(){
@@ -37,7 +37,9 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 		$this->assertEquals("Novo usuário inserido com sucesso!", incluirUsuario($this->mysqli, $this->dadosForm));
 	}
 
-
+	/**
+	* @depends testeIncluirUsuario
+	*/
 	//Funcao para testar indisponibilidade do e-mail
 	public function testeIncluirUsuarioEmailJaEmUso(){
 

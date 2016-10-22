@@ -116,7 +116,6 @@ function emailDisponivel($myDb, $email){
 
 	//Caso o e-mail já exista retorna falso
 	if(count($myUser) > 0){
-		echo $myUser[0]['email'];
 		return false;
 	} else {
 		return true;
