@@ -11,7 +11,7 @@ require __DIR__."/.."."/login.php";
 class TestesLogin extends PHPUnit_Framework_TestCase{
 
 	private $mysqli;
-	// private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
+	private $dadosForm = ["teste876@teste876.com", "teste567", "teste567", "1995-01-10"];
 
 	//Funcao que prepara o ambiente
 	public function setUp(){
