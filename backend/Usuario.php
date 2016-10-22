@@ -1,8 +1,4 @@
 <?php
-// $postdata = file_get_contents("php://input");
-// $request = json_decode($postdata);
-// echo $request->name;
-// echo $request->email;
 
 //Verifica se o tipo do POST foi passado
 if (isset($_GET['tipo'])) {
