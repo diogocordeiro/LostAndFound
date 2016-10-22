@@ -35,7 +35,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar indisponibilidade do e-mail
 	public function testeIncluirUsuarioEmailJaEmUso(){
-		$dadosForm = ["teste123@teste123.com", "111111", "111111", "1989-06-30"];
+		$dadosForm = ["teste123@teste123.com", "teste123", "teste123", "1989-06-30"];
 
 		//Assert
 		$this->assertEquals("Erro: e-mail indisponível.", incluirUsuario($this->mysqli, $dadosForm));
