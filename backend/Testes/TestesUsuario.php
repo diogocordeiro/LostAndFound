@@ -41,11 +41,12 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	* @depends testeIncluirUsuario
 	*/
 	//Funcao para testar indisponibilidade do e-mail
-	public function testeIncluirUsuarioEmailJaEmUso(){
+	public function testeEmailJaEmUso(){
 
 		//Assert
-		$this->assertEquals("falha", incluirUsuario($this->mysqli, $this->dadosForm));
+		$this->assertFalse(emailDisponivel($this->mysqli, $this->dadosForm[0]));
 	}
+
 }
 	
 ?>
