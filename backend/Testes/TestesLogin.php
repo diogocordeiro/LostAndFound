@@ -1,7 +1,7 @@
 <?php
 
 // use PHPUnit\Framework\TestCase;
-require __DIR__."/.."."/Usuario.php";
+// require __DIR__."/.."."/Usuario.php";
 require __DIR__."/.."."/login.php";
 require __DIR__."/.."."/funcoes.php";
 require __DIR__."/.."."/nomesTabelas.php";
@@ -48,19 +48,19 @@ class TestesLogin extends PHPUnit_Framework_TestCase{
 		$this->assertEquals("invalido", fazLogin($this->mysqli, "a", "a"));
 	}
 
-	// //Funcao para testar login com um e-mail invalido e uma senha valida
-	// public function testeFazLoginEmailInexistente(){
+	//Funcao para testar login com um e-mail invalido e uma senha valida
+	public function testeFazLoginEmailInexistente(){
 		
-	// 	//Assert
-	// 	$this->assertEquals("invalido", fazLogin($this->mysqli, "a", $this->dadosForm[1]));
-	// }
+		//Assert
+		$this->assertEquals("invalido", fazLogin($this->mysqli, "a", $this->dadosForm[1]));
+	}
 
-	// //Funcao para testar login com um e-mail valido e uma senha invalida
-	// public function testeFazLoginSenhaInexistente(){
+	//Funcao para testar login com um e-mail valido e uma senha invalida
+	public function testeFazLoginSenhaInexistente(){
 		
-	// 	//Assert
-	// 	$this->assertEquals("invalido", fazLogin($this->mysqli, $this->dadosForm[0], "a"));
-	// }
+		//Assert
+		$this->assertEquals("invalido", fazLogin($this->mysqli, $this->dadosForm[0], "a"));
+	}
 
 }
 	
