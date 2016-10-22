@@ -33,7 +33,7 @@ if (isset($_GET['tipo'])) {
 
 		$sucesso = incluirUsuario(BaseDados::conBdUser(), $arr);
 
-		if ($sucesso) {
+		if ($sucesso == "sucesso") {
 			echo "Novo usuário inserido com sucesso!";
 			exit;
 		} else {
@@ -159,7 +159,11 @@ function incluirUsuario($myDb, $arrDados){
 	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao);
 
 	//Executa o statement
-	return $stmt->execute();
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		return "falha";
+	  }
 }//function incluirUsuario()
 
 //Método para alterar o usuário
