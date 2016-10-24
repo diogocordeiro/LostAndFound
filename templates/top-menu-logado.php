@@ -30,6 +30,32 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
+          <ul class="nav navbar-nav">
+				<li ><a href="#">Home</a></li>
+        <li ><a href="#">Perfil</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="divider"></li>
+              <li><a href="#">Meus Reports</a></li>
+                <li class="divider"></li>
+        <li><a href="#">Criar Report Achado</a></li>
+        <li><a href="#">Criar Report Perdido</a></li>
+  
+          </ul>
+        </li>
+        		<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Itens <b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+                <li class="divider"></li>
+    				      <li><a href="#">Meus Itens</a></li>
+                    <li class="divider"></li>
+					  <li><a href="#">Adicionar Item</a></li>
+						</ul>
+        		</li>
+    		</ul>
+
           <form class="navbar-form navbar-right">
 
             <button type="submit" class="btn btn-sm btn-default btn-cor-estilo-escuro btn-round">Log out</button>
