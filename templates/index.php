@@ -75,15 +75,17 @@ location.href=" index.php"
 											<i class="material-icons">today</i>
 										</span>
 
-                      <input type="date" class="form-control input-lg" id="dNascimento" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
+                      <p class="data-nascimento-label">Data Nascimento</p>
+                      <input type="date" place class="form-control input-lg" id="dNascimento" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
+                      <p class="informacao-data-nascimento">
+                        *Maiores de 18 anos.
+                      </p>
                     </div>
 
 
 
                   </div>
                   <div class="footer text-center">
-
-
 
                     <input class="btn btn-lg btn-default btn-estilo" id="btnCadastrarUsuario" type="submit" value="Cadastrar">
 
@@ -115,26 +117,6 @@ location.href=" index.php"
             <h5 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
                  </div>
              </div>
-
-             <div class="modal fade" id="resultados" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-               <div class="modal-dialog">
-                 <div class="modal-content">
-                   <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                   </div>
-                   <div class="modal-body">
-                     Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
-                   </div>
-                   <div class="modal-footer">
-                     <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
-                     <button type="button" class="btn btn-info btn-simple">Save</button>
-                   </div>
-                 </div>
-               </div>
-             </div>
-
-
 
      <div class="features">
        <div class="row">
