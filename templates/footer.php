@@ -1,9 +1,9 @@
 <!-- Footer -->
-<footer class="text-center footer-custom">
+<footer class="footer text-center footer-custom  ">
   <div class="container">
 
   </div>
-    <div class="footer-above">
+    <div class="footer-above ">
         <div class="container-fluid">
 
             <div class="row">
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Footer 2 -->
-    <div class="footer-below">
+    <div class="footer-below ">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">

@@ -2,6 +2,12 @@ html {
   font-family: Roboto, sans-serif !important;
  color: #3d3d3d!important;
  background-color: #FAFAFA!important;
+ height: 100% !important;
+}
+
+body{
+  position: relative !important;
+  min-height: 100% !important;
 }
 
 .usuario-icon{
@@ -51,6 +57,7 @@ padding-bottom: 0px;
 
 
 footer {
+
     color: #3d3d3d;
 }
 

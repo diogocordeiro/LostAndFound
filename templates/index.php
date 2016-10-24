@@ -10,11 +10,10 @@
     <link href="../static/css/index.css" rel="stylesheet">
 
     <script type="text/javascript">
-function Nova()
-{
-location.href=" index.php"
-}
-</script>
+      function Nova() {
+        location.href = " index.php"
+      }
+    </script>
 
 </head>
 
@@ -158,6 +157,12 @@ location.href=" index.php"
 
 
 
-    <?php require 'footer.php'; ?>
   </body>
+
+
+  <?php require 'footer.php'; ?>
+
+
+
+
 </html>

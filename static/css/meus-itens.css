@@ -1,7 +1,8 @@
 html {
-  font-family: Roboto, sans-serif !important;
- color: #3d3d3d!important;
- background-color: #FAFAFA!important;
+   font-family: Roboto, sans-serif !important;
+   color: #3d3d3d!important;
+   background-color: #FAFAFA!important;
+   height: 100% !important;
 
 }
 
@@ -10,17 +11,12 @@ body {
     font-family: Roboto, sans-serif !important;
     color: #3d3d3d !important;
     background-color: #FAFAFA !important;
+    position: relative !important;
+    min-height: 100% !important;
 
 
 }
 
-.data-nascimento-label{
-  color: #acacb5 !important;
-}
-.informacao-data-nascimento{
-  font-size: 10px !important;
-    color: #acacb5 !important;
-}
 .mensagem-alerta{
   width: 300px;
   height: 100px;
@@ -215,23 +211,23 @@ fieldset[disabled] .btn-primary.active {
 
 }
 
-.btn-login{
+.btn-cor-estilo-escuro{
   background-color: #3d3d3d !important;
 }
 
-.btn-login.active.focus, .btn-login.active:focus, .btn-login.active:hover, .btn-login:active.focus, .btn-login:active:focus, .btn-login:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+.btn-cor-estilo-escuro.active.focus, .btn-cor-estilo-escuro.active:focus, .btn-cor-estilo-escuro.active:hover, .btn-cor-estilo-escuro:active.focus, .btn-cor-estilo-escuro:active:focus, .btn-cor-estilo-escuro:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
     color: #fff !important;
     background-color: #262626 !important;
     border-color: #494F57 !important;
 }
 
-.btn-login:hover{
+.btn-cor-estilo-escuro:hover{
 
   background-color: #494F57 !important;
 
 }
 
-.btn-login{
+.btn-cor-estilo-escuro{
 
   margin-top: 10px !important;
 }
@@ -246,4 +242,71 @@ fieldset[disabled] .btn-primary.active {
 
   margin-right: 50px !important;
 
+}
+
+.logado-como-texto{
+  text-decoration: none !important;
+  color: #FAFAFA !important;
+  font-size: 18px !important;
+}
+
+.btn-busca-avancada{
+  margin: 10px !important;
+}
+
+
+@media (max-width: 768px) {
+.btn-busca-responsive {
+  padding:2px 4px !important;
+  font-size:80% !important;
+  line-height: 1 !important;
+  border-radius:3px !important;
+}
+}
+
+.card-iformacao-report{
+  margin-top: 80px !important;
+}
+
+.location-icon{
+  color:  #D32F2F !important;
+}
+
+.report-perdido-icon{
+  color: #0277BD !important;
+}
+
+.btn-report{
+  margin-bottom: 40px !important;
+}
+
+.titulo-busca{
+  margin-top: 80px !important;
+}
+
+.descricao-busca{
+  margin-bottom: 40px !important;
+}
+
+.titulo-itens{
+  margin-top: 80px !important;
+}
+
+.tabela-itens{
+
+  margin-top: 80px !important;
+
+}
+
+footer{
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+}
+
+.teste{
+
+  margin-bottom: 200px !important;
 }
