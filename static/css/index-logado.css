@@ -200,23 +200,23 @@ fieldset[disabled] .btn-primary.active {
 
 }
 
-.btn-login{
+.btn-cor-estilo-escuro{
   background-color: #3d3d3d !important;
 }
 
-.btn-login.active.focus, .btn-login.active:focus, .btn-login.active:hover, .btn-login:active.focus, .btn-login:active:focus, .btn-login:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+.btn-cor-estilo-escuro.active.focus, .btn-cor-estilo-escuro.active:focus, .btn-cor-estilo-escuro.active:hover, .btn-cor-estilo-escuro:active.focus, .btn-cor-estilo-escuro:active:focus, .btn-cor-estilo-escuro:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
     color: #fff !important;
     background-color: #262626 !important;
     border-color: #494F57 !important;
 }
 
-.btn-login:hover{
+.btn-cor-estilo-escuro:hover{
 
   background-color: #494F57 !important;
 
 }
 
-.btn-login{
+.btn-cor-estilo-escuro{
 
   margin-top: 10px !important;
 }
@@ -231,4 +231,15 @@ fieldset[disabled] .btn-primary.active {
 
   margin-right: 50px !important;
 
+}
+
+.logado-como-texto{
+  text-decoration: none !important;
+  color: #FAFAFA !important;
+  font-size: 18px !important;
+}
+
+.link-busca-avancada{
+  color: #0645AD;
+  
 }
