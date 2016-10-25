@@ -1,0 +1,25 @@
+.card-content{
+  min-height: 768px !important;
+  margin-top: 80px !important;
+
+}
+
+.imagem-item{
+  margin-top: 80px !important;
+
+}
+
+.card-content-item{
+  margin-top: 80px !important;
+  margin-bottom: 80px !important;
+
+}
+
+.informacoes{
+  color: #3d3d3d!important;
+}
+
+.btn-criar-report{
+  margin-bottom: 80px !important;
+  margin-top: 50px !important;
+}
