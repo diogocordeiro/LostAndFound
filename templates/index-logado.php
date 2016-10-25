@@ -4,17 +4,10 @@
 <head>
 
   <?php require 'header.php'; ?>
-    <script type="text/javascript" language="javascript" src="../backend/js/cadastroUsuario.js"></script>
-
+  
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
-
-    <script type="text/javascript">
-      function Nova() {
-        location.href = "index.php"
-      }
-    </script>
 
 </head>
 

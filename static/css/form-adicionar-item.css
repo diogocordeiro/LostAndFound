@@ -1,0 +1,61 @@
+body {
+    font-family: Roboto, sans-serif;
+    color: #3d3d3d;
+    background-color: #FAFAFA;
+}
+
+.btn-cor-estilo-escuro{
+  background-color: #3d3d3d !important;
+}
+
+.btn-cor-estilo-escuro.active.focus, .btn-cor-estilo-escuro.active:focus, .btn-cor-estilo-escuro.active:hover, .btn-cor-estilo-escuro:active.focus, .btn-cor-estilo-escuro:active:focus, .btn-cor-estilo-escuro:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff !important;
+    background-color: #262626 !important;
+    border-color: #494F57 !important;
+}
+
+.btn-cor-estilo-escuro:hover{
+
+  background-color: #494F57 !important;
+
+}
+
+.btn-cor-estilo-escuro{
+
+  margin-top: 10px !important;
+}
+
+
+.titulo-adicionar-item{
+  margin-top: 80px !important;
+}
+
+.descricao-adicionar-item{
+  margin-bottom: 40px !important;
+}
+
+.card-adicionar-item{
+  margin-top: 80px !important;
+
+}
+
+.header-adicionar-item{
+  background-color: #FFC107 !important;
+}
+
+.input-group{
+  margin: 100px !important;
+}
+
+.item-estilo:hover{
+background: #FFC107 !important;
+}
+
+.posicao-dropdown{
+  margin-top: -80px !important;
+  margin-left: 28px !important;
+}
+
+.teste{
+  margin-top: 0px !important;
+}
