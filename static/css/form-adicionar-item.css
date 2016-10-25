@@ -53,9 +53,45 @@ background: #FFC107 !important;
 
 .posicao-dropdown{
   margin-top: -80px !important;
-  margin-left: 28px !important;
+  margin-left: 100px !important;
 }
 
-.teste{
-  margin-top: 0px !important;
+.scroll-dropdown{
+  height: auto !important;
+    max-height: 200px !important;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 768px) {
+.dropdown-small-device {
+  margin-top: 30px !important;
+  margin-left: 30px !important;
+}
+}
+
+@media (max-width: 768px) {
+.input-size-small-device {
+  min-width: 100px !important;
+  margin-left: 60px !important;
+}
+}
+
+.btn-upload-imagem{
+
+  margin-top: -40px !important;
+  margin-left: 115px !important;
+
+}
+
+@media (max-width: 768px) {
+.btn-upload-imagem {
+  
+  margin-left: 60px !important;
+}
+}
+
+.informacao-imagem-upload{
+  text-align: left !important;
+  font-size: 12px !important;
+
 }

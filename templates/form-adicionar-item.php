@@ -36,25 +36,91 @@
 
                       <div class="row">
 
-                        <div class="col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3 ">
+                        <div class="col-md-8 col-md-offset-2 ">
 
-                          <div class="input-group">
+                          <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
+                            <input type="text" class=" form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
                           </div>
 
                           <div class="row">
 
-                            <div class="col-md-5">
+                            <div class="col-md-4">
 
-                              <div class="btn-group posicao-dropdown">
+                              <div class="btn-group posicao-dropdown dropdown-small-device">
                                 <button type="button" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
                                   Categoria <span class="caret"></span>
                                 </button>
 
-                                  <ul class="dropdown-menu" role="menu">
+                                  <ul class="dropdown-menu scroll-dropdown " role="menu">
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+
+                                  </ul>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                              <div class="btn-group posicao-dropdown dropdown-small-device">
+                                <button type="button" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                  Cor Pricipal <span class="caret"></span>
+                                </button>
+
+                                  <ul class="dropdown-menu scroll-dropdown" role="menu">
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+                                    <li><a class="item-estilo" href="#">Exemplo</a></li>
+
+                                  </ul>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                              <div class="btn-group posicao-dropdown dropdown-small-device">
+                                <button type="button" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                  Cor Secundaria <span class="caret"></span>
+                                </button>
+
+                                  <ul class="dropdown-menu scroll-dropdown" role="menu">
                                     <li><a class="item-estilo" href="#">Exemplo</a></li>
                                     <li><a class="item-estilo" href="#">Exemplo</a></li>
                                     <li><a class="item-estilo" href="#">Exemplo</a></li>
@@ -82,54 +148,53 @@
 
                           </div>
 
-                          <div class="input-group teste">
+                          <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
+                            <input type="text" class=" form-control input-lg " placeholder="Tipo...     Ex: Categoria: Eletrônico Tipo: Notebook" required />
                           </div>
 
-                          <div class="input-group">
+                          <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
+                            <input type="text" class=" form-control input-lg " placeholder="Marca... Ex: samsung" required />
                           </div>
 
-                          <div class="input-group">
+                          <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
+                            <input type="text" class=" form-control input-lg " placeholder="Caracteristica Unica... Ex: arranhoes, amaçados, adesivos e etc..." required />
                           </div>
 
-                          <div class="input-group">
+                          <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
+                            <input type="text" class=" form-control input-lg " placeholder="Identificador Unico... Ex: N de Serie, ID, e etc..." required />
                           </div>
 
-                          <div class="input-group">
-                            <span class="input-group-addon">
-                            <i class="material-icons">label</i>
-                          </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
-                          </div>
+                          <div class="input-group btn-upload-imagem">
+                            <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
+                              Imagem <input type="file" style="display: none;">
+                            </label>
+                            <p class="informacao-imagem-upload">
 
-                          <div class="input-group">
-                            <span class="input-group-addon">
-                            <i class="material-icons">label</i>
-                          </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
-                          </div>
+                              Enviar foto do item.
 
-                          <div class="input-group">
-                            <span class="input-group-addon">
-                            <i class="material-icons">label</i>
-                          </span>
-                            <input type="text" class="form-control input-lg " placeholder="Nome... Ex: casaco preto" required />
-                          </div>
+                            </p>
+                        </div>
+
+                        <div class="input-group input-size-small-device">
+                          <span class="input-group-addon">
+                          <i class="material-icons">label</i>
+                        </span>
+                        <textarea class="form-control" placeholder="Escreva uma pequena descrição do item, voçê pode informar algumas de suas principais caracteristicas" rows="10"></textarea>
+
+                        </div>
+
 
 
                           <!-- <div class="dropdown">
