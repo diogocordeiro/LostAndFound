@@ -38,7 +38,7 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
 	if (fazLogin(BaseDados::conBdUser(), $emailP, $senhaP) == "sucesso"){
 
 		//Direciona para página inicial restrita
-		header("location: inicio.php");
+		header("location: ../templates/index-logado.php");
 	}
 }
 

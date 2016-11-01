@@ -1,7 +1,7 @@
 <?php
 	
 	//Página de login
-	$pgFormLogin = "fazLogin.php";
+	$pgFormLogin = "../templates/";
 
 	session_start();
 	
@@ -22,8 +22,6 @@
 		//Atualizando a chave com a nova hora do acesso
 		$hora = time();
 		$chave = md5($email . $chave . $hora);
-		
-		//session_start();
 		
 		//Salvando os novos dados na session
 		$_SESSION['Lost_Found'] = array("id" => $id, "nome" => $nome, "email" => $email, "situacao" => $situacao, "chave" => $chave, "hora" => $hora);

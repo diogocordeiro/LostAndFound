@@ -13,6 +13,9 @@
           </a>
         </div> -->
 
+<!-- area restrita -->
+<? require '../backend/aRestrita.php'; ?>
+
 <nav class="navbar navbar-default navbar-fixed-top meu-menu">
   <div class="container">
     <div class="navbar-header">
@@ -58,11 +61,11 @@
 
       <form class="navbar-form navbar-right">
 
-        <button type="submit" class="btn btn-sm btn-default btn-cor-estilo-escuro btn-round">Log out</button>
+        <a href="../backend/logout.php" class="btn btn-sm btn-default btn-cor-estilo-escuro btn-round">Log out</a>
       </form>
 
 
-      <p class="logado-como-texto navbar-text navbar-right">Logado como <a href="#" class="navbar-link" value ="<? echo $dados[0]['email']?>" ><strong></strong></a> </p>
+      <p class="logado-como-texto navbar-text navbar-right">Logado como <strong><? echo $_SESSION['Lost_Found']["email"]?></strong></p>
 
 
     </div>

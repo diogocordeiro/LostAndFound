@@ -27,12 +27,12 @@
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" method="POST" action="../backend/login.php">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control email-login">
+              <input type="text" placeholder="Email" name="email" class="form-control email-login">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control password-login">
+              <input type="password" placeholder="Password" name="senha" class="form-control password-login">
             </div>
             <button type="submit" class="btn btn-default btn-cadastrar btn-login">Log in</button>
           </form>
