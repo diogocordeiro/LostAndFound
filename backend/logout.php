@@ -2,6 +2,6 @@
 	
 	session_start();
 	unset($_SESSION['Lost_Found']);
-	header("location: fazLogin.php");
+	header("location: ../templates/");
 	
 ?>
