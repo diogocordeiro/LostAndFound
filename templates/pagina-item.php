@@ -10,15 +10,9 @@
     <link href="../static/css/index-logado.css" rel="stylesheet">
     <link href="../static/css/pagina-item.css" rel="stylesheet">
 
-
-
-
-
 </head>
 
 <body>
-
-
 
   <?php require 'top-menu-logado.php'; ?>
 
@@ -37,14 +31,9 @@
 
                 <div class="col-md-4 col-md-offset-1">
 
-                  <div class="card card-image imagem-item">
-
-                    <img class="img-rounded" src="../static/img/item1.jpg" alt="" />
-
-                  </div>
-
+                    <img class="imagem-item img-rounded img-raised img-responsive" src="../static/img/item1.jpg" alt="" />
+            
                 </div>
-
 
                 <div class="col-md-6 ">
 
@@ -97,8 +86,6 @@
                             ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec egestas magna quis lacus euismod, at porta enim tincidunt. Proin aliquam quam sed pretium cursus. Mauris a arcu dolor. Pellentesque vulputate
                             ex justo, eu fermentum diam mattis nec. Sed nisl sapien, tempus ut euismod sit amet, fermentum quis ipsum. </dd>
 
-
-
                       </div>
 
                     </div>
@@ -108,7 +95,6 @@
                       <div class="col-md-8 col-md-offset-2">
 
                           <button class="btn-criar-report btn btn-default btn-cor-estilo-escuro" type="button" name="button" >Criar Report de Perdido</button>
-
 
                       </div>
 
@@ -120,14 +106,12 @@
 
               </div>
 
-
             </div>
 
           </div>
         </div>
       </div>
     </div>
-
 
 </body>
 
