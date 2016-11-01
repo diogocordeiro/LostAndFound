@@ -1,0 +1,123 @@
+body {
+    font-family: Roboto, sans-serif;
+    color: #3d3d3d;
+    background-color: #FAFAFA;
+}
+
+.btn-cor-estilo-escuro{
+  background-color: #3d3d3d !important;
+}
+
+.btn-cor-estilo-escuro.active.focus, .btn-cor-estilo-escuro.active:focus, .btn-cor-estilo-escuro.active:hover, .btn-cor-estilo-escuro:active.focus, .btn-cor-estilo-escuro:active:focus, .btn-cor-estilo-escuro:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff !important;
+    background-color: #262626 !important;
+    border-color: #494F57 !important;
+}
+
+.btn-cor-estilo-escuro:hover{
+
+  background-color: #494F57 !important;
+
+}
+
+.btn-cor-estilo-escuro{
+
+  margin-top: 10px !important;
+}
+
+
+.titulo-adicionar-item{
+  margin-top: 80px !important;
+}
+
+.descricao-adicionar-item{
+  margin-bottom: 40px !important;
+}
+
+.card-adicionar-item{
+  margin-top: 80px !important;
+
+}
+
+.header-adicionar-item{
+  background-color: #FFC107 !important;
+}
+
+.input-group{
+  margin: 100px !important;
+}
+
+.item-estilo:hover{
+background: #FFC107 !important;
+}
+
+.posicao-dropdown{
+  margin-top: -80px !important;
+  margin-left: 100px !important;
+}
+
+.scroll-dropdown{
+  height: auto !important;
+    max-height: 200px !important;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 768px) {
+.dropdown-small-device {
+  margin-top: 30px !important;
+  margin-left: 30px !important;
+}
+}
+
+@media (max-width: 768px) {
+.input-size-small-device {
+  min-width: 100px !important;
+  margin-left: 60px !important;
+}
+}
+
+.btn-upload-imagem{
+
+  margin-top: -40px !important;
+  margin-left: 115px !important;
+
+}
+
+@media (max-width: 768px) {
+.btn-upload-imagem {
+
+  margin-left: 60px !important;
+}
+}
+
+.informacao-imagem-upload{
+  text-align: left !important;
+  font-size: 12px !important;
+
+}
+
+.radio-sexo-feminino{
+  margin-left: 10px !important;
+}
+
+.radio-sexo-masculino{
+  margin-left: 16px !important;
+}
+
+.lista-pais{
+  margin-left: 16px !important;
+
+}
+
+.label-sexo{
+  margin-right: 22px !important;
+}
+
+.btn-salvar{
+  margin-top: 80px !important;
+
+}
+
+.label-default{
+  background-color: #3d3d3d !important; 
+}
