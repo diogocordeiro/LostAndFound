@@ -33,7 +33,7 @@
 
               <div class="col-md-4 col-md-offset-1">
 
-                <img src="../static/img/camera.jpg" class="img-rounded img-responsive img-raised">
+                <img value="<? echo $dados[0]['imagemPerfil']?> " src="../static/img/camera.jpg" class="img-rounded img-responsive img-raised">
 
               </div>
 
@@ -85,11 +85,25 @@
 
                 </div>
 
-            </div>
+                <div class="footer text-center">
+
+                  <button id="btnEditar" name="btnEditar" class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
+                    Editar Perfil
+                  </button>
+
+                </div>
 
             </div>
+
+
+
+            </div>
+
+
 
           </div>
+
+
 
         </div>
 

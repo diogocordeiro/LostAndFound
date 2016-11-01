@@ -43,7 +43,7 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                         </span>
-                        <input type="text" id="nome" class=" form-control input-lg " placeholder="Nome..." required />
+                        <input value="<? echo $dados[0]['nome']?> " type="text" name="nome" id="nome" class=" form-control input-lg " placeholder="Nome..." required />
 
                       </div>
 
@@ -52,7 +52,7 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                         </span>
-                        <input type="text" id="sobrenome" class=" form-control input-lg " placeholder="Sobrenome..." required />
+                        <input value="<? echo $dados[0]['sobrenome']?> " type="text" name="sobrenome" id="sobrenome" class=" form-control input-lg " placeholder="Sobrenome..." required />
 
                       </div>
 
@@ -66,13 +66,13 @@
 
                         <div class="radio-sexo-feminino">
 
-                          <input type="radio" id="sexoF" name="sexo" value="feminino"> Feminino<br>
+                          <input value="<? echo $dados[0]['sexoF']?> " type="radio" name="sexoF" id="sexoF" name="sexo" value="feminino"> Feminino<br>
 
                         </div>
 
                         <div class="radio-sexo-masculino">
 
-                          <input type="radio" id="sexoM" name="sexo" value="masculino"> Masculino<br>
+                          <input value="<? echo $dados[0]['sexoM']?> " type="radio" name="sexoM" id="sexoM" name="sexo" value="masculino"> Masculino<br>
 
                         </div>
 
@@ -85,7 +85,7 @@
                           <div class="lista-pais">
 
                             <div class="btn-group posicao-dropdown dropdown-small-device">
-                              <button type="button" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
+                              <button type="button" name="pais" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 País <span class="caret"></span>
                               </button>
 
@@ -109,26 +109,26 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <input id="celular" type="text" class=" form-control input-lg " placeholder="Celular...     Ex:081XXXXXXXXX " required />
+                        <input value="<? echo $dados[0]['celular']?> " id="celular" name="celular" type="text" class=" form-control input-lg " placeholder="Celular...     Ex:081XXXXXXXXX " required />
                       </div>
 
                       <div class="input-group input-size-small-device">
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <input id="telefone" type="text" class=" form-control input-lg " placeholder="Telefone...     Ex:081XXXXXXXX " required />
+                        <input value="<? echo $dados[0]['telefone']?> " id="telefone" name="telefone" type="text" class=" form-control input-lg " placeholder="Telefone...     Ex:081XXXXXXXX " required />
                       </div>
 
                       <div class="input-group input-size-small-device">
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <input type="link" id="facebook" class=" form-control input-lg " placeholder="Facebook Link..." required />
+                        <inputvalue="<? echo $dados[0]['facebook']?> "  type="link" name="facebook" id="facebook" class=" form-control input-lg " placeholder="Facebook Link..." required />
                       </div>
 
                       <div class="input-group btn-upload-imagem">
                         <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
-                          Imagem <input type="file" id="imagemPerfil" style="display: none;">
+                          Imagem <input value="<? echo $dados[0]['imagemPerfil']?> " type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
                         </label>
                         <p class="informacao-imagem-upload">
 
@@ -149,7 +149,7 @@
 
                   <div class="footer text-center">
 
-                    <button class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
+                    <button id="btnSalvar" name="btnSalvar" class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
                       Salvar
                     </button>
 
