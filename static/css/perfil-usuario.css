@@ -1,0 +1,20 @@
+html {
+  font-family: Roboto, sans-serif !important;
+ color: #3d3d3d!important;
+ background-color: #FAFAFA!important;
+
+}
+
+body {
+    font-family: Roboto, sans-serif !important;
+    color: #3d3d3d !important;
+    background-color: #FAFAFA !important;
+
+
+}
+
+.card-content{
+  min-height: 768px !important;
+  margin-top: 80px !important;
+
+}

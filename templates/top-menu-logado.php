@@ -62,7 +62,7 @@
       </form>
 
 
-      <p class="logado-como-texto navbar-text navbar-right">Logado como <a href="#" class="navbar-link"><strong>Jonh Doe</strong></a> </p>
+      <p class="logado-como-texto navbar-text navbar-right">Logado como <a href="#" class="navbar-link" value ="<? echo $dados[0]['email']?>" ><strong></strong></a> </p>
 
 
     </div>
