@@ -60,7 +60,6 @@
       </ul>
 
       <form class="navbar-form navbar-right">
-
         <a href="../backend/logout.php" class="btn btn-sm btn-default btn-cor-estilo-escuro btn-round">Log out</a>
       </form>
 
