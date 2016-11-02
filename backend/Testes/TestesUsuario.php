@@ -17,9 +17,9 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 		//Carrega os dados de bd do phpunit.xml
 		$this->mysqli = new mysqli($GLOBALS['dbHost'], $GLOBALS['dbUser'], $GLOBALS['dbPwd'], $GLOBALS['db']);
-
+ 
 		//Query para criar a tabela de usuarios
-		$tabelaUsuariosQuery = "CREATE TABLE usuarios (id int(11) NOT NULL,nome varchar(20) DEFAULT NULL,sobrenome varchar(30) DEFAULT NULL,email varchar(40) NOT NULL,senha varchar(32) NOT NULL,dNascimento date NOT NULL,sexo int(11) DEFAULT NULL,cidade text DEFAULT NULL,idPais int(11) DEFAULT NULL,celular varchar(15) DEFAULT NULL,telefone varchar(15) DEFAULT NULL,facebook varchar(30) DEFAULT NULL,imagemPerfil varchar(32) NULL,situacao int(1) NOT NULL,dataCadastro date NOT NULL,PRIMARY KEY ( id ))";
+		$tabelaUsuariosQuery = "CREATE TABLE usuarios (id int(11) NOT NULL AUTO_INCREMENT,nome varchar(20) DEFAULT NULL,sobrenome varchar(30) DEFAULT NULL,email varchar(40) NOT NULL,senha varchar(32) NOT NULL,dNascimento date NOT NULL,sexo int(11) DEFAULT NULL,cidade text DEFAULT NULL,idPais int(11) DEFAULT NULL,celular varchar(15) DEFAULT NULL,telefone varchar(15) DEFAULT NULL,facebook varchar(30) DEFAULT NULL,imagemPerfil varchar(32) DEFAULT NULL,situacao int(1) NOT NULL,dataCadastro date NOT NULL,PRIMARY KEY ( id ))";
 
 		//Cria tabela de usuarios
 		$this->mysqli->query($tabelaUsuariosQuery);
@@ -32,9 +32,11 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 
 	//Funcao para testar a insercao de uma novo usuario
 	public function testeIncluirUsuario(){
+		
+		$varIncluir = incluirUsuario($this->mysqli, $this->dadosForm);
 
 		//Assert
-		$this->assertEquals("sucesso", incluirUsuario($this->mysqli, $this->dadosForm));
+		$this->assertEquals("sucesso", $varIncluir[count($varIncluir)-1]);
 	}
 
 	/**

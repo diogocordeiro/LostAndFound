@@ -70,7 +70,7 @@ if (isset($_GET['tipo'])) {
 
 			//Redireciona para pagina inicial restrita
 			echo "Novo usuário inserido com sucesso! Redirecionando...";
-			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"3; URL=http:../templates/index-logado.php\">";
+			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/index-logado.php\">";
 		} else {
 			echo "<br/>Erro: usuário não cadastrado!";
 			exit;
@@ -222,7 +222,7 @@ function incluirUsuario($myDb, $arrDados){
 		array_push($arrDados, "sucesso");
 		return $arrDados;
 	} else {
-		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
 	  }
 }//function incluirUsuario()
