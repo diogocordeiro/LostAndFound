@@ -13,6 +13,16 @@
 
 <body>
   <?php require 'top-menu-logado.php'; ?>
+  
+  <!-- coletar informacoes no banco -->
+  <? 
+    require('../backend/getPerfil.php');
+    require('../backend/conBd.php');
+
+    $dados = getPerfil(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
+
+    // print_r($dados);exit;
+  ?>
 
   <div class="wrapper">
 
@@ -43,7 +53,7 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                         </span>
-                        <input value="<? echo $dados[0]['nome']?> " type="text" name="nome" id="nome" class=" form-control input-lg " placeholder="Nome..." required />
+                        <input value="<? echo $dados[0]['nome']; ?> " type="text" name="nome" id="nome" class=" form-control input-lg " placeholder="Nome..." required />
 
                       </div>
 
@@ -52,7 +62,7 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                         </span>
-                        <input value="<? echo $dados[0]['sobrenome']?> " type="text" name="sobrenome" id="sobrenome" class=" form-control input-lg " placeholder="Sobrenome..." required />
+                        <input value="<? echo $dados[0]['sobrenome']; ?> " type="text" name="sobrenome" id="sobrenome" class=" form-control input-lg " placeholder="Sobrenome..." required />
 
                       </div>
 
@@ -64,41 +74,33 @@
 
                         </div>
 
-                        <div class="radio-sexo-feminino">
-
-                          <input value="<? echo $dados[0]['sexoF']?> " type="radio" name="sexoF" id="sexoF" name="sexo" value="feminino"> Feminino<br>
-
-                        </div>
-
-                        <div class="radio-sexo-masculino">
-
-                          <input value="<? echo $dados[0]['sexoM']?> " type="radio" name="sexoM" id="sexoM" name="sexo" value="masculino"> Masculino<br>
-
-                        </div>
-
+                        
+                        <? if($dados[0]['sexo'] == 1){ ?>
+                          <div class="radio-sexo-feminino"><input value="1" type="radio" name="sexoF" id="sexoF" name="sexo" checked> Feminino<br></div>
+                          <div class="radio-sexo-masculino"><input value="0" type="radio" name="sexoM" id="sexoM" name="sexo" > Masculino<br></div>
+                        <? } else { ?>
+                          <div class="radio-sexo-feminino"><input value="1" type="radio" name="sexo" id="sexoF" name="sexo" > Feminino<br></div>
+                          <div class="radio-sexo-masculino"><input value="0" type="radio" name="sexo" id="sexoM" name="sexo" checked> Masculino<br></div>
+                        <? } ?>
+                      
                       </div>
 
                       <div class="row">
 
                         <div class="col-md-4">
+                        <select name="pais">
+                          <?
+                            
+                            //Lista dos paises
+                            require('listaPaises.php');
 
-                          <div class="lista-pais">
-
-                            <div class="btn-group posicao-dropdown dropdown-small-device">
-                              <button type="button" name="pais" class="btn-cor-estilo-escuro btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                País <span class="caret"></span>
-                              </button>
-
-                                <ul class="dropdown-menu scroll-dropdown " role="menu">
-                                                                </ul>
-
-                              </div>
-
-                          </div>
-
-
-
-
+                            //Procura qual o pais (na lista de paises), para poder seleciona-lo para preencher o select
+                            $pos = strpos($paises, $dados[0]['abrev']);
+                            $paises = substr($paises, 0, $pos+3)." selected".substr($paises, $pos+3, strlen($paises));
+                            
+                            echo $paises;
+                          ?>
+                        </select>
 
                         </div>
 
@@ -109,26 +111,26 @@
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <input value="<? echo $dados[0]['celular']?> " id="celular" name="celular" type="text" class=" form-control input-lg " placeholder="Celular...     Ex:081XXXXXXXXX " required />
+                        <input value="<? echo $dados[0]['celular']; ?> " id="celular" name="celular" type="text" class=" form-control input-lg " placeholder="Celular...     Ex:081XXXXXXXXX " required />
                       </div>
 
                       <div class="input-group input-size-small-device">
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <input value="<? echo $dados[0]['telefone']?> " id="telefone" name="telefone" type="text" class=" form-control input-lg " placeholder="Telefone...     Ex:081XXXXXXXX " required />
+                        <input value="<? echo $dados[0]['telefone']; ?> " id="telefone" name="telefone" type="text" class=" form-control input-lg " placeholder="Telefone...     Ex:081XXXXXXXX " required />
                       </div>
 
                       <div class="input-group input-size-small-device">
                         <span class="input-group-addon">
                         <i class="material-icons">label</i>
                       </span>
-                        <inputvalue="<? echo $dados[0]['facebook']?> "  type="link" name="facebook" id="facebook" class=" form-control input-lg " placeholder="Facebook Link..." required />
+                        <input value="<? echo $dados[0]['facebook']; ?> " type="text" name="facebook" id="facebook" class=" form-control input-lg " placeholder="Facebook Link..." required />
                       </div>
 
                       <div class="input-group btn-upload-imagem">
                         <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
-                          Imagem <input value="<? echo $dados[0]['imagemPerfil']?> " type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
+                          Imagem <input value="<? echo $dados[0]['imagemPerfil']; ?> " type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
                         </label>
                         <p class="informacao-imagem-upload">
 

@@ -134,15 +134,16 @@ function incluirUsuario($myDb, $arrDados){
 
 	$arrDados[3] = date('Y-m-d', strtotime($arrDados[3]));
 	$arrDados[1] = md5($arrDados[1]);
+	$dataHoje = date('Y-m-d');
 
 	//Situacao inicial dos usuários
 	$situacao = 1;
 
 	//Tipos dos atributos passados (para validação)
 	//i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
-	$tiposAtts = "sssi";
+	$tiposAtts = "sssis";
 
-	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao) VALUES (?, ?, ?, ?)";
+	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao, dataCadastro) VALUES (?, ?, ?, ?, ?)";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -152,7 +153,7 @@ function incluirUsuario($myDb, $arrDados){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao);
+	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao, $dataHoje);
 
 	//Executa o statement
 	if ($stmt->execute()){
