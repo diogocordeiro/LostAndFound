@@ -27,11 +27,50 @@ if (isset($_GET['tipo'])) {
 		array_push($arr, $_POST['confirmaSenha']);
 		array_push($arr, $_POST['dNascimento']);
 
-		$sucesso = incluirUsuario(BaseDados::conBdUser(), $arr);
+		$dbIncluiUser = BaseDados::conBdUser();
 
-		if ($sucesso == "sucesso") {
-			echo "<br/>Novo usuário inserido com sucesso!";
-			exit;
+		$sucesso = incluirUsuario($dbIncluiUser, $arr);
+
+		if ($sucesso[count($sucesso)-1] == "sucesso") {
+			//print_r($sucesso);exit;
+
+			//Query para coletar os dados
+			$sqlDados = "SELECT * FROM `".$tabUsuarios."` WHERE `email` = ? AND `senha` = ?";
+
+			//Prepara o statement
+			$stmtDados = $dbIncluiUser->prepare($sqlDados);
+
+			//Checa erros no statement
+			if(!$stmtDados){
+				//echo 'erros: '. $dbIncluiUser->errno .' - '. $dbIncluiUser->error;
+				echo 'Erro: no statement do Mysql. (Usuario.php)';
+				exit;
+			}
+
+			//Valida os atributos
+			$stmtDados->bind_param("ss", $sucesso[0], $sucesso[1]);
+
+			//Executa o statement
+			$stmtDados->execute();
+
+			//Executa o fetch do resultado
+			$dados = fetch($stmtDados);
+
+			$id = $dados[0]["id"];
+			$email = $dados[0]["email"];
+			$nome = $dados[0]["nome"];
+			$chave = "3a1cf8gk78ej64gf784kh89fo9";
+			$hora = time();
+			$chave = md5($email . $chave . $hora);
+			
+			session_start();
+
+			//Constroi a session
+			$_SESSION['Lost_Found'] = array("id" => $id, "nome" => $nome, "email" => $email, "situacao" => $dados[0]["situacao"], "chave" => $chave, "hora" => $hora);
+
+			//Redireciona para pagina inicial restrita
+			echo "Novo usuário inserido com sucesso! Redirecionando...";
+			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"3; URL=http:../templates/index-logado.php\">";
 		} else {
 			echo "<br/>Erro: usuário não cadastrado!";
 			exit;
@@ -170,7 +209,8 @@ function incluirUsuario($myDb, $arrDados){
 
 	if(!$stmt){
 		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
-		echo 'Erro: no statement do Mysql.';
+		echo 'Erro: no statement do Mysql. (Usuario.php)';
+		exit;
 	}
 
 	//Valida os atributos
@@ -178,8 +218,11 @@ function incluirUsuario($myDb, $arrDados){
 
 	//Executa o statement
 	if ($stmt->execute()){
-		return "sucesso";
+
+		array_push($arrDados, "sucesso");
+		return $arrDados;
 	} else {
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
 	  }
 }//function incluirUsuario()
