@@ -68,7 +68,9 @@ function fazLogin($dbChecaLogin, $email, $senha){
 
 	//Checa erros no statement
 	if(!$stmtLogin){
-		echo 'erros: '. $dbChecaLogin->errno .' - '. $dbChecaLogin->error;
+		//echo 'erros: '. $dbChecaLogin->errno .' - '. $dbChecaLogin->error;
+		echo 'Erro: no statement do Mysql. (login.php)';
+		exit;
 	}
 
 	//Valida os atributos

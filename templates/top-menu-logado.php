@@ -14,7 +14,7 @@
         </div> -->
 
 <!-- area restrita -->
-<? require '../backend/aRestrita.php'; ?>
+<?php require '../backend/aRestrita.php'; ?>
 
 <nav class="navbar navbar-default navbar-fixed-top meu-menu">
   <div class="container">
@@ -64,7 +64,7 @@
       </form>
 
 
-      <p class="logado-como-texto navbar-text navbar-right">Logado como <strong><? echo $_SESSION['Lost_Found']["email"]?></strong></p>
+      <p class="logado-como-texto navbar-text navbar-right">Logado como <strong><?php echo $_SESSION['Lost_Found']["email"]?></strong></p>
 
 
     </div>
