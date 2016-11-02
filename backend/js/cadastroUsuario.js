@@ -52,8 +52,8 @@ $('document').ready(function() {
 
                     $('#error').fadeIn(1000, function () {
 
-                        $("#error").html('E-mail já existente!</div>');
-                        $("#btnCadastrarUsuario").html('Create Account');
+                        $("#error").html('E-mail já existente!');
+                        $("#btnCadastrarUsuario").val('Cadastrar');
                     });
                 }
 
@@ -66,9 +66,9 @@ $('document').ready(function() {
                 else {
 
                     $('#error').fadeIn(1000, function () {
-                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+' !</div>');
 
-                        $("#btnCadastrarUsuario").val('Cadastrarrrr');
+                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+' !</div>');
+                        $("#btnCadastrarUsuario").val('Cadastrar');
                     });
                 }
             },
