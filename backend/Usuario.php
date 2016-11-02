@@ -39,8 +39,28 @@ if (isset($_GET['tipo'])) {
 
 	//POST para alteração do usuário
 	} elseif ($tipo == "edita") {
-		$idUsuario = validarString($_GET['id']);
-		alterarUsuario(BaseDados::conBdUser(), $idUsuario, $arrDados);
+		
+		session_start();
+		
+		//Verifica se o id da session e' o mesmo que o do id passado
+		if ($_SESSION['Lost_Found']["id"] == $_GET['id']) {
+			$arr = [];
+
+			array_push($arr, $_POST['nome']); #0
+			array_push($arr, $_POST['sobrenome']); #1
+			array_push($arr, $_POST['sexo']); #2
+			array_push($arr, $_POST['pais']); #3
+			array_push($arr, $_POST['celular']); #4
+			array_push($arr, $_POST['telefone']); #5
+			array_push($arr, $_POST['facebook']); #6
+			array_push($arr, $_POST['imagemPerfil']); #7
+
+			alterarUsuario(BaseDados::conBdUser(), $_GET['id'], $arr);
+		} else {
+			echo "Erro: id da session inválido.";
+			exit;
+		  }
+		
 
 	//POST para desativação da conta do usuário
 	} elseif ($tipo == "desativa") {
@@ -149,7 +169,8 @@ function incluirUsuario($myDb, $arrDados){
 	$stmt = $myDb->prepare($sql);
 
 	if(!$stmt){
-		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo 'Erro: no statement do Mysql.';
 	}
 
 	//Valida os atributos
@@ -163,8 +184,54 @@ function incluirUsuario($myDb, $arrDados){
 	  }
 }//function incluirUsuario()
 
+//Função para validar todos os campos passados nos formulários de edicao do perfil
+function validarDadosPerfil($myDb, $arrDados){
+
+	for ($i=0; $i < count($arrDados); $i++) { 
+		
+		//Valida contra XSS
+		$arrDados[$i] = validarString($arrDados[$i]);
+
+		//Valida campo de sexo
+		if ($i == 2 && ($arrDados[$i] != 0 && $arrDados[$i] != 1)) {
+			echo "Erro: sexo inválido.";
+			exit;
+		
+		//Valida o pais
+		} elseif ($i == 3) {
+			
+			global $tabPais;
+
+			//Coleta as informacoes do pais
+			$meuPais = getData($myDb, $tabPais, "abrev", $arrDados[$i], "s");
+			
+			//Caso haja o pais passado
+			if (count($meuPais) > 0) {
+				
+				//Atribui o id do pais
+				$arrDados[$i] = $meuPais[0]['id'];
+			} else {
+				echo "Erro: país inválido.";
+				exit;
+			  }
+
+		  //Valida a imagem
+		  } elseif ($i == 7) {
+				
+				//Tratamnto para imagem
+
+			} 
+	}//for
+}//validarDadosPerfil()
+
 //Método para alterar o usuário
 function alterarUsuario($myDb, $idUsuario, $arrDados){
+	
+	//Valida contra XSS
+	$idUsuario = validarString($idUsuario);
+
+	//Trata os campos passados
+	validarDadosPerfil($myDb, $arrDados);
 
 }//function alterarUsuario()
 

@@ -1,4 +1,4 @@
-# dados para login
+# dados para rodar direto no server
 -- mysql -h z37udk8g6jiaqcbx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -u mfq6jgrmyzj9p0lx -pmqg8ln28l4fgjbrh n6tab27cmhizxmgg < schema.sql
 
 #se quiser deleter as tabelas
@@ -297,7 +297,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
-(1, 'Paulinely Morgan', 'da Silva', 'paulinelym@gmail.com', 'dd130d46320ac925bfee204b03d603d1', '1989-06-30', 0, 'Garanhuns', 31, '5587998022994', '558737625905', 'paulinelymorgan', '', 1, '2016-11-01');
+(1, 'Paulinely Morgan', 'da Silva', 'paulinelym@gmail.com', 'dd130d46320ac925bfee204b03d603d1', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'paulinelymorgan', '', 1, '2016-11-01');
+
+INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
+(2, 'Diogo', 'Cordeiro', 'diogo.ufrpe@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Sao Bento', 31, '5587111111111', '5587111111112', 'diogosbu', '', 1, '2016-11-01');
+
+INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
+(2, 'Wagner', 'de Lima', 'waglds@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'wagnerdelima', '', 1, '2016-11-01');
 
 --
 -- Indexes for dumped tables
