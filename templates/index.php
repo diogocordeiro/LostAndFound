@@ -37,7 +37,7 @@
 
                 </div>
 
-                <form class="form">
+                <form class="form" id="register-form">
                   <div class="header header-primary text-center">
                     <h4>Cadastro</h4>
 
@@ -83,6 +83,9 @@
                       </p>
                     </div>
 
+                    <div class="input-group" id="error">
+
+                    </div>
 
 
                   </div>

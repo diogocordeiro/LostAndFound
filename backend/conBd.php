@@ -1,15 +1,15 @@
-<?
+<?php
 
 class BaseDados{
 
-	// static function conBdUser(){
-	// 	$dbhost = "localhost";
-	// 	$dbuser = "postgres";
-	// 	$db = "lostandfound";
-	// 	$dbport = "5432";
+	 //static function conBdUser(){
+	 	//$dbhost = "localhost";
+	 	//$dbuser = "root";
+	 	//$db = "lostandfound";
+	 	//$dbport = "3306";
 
-	// 	return pg_connect("host=localhost port=5432 dbname=lostandfound user=postgres");
-	// }
+	 	//return pg_connect("host=localhost port=5432 dbname=lostandfound user=postgres");
+	 //}
 	//Função que retorna uma conexão com o banco que tem a tabela de usuários
 	static function conBdUser(){
 		$dbHost = "z37udk8g6jiaqcbx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
