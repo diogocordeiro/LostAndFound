@@ -34,11 +34,11 @@ $('document').ready(function() {
     /*Form submit*/
     function submitLogin() {
 
-        var dados = $('#login-form').serialize();
+        var dados = $('#login').serialize();
 
         $.ajax({
             type: 'POST',
-            url: "../backend/login.php",
+            url: "../backend/funcoes.php",
             data: dados,
             beforeSend: function () {
 
@@ -47,13 +47,13 @@ $('document').ready(function() {
             },
             success: function (data) {
 
-
-            },
-            error: function (data) {
                 $('#error-backend').fadeIn(1000, function () {
 
                     $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'!</div>');
                 });
+                console.log(data);
+            },
+            error: function (data) {
                 console.log(data);
             }
         });

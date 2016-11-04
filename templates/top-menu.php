@@ -27,7 +27,7 @@
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" name="login" method="POST" >
+          <form class="navbar-form navbar-right" name="login" id="login" method="POST" action="../backend/login.php">
             <div class="form-group">
               <input type="text" id="email" placeholder="Email" name="email" class="form-control email-login">
             </div>
@@ -37,6 +37,7 @@
 
             <button type="submit" id="login-user" class="btn btn-default btn-cadastrar btn-login">Log in</button>
             <div id="error-container"></div>
+            <div id="error-backend"></div>
           </form>
 
         </div><!--/.navbar-collapse -->
