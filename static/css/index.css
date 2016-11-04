@@ -5,10 +5,9 @@ html {
 
 }
 
-.teste{
-  background-color: red !important;
+div.alert:empty {
+    display: none;
 }
-
 
 body {
     font-family: Roboto, sans-serif !important;
