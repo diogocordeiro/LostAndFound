@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6ffc80cf-d1c6-40a0-81c8-528392ef0a74" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/js/logarUsuario.js" afterPath="$PROJECT_DIR$/backend/js/logarUsuario.js" />
     </list>
     <ignored path="projetao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="logarUsuario.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/js/logarUsuario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            <state relative-caret-position="362">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
               <folding>
                 <marker date="1478294945338" expanded="true" signature="1435:1441" ph=" " />
               </folding>
@@ -738,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/js/logarUsuario.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+        <state relative-caret-position="362">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
           <folding>
             <marker date="1478294945338" expanded="true" signature="1435:1441" ph=" " />
           </folding>
