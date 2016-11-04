@@ -296,6 +296,7 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 
 						//Caso seja uma extensao valida
 						if ($arrDados[$key]['type'] == "image/jpg"
+							|| $arrDados[$key]['type'] == "image/jpeg"
 							|| $arrDados[$key]['type'] == "image/png") {
 							
 							//Extensao da imagem
