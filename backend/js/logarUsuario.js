@@ -49,7 +49,7 @@ $('document').ready(function() {
 
                 $('#error-backend').fadeIn(1000, function () {
 
-                    $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'!</div>');
+                    $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
                 });
                 console.log(data);
             },

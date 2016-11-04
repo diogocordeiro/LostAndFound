@@ -37,8 +37,9 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
 	//Redireciona para para inicial quando logado
 	if (fazLogin(BaseDados::conBdUser(), $emailP, $senhaP) == "sucesso"){
 
-		//Direciona para página inicial restrita
-		header("location: ../templates/index-logado.php");
+		//Redireciona para página inicial restrita
+		//header("location: ../templates/index-logado.php");
+		echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"1; URL=http:../templates/index-logado.php\">";
 	}
 }
 
