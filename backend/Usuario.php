@@ -218,11 +218,13 @@ function incluirUsuario($myDb, $arrDados){
 	//Id do pais (Brazil)
 	$idPais = 31;
 
+	$imgPerfil = "camera.jpg";
+
 	//Tipos dos atributos passados (para validação)
 	//i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
-	$tiposAtts = "sssisi";
+	$tiposAtts = "sssisis";
 
-	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao, dataCadastro, idPais) VALUES (?, ?, ?, ?, ?, ?)";
+	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao, dataCadastro, idPais, imagemPerfil) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -234,7 +236,7 @@ function incluirUsuario($myDb, $arrDados){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao, $dataHoje, $idPais);
+	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao, $dataHoje, $idPais, $imgPerfil);
 
 	//Executa o statement
 	if ($stmt->execute()){
@@ -242,7 +244,7 @@ function incluirUsuario($myDb, $arrDados){
 		array_push($arrDados, "sucesso");
 		return $arrDados;
 	} else {
-		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
 	  }
 }//function incluirUsuario()
