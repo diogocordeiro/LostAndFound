@@ -34,8 +34,8 @@
     <div id="navbar" class="navbar-collapse collapse">
 
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Perfil</a></li>
+        <li><a href="index-logado.php">Home</a></li>
+        <li><a href="perfil-usuario.php">Perfil</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
