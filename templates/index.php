@@ -16,6 +16,12 @@
 
       $('.mensagem-alerta:empty').hide();
 
+      //div with a specific ID
+      $('#alertBox').filter(function() {
+        return $.trim($(this).text()) === ''
+      }).hide()
+
+
     </script>
 
 </head>
@@ -87,7 +93,7 @@
                     </div>
 
 
-                    <div class="mensagem-alerta">
+                    <div class="mensagem-alerta" id="alertBox">
 
                       <div class="alert alert-warning">
                         <div class="container-fluid">
