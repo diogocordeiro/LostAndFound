@@ -1,7 +1,7 @@
 $('document').ready(function() {
 
     /*Validação de dados*/
-    $("#register-form").validate({
+    $("form[name='login']").validate({
         rules:
         {
             email:
@@ -10,67 +10,49 @@ $('document').ready(function() {
                 email: true
             },
             senha: {
-                required: true
-            },
-            confirmaSenha: {
                 required: true,
-                equalTo: '#senha'
+                minlength: 5
             }
         },
         messages:
         {
             email: "Por favor, entre com um e-mail válido.",
             senha: {
-                required: "Por favor, forneça uma senha."
+                required: "Por favor, forneça uma senha.",
+                minlength: "Sua senha deve conter no mínimo 8 caracteres."
             },
             confirmaSenha: {
                 required: "Por favor, re-insira sua senha.",
                 equalTo: "As senhas não são iguais!"
             }
         },
-        submitHandler: submitForm
+        errorElement: 'div',
+        errorLabelContainer: '#error-container',
+        submitHandler: submitLogin
     });
 
     /*Form submit*/
-    function submitForm() {
+    function submitLogin() {
 
-        var dados = $('#register-form').serialize();
+        var dados = $('#login-form').serialize();
 
         $.ajax({
             type: 'POST',
-            url: "../backend/Usuario.php?tipo=novo",
-            //url: "../../testphp.php",
+            url: "../backend/login.php",
             data: dados,
             beforeSend: function () {
 
-                $('error').fadeOut();
-                $("#btnCadastrarUsuario").val('Enviando...');
+                $('error-backend').fadeOut();
+                $("#login-user").val('Logando...');
             },
             success: function (data) {
 
-                if (data == 1) {
+                $('#error-backend').fadeIn(1000, function () {
 
-                    $('#error').fadeIn(1000, function () {
-
-                        $("#error").html('E-mail já existente!');
-                        $("#btnCadastrarUsuario").val('Cadastrar');
-                    });
-                }
-
-                else if (data=="Novo usuário inserido com sucesso!") {
-
-                    $("#btnCadastrarUsuario").val('Cadastrando...');
-                    setTimeout('$("#register-form").fadeOut(500, function(){ $("#register-form").load("index-logado.php"); }); ', 5000);
-                }
-
-                else {
-
-                    $('#error').fadeIn(1000, function () {
-
-                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+' !</div>');
-                        $("#btnCadastrarUsuario").val('Cadastrar');
-                    });
-                }
+                    $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'!</div>');
+                });
+                console.log(data);
+                // }
             },
             error: function (data) {
                 console.log(data);

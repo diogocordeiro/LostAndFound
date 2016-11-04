@@ -6,6 +6,8 @@
   <?php require 'header.php'; ?>
     <script type="text/javascript" language="javascript" src="../backend/js/cadastroUsuario.js"></script>
 
+    <script type="text/javascript" language="javascript" src="../backend/js/logarUsuario.js"></script>
+
     <!-- Custom Theme CSS -->
     <link href="../static/css/index.css" rel="stylesheet">
 
