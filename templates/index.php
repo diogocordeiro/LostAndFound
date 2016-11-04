@@ -84,7 +84,7 @@
                     </div>
 
 
-                    <div class="mensagem-alerta">
+                    <div style="display:none" class="mensagem-alerta">
 
                       <div class="alert alert-warning">
                         <div class="container-fluid">
