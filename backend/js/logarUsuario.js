@@ -28,36 +28,36 @@ $('document').ready(function() {
         },
         errorElement: 'div',
         errorLabelContainer: '#error-container',
-        submitHandler: submitLogin
+        // submitHandler: submitLogin
     });
 
     /*Form submit*/
-    function submitLogin() {
-
-        var dados = $('#login-form').serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: "../backend/login.php",
-            data: dados,
-            beforeSend: function () {
-
-                $('error-backend').fadeOut();
-                $("#login-user").val('Logando...');
-            },
-            success: function (data) {
-
-                $('#error-backend').fadeIn(1000, function () {
-
-                    $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'!</div>');
-                });
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-
-        return false;
-    }
+    // function submitLogin() {
+    //
+    //     var dados = $('#login-form').serialize();
+    //
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "../backend/login.php",
+    //         data: dados,
+    //         beforeSend: function () {
+    //
+    //             $('error-backend').fadeOut();
+    //             $("#login-user").val('Logando...');
+    //         },
+    //         success: function (data) {
+    //
+    //             $('#error-backend').fadeIn(1000, function () {
+    //
+    //                 $("#error-backend").html('<div class=""><span class=""></span> &nbsp; '+data+'!</div>');
+    //             });
+    //             console.log(data);
+    //         },
+    //         error: function (data) {
+    //             console.log(data);
+    //         }
+    //     });
+    //
+    //     return false;
+    // }
 });

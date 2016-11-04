@@ -4,6 +4,7 @@
     <list default="true" id="6ffc80cf-d1c6-40a0-81c8-528392ef0a74" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/js/logarUsuario.js" afterPath="$PROJECT_DIR$/backend/js/logarUsuario.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/top-menu.php" afterPath="$PROJECT_DIR$/templates/top-menu.php" />
     </list>
     <ignored path="projetao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,25 +28,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cadastroUsuario.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/js/cadastroUsuario.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-              <folding>
-                <marker date="1478115410857" expanded="true" signature="1999:2005" ph=" " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="logarUsuario.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/js/logarUsuario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="236">
+              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
               <folding>
-                <marker date="1478293110304" expanded="true" signature="1438:1444" ph=" " />
+                <marker date="1478294239811" expanded="true" signature="1510:1516" ph=" " />
               </folding>
             </state>
           </provider>
@@ -750,10 +739,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/js/logarUsuario.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="236">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding>
-            <marker date="1478293110304" expanded="true" signature="1438:1444" ph=" " />
+            <marker date="1478294239811" expanded="true" signature="1510:1516" ph=" " />
           </folding>
         </state>
       </provider>
