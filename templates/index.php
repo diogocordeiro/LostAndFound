@@ -2,11 +2,11 @@
 <html ng-app="login">
 
 <head>
-
+  
   <?php require 'header.php'; ?>
     <script type="text/javascript" language="javascript" src="../backend/js/cadastroUsuario.js"></script>
-
     <script type="text/javascript" language="javascript" src="../backend/js/logarUsuario.js"></script>
+    
 
     <!-- Custom Theme CSS -->
     <link href="../static/css/index.css" rel="stylesheet">
@@ -15,8 +15,6 @@
       function Nova() {
         location.href = " index.php"
       }
-
-      $('.mensagem-alerta:empty').hide();
 
     </script>
 
@@ -88,35 +86,12 @@
                       </p>
                     </div>
 
+                      <div id="error">
 
-                    <div class="mensagem-alerta">
-
-                      <div class="alert alert-warning">
-                        <div class="container-fluid">
-                          <div class="alert-icon">
-                            <i class="material-icons">info_outline</i>
-                          </div>
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                          </button>
-
-                          <div id="error">
-
-
-                          </div>
-
-                        </div>
 
                       </div>
 
-                    </div>
-
-
-
-
-
-
-
+                    
                   </div>
                   <div class="footer text-center">
 

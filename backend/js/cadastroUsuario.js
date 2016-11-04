@@ -67,7 +67,7 @@ $('document').ready(function() {
 
                     $('#error').fadeIn(1000, function () {
 
-                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+' !</div>');
+                        $("#error").html('<div class="alert alert-warning"> <div class="container-fluid"> <div class="alert-icon"> <i class="material-icons">info_outline</i> </div> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true"><i class="material-icons">clear</i></span>   </button>'+data+' !</div> </div>');
                         $("#btnCadastrarUsuario").val('Cadastrar');
                     });
                 }

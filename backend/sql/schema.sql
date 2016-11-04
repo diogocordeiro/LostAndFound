@@ -287,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `celular` varchar(15) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `facebook` varchar(30) DEFAULT NULL,
-  `imagemPerfil` varchar(32) NULL,
+  `imagemPerfil` varchar(40) NULL,
   `situacao` int(1) NOT NULL,
   `dataCadastro` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
@@ -303,7 +303,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNasciment
 (2, 'Diogo', 'Cordeiro', 'diogo.ufrpe@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Sao Bento', 31, '5587111111111', '5587111111112', 'diogosbu', '', 1, '2016-11-01');
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
-(2, 'Wagner', 'de Lima', 'waglds@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'wagnerdelima', '', 1, '2016-11-01');
+(3, 'Wagner', 'de Lima', 'waglds@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'wagnerdelima', '', 1, '2016-11-01');
 
 --
 -- Indexes for dumped tables
