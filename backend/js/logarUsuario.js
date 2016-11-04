@@ -1,7 +1,7 @@
 $('document').ready(function() {
 
     /*Validação de dados*/
-    $("form[name='login']").validate({
+    $("form[name='formLogin']").validate({
         rules:
         {
             email:
@@ -34,11 +34,11 @@ $('document').ready(function() {
     /*Form submit*/
     function submitLogin() {
 
-        var dados = $('#login').serialize();
+        var dados = $('#formLogin').serialize();
 
         $.ajax({
             type: 'POST',
-            url: "../backend/funcoes.php",
+            url: "../backend/login.php",
             data: dados,
             beforeSend: function () {
 

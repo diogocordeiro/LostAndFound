@@ -39,7 +39,7 @@
 
               <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-              <form class="form" id="edit-profile-form">
+              <form class="form" id="edit-profile-form" enctype="multipart/form-data">
                 <?php echo '<input type="hidden" name="idSession" value="'.$_SESSION["Lost_Found"]["id"].'"/>'; ?>
 
                 <div class="content">
@@ -79,8 +79,8 @@
                           <div class="radio-sexo-feminino"><input value="1" type="radio" id="sexo" name="sexo" checked> Feminino<br></div>
                           <div class="radio-sexo-masculino"><input value="0" type="radio" id="sexo" name="sexo" > Masculino<br></div>
                         <?php } else { ?>
-                          <div class="radio-sexo-feminino"><input value="1" type="radio" id="sexoF" name="sexo" > Feminino<br></div>
-                          <div class="radio-sexo-masculino"><input value="0" type="radio" id="sexoM" name="sexo" checked> Masculino<br></div>
+                          <div class="radio-sexo-feminino"><input value="1" type="radio" id="sexo" name="sexo" > Feminino<br></div>
+                          <div class="radio-sexo-masculino"><input value="0" type="radio" id="sexo" name="sexo" checked> Masculino<br></div>
                         <?php } ?>
                       
                       </div>
@@ -135,8 +135,9 @@
                       </div>
 
                       <div class="input-group btn-upload-imagem">
+                        <?php echo '<input type="hidden" name="imagemPerfilAtual" value="'.$dados[0]['imagemPerfil'].'"/>'; ?>
                         <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
-                          Imagem <input value="<?php echo $dados[0]['imagemPerfil']; ?>" type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
+                          Imagem <input type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
                         </label>
                         <p class="informacao-imagem-upload">
 

@@ -78,7 +78,7 @@ if (isset($_GET['tipo'])) {
 
 	//POST para alteração do usuário
 	} elseif ($tipo == "edita") {
-		
+
 		//Valida contra XSS
 		$idSession = validarString($_POST['idSession']);
 
@@ -96,7 +96,15 @@ if (isset($_GET['tipo'])) {
 			array_push($arr, $_POST['celular']); #5
 			array_push($arr, $_POST['telefone']); #6
 			array_push($arr, $_POST['facebook']); #7
-			array_push($arr, $_POST['imagemPerfil']); #8
+
+			//Caso haja imagem 
+			if ($_FILES['imagemPerfil']['name'] != ""){
+				array_push($arr, $_FILES['imagemPerfil']); #8
+
+			//Caso contrario, passa o endereco da imagem atual
+			} else {
+				array_push($arr, $_POST['imagemPerfilAtual']); #7
+			  }
 
 			$sucesso = alterarUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"], $arr);
 
@@ -240,42 +248,86 @@ function incluirUsuario($myDb, $arrDados){
 }//function incluirUsuario()
 
 //Função para validar todos os campos passados nos formulários de edicao do perfil
-function validarDadosPerfil($myDb, $arrDados){
+function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 
-	for ($i=0; $i < count($arrDados); $i++) { 
-		
-		//Valida contra XSS
-		$arrDados[$i] = validarString($arrDados[$i]);
+	//Tamanho maximo da imagem 3MB
+	$tamImg = 3;
+
+	//Pasta onde ficam as imagens dos perfis
+	$pastaImgs = "../usuarios/fotos/";
+
+	foreach ($arrDados as $key => $value) {
+
+		//Valida contra XSS (exceto a imagem)
+		if ($key != 8) {
+			$arrDados[$key] = validarString($arrDados[$key]);
+		}
 
 		//Valida campo de sexo
-		if ($i == 2 && ($arrDados[$i] != 0 && $arrDados[$i] != 1)) {
+		if ($key == 2 && ($arrDados[$key] != 0 && $arrDados[$key] != 1)) {
 			echo "Erro: sexo inválido.";
 			exit;
 		
 		//Valida o pais
-		} elseif ($i == 4) {
-			
+		} elseif ($key == 4) {
+
 			global $tabPais;
 
 			//Coleta as informacoes do pais
-			$meuPais = getData($myDb, $tabPais, "abrev", $arrDados[$i], "s");
-			
+			$meuPais = getData($myDb, $tabPais, "abrev", $arrDados[$key], "s");
+
 			//Caso haja o pais passado
 			if (count($meuPais) > 0) {
 				
 				//Atribui o id do pais
-				$arrDados[$i] = $meuPais[0]['id'];
+				$arrDados[$key] = $meuPais[0]['id'];
 			} else {
 				echo "Erro: país inválido.";
 				exit;
 			  }
 
 		  //Valida a imagem
-		  } elseif ($i == 8) {
-				
-				//Tratamnto para imagem
+		  } elseif ($key == 8) {
+		  		//[8] => Array ( [name] => Sem título.png [type] => image/png [tmp_name] => C:\Windows\Temp\php47DA.tmp [error] => 0 [size] => 77322 ) )
 
-			} 
+				//Caso haja alguma imagem sera um array
+				if (is_array($value)){
+					if(!$arrDados[$key]['error']){
+
+						//Caso seja uma extensao valida
+						if ($arrDados[$key]['type'] == "image/jpg"
+							|| $arrDados[$key]['type'] == "image/png") {
+							
+							//Extensao da imagem
+							$tipoImg = explode(".", $arrDados[$key]['name'])[1];
+
+							//Verifica tamanho da imagem
+							if($arrDados[$key]['size'] > (1024000*$tamImg)){
+								echo 'Erro: a imagem é muito grande.';
+								exit;
+							}
+
+							//Renomea da imagem
+							$nomeImg = md5($idUsuario).".".$tipoImg;
+
+							//Sobe a imagem para pasta desejada
+							move_uploaded_file($arrDados[$key]['tmp_name'], $pastaImgs.$nomeImg);
+
+							$arrDados[$key] = $nomeImg;
+						} else {
+							echo "Erro: extensão da imagem inválida." ;
+							exit;
+						  }
+
+					//Caso haja erros
+					} else {
+						echo 'Erro: '.$arrDados[$key]['error'];
+						exit;
+					}
+				} else {
+					$arrDados[$key] = validarString($arrDados[$key]);
+				  }
+			} //elsif
 	}//for
 
 	return $arrDados;
@@ -290,7 +342,7 @@ function alterarUsuario($myDb, $idUsuario, $arrDados){
 	$idUsuario = validarString($idUsuario);
 
 	//Trata os campos passados
-	$arrDados = validarDadosPerfil($myDb, $arrDados);
+	$arrDados = validarDadosPerfil($myDb, $arrDados, $idUsuario);
 
 	$tiposAtts = "ssisissssi";
 
