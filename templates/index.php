@@ -83,9 +83,9 @@
                       </p>
                     </div>
 
-                    <div class="teste input-group" id="error">
+                    <div class="alert alert-danger input-group" id="error">
 
-                      
+
                     </div>
 
 
