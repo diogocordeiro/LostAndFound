@@ -14,14 +14,6 @@
         location.href = " index.php"
       }
 
-      $('.mensagem-alerta:empty').hide();
-
-      //div with a specific ID
-      $('#alertBox').filter(function() {
-        return $.trim($(this).text()) === ''
-      }).hide()
-
-
     </script>
 
 </head>
@@ -92,35 +84,12 @@
                       </p>
                     </div>
 
+                      <div id="error">
 
-                    <div class="mensagem-alerta" id="alertBox">
-
-                      <div class="alert alert-warning">
-                        <div class="container-fluid">
-                          <div class="alert-icon">
-                            <i class="material-icons">info_outline</i>
-                          </div>
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                          </button>
-
-                          <div id="error">
-
-
-                          </div>
-
-                        </div>
 
                       </div>
 
-                    </div>
-
-
-
-
-
-
-
+                    
                   </div>
                   <div class="footer text-center">
 
