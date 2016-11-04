@@ -5,7 +5,7 @@ html {
 
 }
 
-div.alert:empty {
+div.mensagem-alerta:empty {
     display: none;
 }
 
@@ -24,18 +24,7 @@ body {
   font-size: 10px !important;
     color: #acacb5 !important;
 }
-.mensagem-alerta{
-  width: 300px;
-  height: 100px;
-  background-color: #3d3d3d;
-  text-align: center;
-  color: #FAFAFA;
-  position:absolute;
-	top:50%;
-	left:50%;
-	margin-top:-50px;
-	margin-left:-50px;
-}
+
 
 .btn-alerta{
   background-color: #2196F3 !important;
