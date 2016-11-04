@@ -79,22 +79,31 @@ if (isset($_GET['tipo'])) {
 	//POST para alteração do usuário
 	} elseif ($tipo == "edita") {
 		
+		//Valida contra XSS
+		$idSession = validarString($_POST['idSession']);
+
 		session_start();
 		
 		//Verifica se o id da session e' o mesmo que o do id passado
-		if ($_SESSION['Lost_Found']["id"] == $_GET['id']) {
+		if ($_SESSION['Lost_Found']["id"] == $idSession) {
 			$arr = [];
 
 			array_push($arr, $_POST['nome']); #0
 			array_push($arr, $_POST['sobrenome']); #1
 			array_push($arr, $_POST['sexo']); #2
-			array_push($arr, $_POST['pais']); #3
-			array_push($arr, $_POST['celular']); #4
-			array_push($arr, $_POST['telefone']); #5
-			array_push($arr, $_POST['facebook']); #6
-			array_push($arr, $_POST['imagemPerfil']); #7
+			array_push($arr, $_POST['cidade']); #3
+			array_push($arr, $_POST['pais']); #4
+			array_push($arr, $_POST['celular']); #5
+			array_push($arr, $_POST['telefone']); #6
+			array_push($arr, $_POST['facebook']); #7
+			array_push($arr, $_POST['imagemPerfil']); #8
 
-			alterarUsuario(BaseDados::conBdUser(), $_GET['id'], $arr);
+			$sucesso = alterarUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"], $arr);
+
+			if ($sucesso == "sucesso") {
+				echo "Atualizado!";
+			}
+
 		} else {
 			echo "Erro: id da session inválido.";
 			exit;
@@ -198,23 +207,26 @@ function incluirUsuario($myDb, $arrDados){
 	//Situacao inicial dos usuários
 	$situacao = 1;
 
+	//Id do pais (Brazil)
+	$idPais = 31;
+
 	//Tipos dos atributos passados (para validação)
 	//i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
-	$tiposAtts = "sssis";
+	$tiposAtts = "sssisi";
 
-	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao, dataCadastro) VALUES (?, ?, ?, ?, ?)";
+	$sql = "INSERT INTO ".$tabUsuarios." (email, senha, dNascimento, situacao, dataCadastro, idPais) VALUES (?, ?, ?, ?, ?, ?)";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
 
 	if(!$stmt){
 		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
-		echo 'Erro: no statement do Mysql. (Usuario.php)';
+		echo 'Erro: no statement do Mysql. Usuario.php:incluirUsuario()';
 		exit;
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao, $dataHoje);
+	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[3], $situacao, $dataHoje, $idPais);
 
 	//Executa o statement
 	if ($stmt->execute()){
@@ -241,7 +253,7 @@ function validarDadosPerfil($myDb, $arrDados){
 			exit;
 		
 		//Valida o pais
-		} elseif ($i == 3) {
+		} elseif ($i == 4) {
 			
 			global $tabPais;
 
@@ -259,23 +271,51 @@ function validarDadosPerfil($myDb, $arrDados){
 			  }
 
 		  //Valida a imagem
-		  } elseif ($i == 7) {
+		  } elseif ($i == 8) {
 				
 				//Tratamnto para imagem
 
 			} 
 	}//for
+
+	return $arrDados;
 }//validarDadosPerfil()
 
 //Método para alterar o usuário
 function alterarUsuario($myDb, $idUsuario, $arrDados){
+
+	global $tabUsuarios;
 	
 	//Valida contra XSS
 	$idUsuario = validarString($idUsuario);
 
 	//Trata os campos passados
-	validarDadosPerfil($myDb, $arrDados);
+	$arrDados = validarDadosPerfil($myDb, $arrDados);
 
+	$tiposAtts = "ssisissssi";
+
+	$sql = "UPDATE ".$tabUsuarios." SET nome=?, sobrenome=?, sexo=?, cidade=?, idPais=?, celular=?, telefone=?, facebook=?, imagemPerfil=? WHERE id=?";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	if(!$stmt){
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo 'Erro: no statement do Mysql. Usuario.php:alterarUsuario()';
+		exit;
+	}
+
+	//Valida os atributos
+	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[2], $arrDados[3], $arrDados[4],
+		$arrDados[5], $arrDados[6], $arrDados[7], $arrDados[8], $idUsuario);
+
+	//Executa o statement
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
 }//function alterarUsuario()
 
 //Método para desativar o usuário
