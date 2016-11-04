@@ -38,7 +38,7 @@ $('document').ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: "../backend/login.php",
+            url: "../backend/funcoes.php",
             data: dados,
             beforeSend: function () {
 
