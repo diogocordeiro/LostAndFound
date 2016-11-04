@@ -1,4 +1,4 @@
-<?
+<?php
 
 class BaseDados{
 
@@ -8,7 +8,7 @@ class BaseDados{
 	// 	$db = "lostandfound";
 	// 	$dbport = "5432";
 
-	// 	return pg_connect("host=localhost port=5432 dbname=lostandfound user=postgres");
+	// 	return pg_connect("host=localhost port=5432 dbname=lostandfound user=postgres"); 
 	// }
 	//Função que retorna uma conexão com o banco que tem a tabela de usuários
 	static function conBdUser(){
@@ -16,6 +16,10 @@ class BaseDados{
 		$dbUser = "mfq6jgrmyzj9p0lx";
 		$dbPwd = "mqg8ln28l4fgjbrh";
 		$db = "n6tab27cmhizxmgg";
+			// $dbHost = "localhost";
+			// $dbUser = "root";
+			// $dbPwd = "654321";
+			// $db = "lostandfound";
 
 		return new mysqli($dbHost, $dbUser, $dbPwd, $db);
 	}//function objBdUser()
@@ -26,7 +30,7 @@ class BaseDados{
 		//pg_close($this);
 	}
 
-
+	
 	//conBdUser();
 
 }
@@ -40,8 +44,8 @@ class BaseDados{
 // $result = pg_prepare($minhaConexao, $query_id, "SELECT * FROM usuarios WHERE id = $1");
 // $result = pg_execute($minhaConexao, $query_id, array(1));
 // while ($row = pg_fetch_array($result)) { //ou "pg_fetch_array($result, PGSQL_ASSOC)". Vai fazer o array de retorno ser mapeado para o mesmo label da coluna, igual a mysql(i)_fetch_array
-// 	 echo "data: ".$row[3];
-// }
+// 	 echo "data: ".$row[3]; 
+// } 
 
 
 ?>

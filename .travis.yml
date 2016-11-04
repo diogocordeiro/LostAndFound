@@ -1,8 +1,7 @@
 deploy:
  provider: heroku
  api_key: 
-  # secure: "61edd5e4-dfb9-4cdc-a6af-fb39350d65bf"
-  secure: "4522587d-f810-4c31-b538-c6297097ee2e"
+  secure: "d7379630-11d8-433e-b7b0-7513eaa72d7e"
  app: "lostandfoundproject"
 
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints

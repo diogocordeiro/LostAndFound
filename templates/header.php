@@ -31,6 +31,8 @@
 
 <!-- Latest compiled and minified JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="../static/bower_components/angular/angular.min.js"></script>

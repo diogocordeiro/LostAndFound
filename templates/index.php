@@ -37,7 +37,7 @@
 
                 </div>
 
-                <form class="form">
+                <form class="form" id="register-form">
                   <div class="header header-primary text-center">
                     <h4>Cadastro</h4>
 
@@ -50,7 +50,7 @@
                       <span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-                      <input type="email" class="form-control input-lg " id="email" ng-model="email" placeholder="Email..." required />
+                      <input type="email" class="form-control input-lg " id="email" name="email" ng-model="email" placeholder="Email..." required />
                     </div>
 
                     <div class="input-group">
@@ -58,7 +58,7 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
 
-                      <input type="password" class="form-control input-lg" id="senha" ng-model="senha" placeholder="Senha..." required>
+                      <input type="password" class="form-control input-lg" id="senha" name="senha" ng-model="senha" placeholder="Senha..." required>
                     </div>
 
                     <div class="input-group">
@@ -66,7 +66,7 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
 
-                      <input type="password" class="form-control input-lg" id="confirmaSenha" ng-model="confirmar_senha" placeholder="Confirmar Senha..." required>
+                      <input type="password" class="form-control input-lg" id="confirmaSenha" name="confirmaSenha" ng-model="confirmar_senha" placeholder="Confirmar Senha..." required>
                     </div>
 
 
@@ -77,12 +77,15 @@
 										</span>
 
                       <p class="data-nascimento-label">Data Nascimento</p>
-                      <input type="date" place class="form-control input-lg" id="dNascimento" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
+                      <input type="date" place class="form-control input-lg" id="dNascimento" name="dNascimento" ng-model="data_nascimento" placeholder="Data Nascimento..." required>
                       <p class="informacao-data-nascimento">
                         *Maiores de 18 anos.
                       </p>
                     </div>
 
+                    <div class="input-group" id="error">
+
+                    </div>
 
 
                   </div>
