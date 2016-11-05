@@ -16,6 +16,13 @@
 
   <?php require 'top-menu-logado.php'; ?>
 
+  <!-- coletar informacoes no banco -->
+  <?php
+    require('../backend/getPerfil.php');
+    require('../backend/conBd.php');
+
+    $dados = getPerfil(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
+  ?>
 
   <div class="container-fluid">
 
@@ -33,7 +40,7 @@
 
               <div class="col-md-4 col-md-offset-1">
 
-                <img value="<? echo $dados[0]['imagemPerfil']?> " src="../static/img/camera.jpg" class="img-rounded img-responsive img-raised">
+                <img style="width: 250px;height:250px;border-radius:150px;-webkit-border-radius: 150px;-moz-border-radius: 150px"src="../usuarios/fotos/<?php echo $dados[0]['imagemPerfil'];?>" class="img-rounded img-responsive img-raised">
 
               </div>
 
@@ -47,35 +54,46 @@
 
                       <dl class="dl-horizontal">
                         <dt>E-mail: </dt>
-                        <dd name="email" value="<? echo $dados[0]['email']?>"></dd>
+                        <dd><?php echo $dados[0]['email'];?></dd>
 
                         <dt>Data Nascimento: </dt>
-                        <dd name="dataNascimento" value="<? echo $dados[0]['dNascimento']?> "></dd>
+                        <dd><?php echo $dados[0]['dNascimento'];?></dd>
 
                         <dt>Senha: </dt>
                         <dd><a href="#">Alterar</a></dd>
 
                         <dt>Nome: </dt>
-                        <dd name="nome" value="<? echo $dados[0]['nome']?> "></dd>
+                        <dd><?php echo $dados[0]['nome'];?></dd>
 
                         <dt>Sobrenome: </dt>
-                        <dd name="sobrenome" value="<? echo $dados[0]['sobrenome']?> "></dd>
+                        <dd><?php echo $dados[0]['sobrenome'];?></dd>
 
 
                         <dt>Sexo: </dt>
-                        <dd name="sexo" value="<? echo $dados[0]['sexo']?> "></dd>
+                        <dd>
+                          <?php
+                              if($dados[0]['sexo'] == 1){
+                                echo "Feminino";
+                              } else {
+                                  echo "Masculino";
+                                }
+                          ?>
+                        </dd>
+
+                        <dt>Cidade: </dt>
+                        <dd><?php echo $dados[0]['cidade'];?></dd>
 
                         <dt>País: </dt>
-                        <dd name="pais" value="<? echo $dados[0]['pais']?> "></dd>
+                        <dd><?php echo $dados[0]['pais'];?></dd>
 
                         <dt>Celular: </dt>
-                        <dd name="celular" value="<? echo $dados[0]['celular']?> "></dd>
+                        <dd><?php echo $dados[0]['celular'];?></dd>
 
                         <dt>Telefone: </dt>
-                        <dd name="telefone" value="<? echo $dados[0]['telefone']?> "></dd>
+                        <dd><?php echo $dados[0]['telefone'];?></dd>
 
                         <dt>Facebook: </dt>
-                        <dd name="facebook" value="<? echo $dados[0]['facebook']?> "></dd>
+                        <dd><?php echo $dados[0]['facebook'];?></dd>
 
                         </dl>
 
@@ -86,11 +104,7 @@
                 </div>
 
                 <div class="footer text-center">
-
-                  <button id="btnEditar" name="btnEditar" class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
-                    Editar Perfil
-                  </button>
-
+                    <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-perfil.php">Editar Perfil</a>
                 </div>
 
             </div>

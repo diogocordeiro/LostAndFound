@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
-(1, 'Paulinely Morgan', 'da Silva', 'paulinelym@gmail.com', 'dd130d46320ac925bfee204b03d603d1', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'paulinelymorgan', '', 1, '2016-11-01');
+(1, 'Paulinely Morgan', 'da Silva', 'paulinelym@gmail.com', 'dd130d46320ac925bfee204b03d603d1', '1989-06-30', 1, 'Garanhuns', 31, '5587998022994', '558737625905', 'paulinelymorgan', 'c4ca4238a0b923820dcc509a6f75849b.jpg', 1, '2016-11-01');
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
 (2, 'Diogo', 'Cordeiro', 'diogo.ufrpe@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Sao Bento', 31, '5587111111111', '5587111111112', 'diogosbu', '', 1, '2016-11-01');
