@@ -20,10 +20,15 @@
 
 <body>
 
-
-
   <?php require 'top-menu-logado.php'; ?>
+ 
+  <!-- coletar informacoes no banco -->
+  <?php
+    require('../backend/funcoes.php');
+    require('../backend/conBd.php');
 
+    $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
+  ?>
 
   <div class="container-fluid">
     <div class="section text-center section-landing">
@@ -45,159 +50,31 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
 
+      <?php for ($i=0; $i<count($dados); $i++) { ?>
+
+        <tr>
+            <td class="text-center"><a title="<?php echo $dados[$i]['id'];?>"><?php echo ($i+1);?></a></td>
+            <td><?php echo $dados[$i]['titulo'];?></td>
+            <td><?php echo $dados[$i]['id'];?></td>
+            <td><?php echo $dados[$i]['marca'];?></td>
+            <td>#<?php echo $dados[$i]['cor1'];?></td>
+            <td class="td-actions text-right">     
               <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
+                <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">visibility</i></a>
               </button>
 
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
+              <button type="button"  class="btn btn-success btn-simple btn-xs">
+                <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">mode_edit</i></a>
+              </button>
 
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
+              <button type="button"  class="btn btn-danger btn-simple btn-xs">
+                <a href="#"><i class="material-icons">remove_circle_outline</i></a>
+              </button>
             </td>
         </tr>
 
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="text-center">1</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td>Teste</td>
-            <td class="td-actions text-right">
-
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                  <i class="material-icons">visibility</i>
-              </button>
-
-                <button type="button"  class="btn btn-success btn-simple btn-xs">
-                    <i class="material-icons">mode_edit</i>
-                </button>
-
-                <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                    <i class="material-icons">remove_circle_outline</i>
-                </button>
-            </td>
-        </tr>
+      <?php } ?>
 
     </tbody>
 </table>
@@ -216,9 +93,7 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-          <button class="btn  btn-default btn-cor-estilo-escuro teste">Adicionar Item
-
-          </button>
+          <a href="form-adicionar-item.php" class="btn  btn-default btn-cor-estilo-escuro teste">Adicionar Item</a>
 
         </div>
 

@@ -4,6 +4,7 @@
 #se quiser deleter as tabelas
 -- drop table paises;
 -- drop table usuarios;
+-- drop table itens;
 
 -- --------------------------------------------------------
 
@@ -300,10 +301,33 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNasciment
 (1, 'Paulinely Morgan', 'da Silva', 'paulinelym@gmail.com', 'dd130d46320ac925bfee204b03d603d1', '1989-06-30', 1, 'Garanhuns', 31, '5587998022994', '558737625905', 'paulinelymorgan', 'c4ca4238a0b923820dcc509a6f75849b.jpg', 1, '2016-11-01');
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
-(2, 'Diogo', 'Cordeiro', 'diogo.ufrpe@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Sao Bento', 31, '5587111111111', '5587111111112', 'diogosbu', '', 1, '2016-11-01');
+(2, 'Diogo', 'Cordeiro', 'diogo.ufrpe@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Sao Bento', 31, '5587111111111', '5587111111112', 'diogosbu', 'camera.jpg', 1, '2016-11-01');
 
 INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`, `dNascimento`, `sexo`, `cidade`, `idPais`, `celular`, `telefone`, `facebook`, `imagemPerfil`, `situacao`, `dataCadastro`) VALUES
-(3, 'Wagner', 'de Lima', 'waglds@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'wagnerdelima', '', 1, '2016-11-01');
+(3, 'Wagner', 'de Lima', 'waglds@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1990-04-20', 0, 'Garanhuns', 31, '5587111111111', '5587111111112', 'wagnerdelima', 'camera.jpg', 1, '2016-11-01');
+
+
+--
+-- Table structure for table `itens`
+--
+
+CREATE TABLE IF NOT EXISTS `itens` (
+  `id` varchar(32) NOT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
+  `idRelAchado` int(11) DEFAULT NULL,
+  `idRelPerdido` int(11) DEFAULT NULL,
+  `identificador` varchar(50) DEFAULT NULL,
+  `marca` varchar(25) DEFAULT NULL,
+  `titulo` varchar(30) NOT NULL,
+  `descricao` text NOT NULL,
+  `caracteristicas` text NOT NULL,
+  `idCategoria` int(11) NOT NULL,
+  `idSubcategoria` int(11) DEFAULT NULL,
+  `cor1` varchar(15) NOT NULL,
+  `cor2` varchar(15) DEFAULT NULL,
+  `enderFoto` varchar(40) NOT NULL,
+  `dataInsercao` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -319,6 +343,12 @@ ALTER TABLE `paises`
 -- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `itens`
+--
+ALTER TABLE `itens`
   ADD PRIMARY KEY (`id`);
 
 --

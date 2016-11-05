@@ -173,6 +173,8 @@ function validarDadosCadastro($arrDados){
 								exit;
 					  	    }
 	}//for
+
+	return $arrDados;
 }//validarDadosCadastro()
 
 //Função para checar a disponibilidade do e-mail
@@ -200,7 +202,7 @@ function incluirUsuario($myDb, $arrDados){
 	global $tabUsuarios;
 
 	//Valida cada campo passado
-	validarDadosCadastro($arrDados);
+	$arrDados = validarDadosCadastro($arrDados);
 
 	//Checa se o e-mail informado está disponível
 	if(!emailDisponivel($myDb, $arrDados[0])){
