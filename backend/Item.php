@@ -48,6 +48,7 @@ if (isset($_GET['tipo'])) {
 
 		$sucesso = incluirItem(BaseDados::conBdUser(), $arr);
 
+		//Caso o item seja inserido
 		if ($sucesso == "sucesso") {
 			echo "Novo item inserido com sucesso!";
 			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
@@ -59,6 +60,7 @@ if (isset($_GET['tipo'])) {
 	//POST para alteração do usuário
 	} elseif ($tipo == "edita") {
 
+		exit;
 		//Valida contra XSS
 		$idSession = validarString($_POST['idSession']);
 

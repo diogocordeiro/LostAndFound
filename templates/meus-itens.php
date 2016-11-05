@@ -38,53 +38,63 @@
 
         <div class="col-md-8 col-md-offset-2">
 
+        <!-- caso haja itens -->
+        <?php if (count($dados) > 0){ ?>
+
         <table class="table tabela-itens table-striped table-hover">
-    <thead>
-        <tr>
-            <th class="text-center">#</th>
-            <th class="text-center">Nome</th>
-            <th class="text-center">Tipo</th>
-            <th class="text-center">Marca</th>
-            <th class="text-center">Cor Predominante</th>
-            <th class="text-right">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
+          <thead>
+              <tr>
+                  <th class="text-center">#</th>
+                  <th class="text-center">Data Cadastro</th>
+                  <th class="text-center">Nome</th>
+                  <th class="text-center">Marca</th>
+                  <th class="text-center">Cor Predominante</th>
+                  <th class="text-right">Ações</th>
+              </tr>
+          </thead>
+        <tbody>
 
-      <?php for ($i=0; $i<count($dados); $i++) { ?>
+        <?php for ($i=0; $i<count($dados); $i++) { ?>
 
-        <tr>
-            <td class="text-center"><a title="<?php echo $dados[$i]['id'];?>"><?php echo ($i+1);?></a></td>
-            <td><?php echo $dados[$i]['titulo'];?></td>
-            <td><?php echo $dados[$i]['id'];?></td>
-            <td><?php echo $dados[$i]['marca'];?></td>
-            <td>#<?php echo $dados[$i]['cor1'];?></td>
-            <td class="td-actions text-right">     
-              <button type="button"  class="btn btn-info btn-simple btn-xs">
-                <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">visibility</i></a>
-              </button>
+          <tr>
+              <td class="text-center"><a title="<?php echo $dados[$i]['id'];?>"><?php echo ($i+1);?></a></td>
+              <td><?php echo $dados[$i]['dataInsercao'];?></td>
+              <td><?php echo $dados[$i]['titulo'];?></td>
+              <td><?php echo $dados[$i]['marca'];?></td>
+              <td>#<?php echo $dados[$i]['cor1'];?></td>
+              <td class="td-actions text-right">     
+                <button type="button"  class="btn btn-info btn-simple btn-xs">
+                  <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">visibility</i></a>
+                </button>
 
-              <button type="button"  class="btn btn-success btn-simple btn-xs">
-                <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">mode_edit</i></a>
-              </button>
+                <button type="button"  class="btn btn-success btn-simple btn-xs">
+                  <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">mode_edit</i></a>
+                </button>
 
-              <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                <a href="#"><i class="material-icons">remove_circle_outline</i></a>
-              </button>
-            </td>
-        </tr>
+                <button type="button"  class="btn btn-danger btn-simple btn-xs">
+                  <a href="#"><i class="material-icons">remove_circle_outline</i></a>
+                </button>
+              </td>
+          </tr>
 
-      <?php } ?>
+        <?php } echo "</tbody>"; ?>
 
-    </tbody>
-</table>
+        <!-- caso nao haja itens -->
+        <?php } else { ?>
+
+              <table class="table tabela-itens table-striped table-hover">
+                <thead>
+                  <tr class="text-center"><th>Sem itens</th></tr>
+                </thead>
+        
+        <?php } ?>
+
+        </table>
 
         </div>
       </div>
     </div>
   </div>
-
-
 
     <div class="container-fluid">
       <div class="section text-center section-landing">
