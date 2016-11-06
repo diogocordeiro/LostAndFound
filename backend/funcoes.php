@@ -1,5 +1,17 @@
 <?php
 
+//Função para validar queries strings, assegurando contra Cross-Side Scripting (XSS)
+function validarString($qString){
+
+	//Remove tags <>
+	$str = strip_tags($qString);
+
+	//Convete caracteres especiais para htmlcode
+	$str = htmlspecialchars($str);
+
+	return $str;
+}//function validarQString()
+
 //from http://br1.php.net/manual/en/mysqli-stmt.bind-result.php
 function fetch($result){
 	$array = array();
@@ -64,20 +76,77 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	//Executa o fetch do resultado e atribuí a variável $myArr
 	$myArr = fetch($stmt);
 
-	//Retornar apenas um item
+	//Retornar os itens encontrados
 	return $myArr;
 }//function getData()
 
-//Função para validar queries strings, assegurando contra Cross-Side Scripting (XSS)
-function validarString($qString){
+//Funcao para coletar um perfil no bd
+function getPerfil($myDb, $idSession){
 
-	//Remove tags <>
-	$str = strip_tags($qString);
+	//Carrega nomes das tabelas do bd
+	require("nomesTabelas.php");
 
-	//Convete caracteres especiais para htmlcode
-	$str = htmlspecialchars($str);
+	global $tabUsuarios;
+	global $tabPais;
 
-	return $str;
-}//function validarQString()
+	//Valida a string
+	$id = validarString($idSession);
+
+	$sql = "SELECT * FROM `".$tabUsuarios."` as u, `".$tabPais."` as p WHERE u.id = ? and u.idPais = p.id ORDER BY u.id ASC";
+	
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Validas o atributo
+	$stmt->bind_param("i", $id);
+
+	//Executa o statement
+	$stmt->execute();
+
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
+
+	//Retornar os itens encontrados
+	return $myArr;
+}//getPerfil()
+
+//Funcao para coletar um item do usuariao no bd
+function getItensUsuario($myDb, $idSession){
+
+	//Carrega nomes das tabelas do bd
+	require("nomesTabelas.php");
+
+	global $tabItens;
+
+	//Valida a string
+	$id = validarString($idSession);
+
+	$sql = "SELECT * FROM ".$tabItens." WHERE idUsuario = ? ORDER BY dataInsercao DESC";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Validas o atributo
+	$stmt->bind_param("i", $id);
+
+	//Executa o statement
+	$stmt->execute();
+
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
+
+	//Retornar os itens encontrados
+	return $myArr;
+}//getItensUsuario()
 
 ?>

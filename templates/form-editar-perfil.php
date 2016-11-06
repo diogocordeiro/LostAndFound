@@ -17,7 +17,7 @@
   
   <!-- coletar informacoes no banco -->
   <?php
-    require('../backend/getPerfil.php');
+    require('../backend/funcoes.php');
     require('../backend/conBd.php');
 
     $dados = getPerfil(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);

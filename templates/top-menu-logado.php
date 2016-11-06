@@ -52,9 +52,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Itens <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li class="divider"></li>
-            <li><a href="#">Meus Itens</a></li>
+            <li><a href="meus-itens.php">Meus Itens</a></li>
             <li class="divider"></li>
-            <li><a href="#">Adicionar Item</a></li>
+            <li><a href="form-adicionar-item.php">Adicionar Item</a></li>
           </ul>
         </li>
       </ul>
