@@ -78,6 +78,7 @@ $('document').ready(function() {
 
                     $("#btnSalvar").val('Salvar');
                     //setTimeout('$("#edit-profile-form").fadeOut(500, function(){ $("#edit-profile-form").load("form-editar-perfil.php"); }); ', 5000);
+                    console.log(data);
                 }
 
                 else {
