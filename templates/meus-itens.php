@@ -35,6 +35,7 @@ $('[data-toggle="tooltip"]').tooltip();
           <?php
             require('../backend/funcoes.php');
             require('../backend/conBd.php');
+            require('listaCores.php');
 
             //Coleta os itens do usuario
             $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
@@ -73,10 +74,14 @@ $('[data-toggle="tooltip"]').tooltip();
                           $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "ref");
                         }
 
+                      //Caso o item seja removido com sucesso
                       if ($sucesso == "sucesso") {
-                        echo "<center><br/><br/><br/>Item removido com sucesso<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                        echo "<center><br/><br/><br/>Item removido com sucesso.<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
                         exit;
-                      }
+                      } else {
+                          echo "<center><br/><br/><br/>Item não removido.<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                          exit;
+                        }
                     }
                 }
 
@@ -109,7 +114,7 @@ $('[data-toggle="tooltip"]').tooltip();
               <td><?php echo $dados[$i]['dataInsercao'];?></td>
               <td><?php echo $dados[$i]['titulo'];?></td>
               <td><?php echo $dados[$i]['marca'];?></td>
-              <td><span style="background-color:#<?php echo $dados[0]['cor1'];?>;color:#000000;padding:6px 8px"><?php/*  echo $dados[$i]['cor1'];?*/></span></td>
+              <td><span style="background-color:#<?php echo $dados[$i]['cor1'];?>;color:#000000;padding:6px 8px"><?php  echo $arrCores[$dados[$i]['cor1']];?></span></td>
               <td class="td-actions text-right">
                 <button data-toggle="tooltip" data-placement="bottom" title="Exibir Item" type="button"  class="btn btn-exibir-item btn-simple btn-xs">
                   <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons exibir-item-icon">visibility</i></a>

@@ -6,6 +6,7 @@
                     "FFFFFF" => "Branco",
                     "008080" => "Cerceta",
                     "808080" => "Cinza",
+                    "EEDD82" => "Dourado",
                     "FF00FF" => "Fúcsia",
                     "FF9C00" => "Laranjado",
                     "00FF00" => "Lima",
@@ -24,6 +25,7 @@
                     <option value="FFFFFF">Branco</option>
                     <option value="008080">Cerceta</option>
                     <option value="808080">Cinza</option>
+                    <option value="EEDD82">Dourado</option>
                     <option value="FF00FF">Fúcsia</option>
                     <option value="FF9C00">Laranjado</option>
                     <option value="00FF00">Lima</option>

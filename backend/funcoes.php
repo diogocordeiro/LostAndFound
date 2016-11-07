@@ -67,7 +67,7 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	// }
 	
 
-	//Validas o atributo
+	//Valida o atributo
 	$stmt->bind_param($tipoAtt, $att);
 
 	//Executa o statement
@@ -102,7 +102,7 @@ function getPerfil($myDb, $idSession){
 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 	}
 
-	//Validas o atributo
+	//Valida o atributo
 	$stmt->bind_param("i", $id);
 
 	//Executa o statement
@@ -136,7 +136,7 @@ function getItensUsuario($myDb, $idSession){
 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 	}
 
-	//Validas o atributo
+	//Valida o atributo
 	$stmt->bind_param("i", $id);
 
 	//Executa o statement
