@@ -81,7 +81,7 @@
                         </dd>
 
                         <dt>Cidade: </dt>
-                        <dd><?php echo $dados[0]['cidade'];?></dd>
+                        <dd style="width:100px" ><?php echo $dados[0]['cidade'];?></dd>
 
                         <dt>País: </dt>
                         <dd><?php echo $dados[0]['pais'];?></dd>
