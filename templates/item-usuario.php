@@ -13,25 +13,25 @@
     require('listaSubcategorias.php');
 
     if(isset($_GET['id'])){
-      
+
       //Valida string
       $idItem = validarString($_GET['id']);
 
       $dados = getData(BaseDados::conBdUser(), $tabItens, "id", $idItem, "s");
-      
+
       session_start();
 
       //Caso o item nao exista no bd
       if (count($dados) == 0) {
         echo "<center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
         exit;
-      
+
       //Caso o id da session nao bata com o id do item
       } elseif ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
           echo "<center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
           exit;
         }
-    
+
     //Caso a variavel id nao seja informada
     } else {
         echo "<center>Erro: informe o ID do item<br/><a href='javascript:history.go(-1);>voltar</a></center>";
@@ -45,6 +45,7 @@
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
     <link href="../static/css/perfil-usuario.css" rel="stylesheet">
+    <link href="../static/css/pagina-item.css" rel="stylesheet">
 
 </head>
 
@@ -68,7 +69,9 @@
 
               <div class="col-md-4 col-md-offset-1">
 
-                <img style="width: 250px;height:250px;border-radius:150px;-webkit-border-radius: 150px;-moz-border-radius: 150px"src="../itens/fotos/<?php echo $dados[0]['enderFoto'];?>" class="img-rounded img-responsive img-raised">
+                <!-- style="width: 250px;height:250px;border-radius:150px;-webkit-border-radius: 150px;-moz-border-radius: 150px" -->
+
+                <img src="../itens/fotos/<?php echo $dados[0]['enderFoto'];?>" class="img-rounded img-responsive img-raised">
 
               </div>
 
@@ -85,29 +88,47 @@
                         <dt>Data: </dt>
                         <dd><?php echo $dados[0]['dataInsercao'];?></dd>
 
+                        <br><br><br>
+
                         <dt>Marca: </dt>
                         <dd><?php echo $dados[0]['marca'];?></dd>
+
+                        <br><br><br>
 
                         <dt>Identificador: </dt>
                         <dd><?php echo $dados[0]['identificador'];?></dd>
 
+                        <br><br><br>
+
                         <dt>Cor Predominante: </dt>
                         <dd><span style="background-color:#<?php echo $dados[0]['cor1'];?>;color:#000000;padding:6px 8px"><?php echo $arrCores[$dados[0]['cor1']];?></span></dd>
+
+                        <br><br><br>
 
                         <dt>Cor Secundária: </dt>
                         <dd><span style="background-color:#<?php echo $dados[0]['cor2'];?>;color:#000000;padding:6px 8px"><?php echo $arrCores[$dados[0]['cor2']];?></span></dd>
 
+                        <br><br><br>
+
                         <dt>Categoria: </dt>
                         <dd><?php echo $arrCategorias[$dados[0]['idCategoria']];?></dd>
+
+                        <br><br><br>
 
                         <dt>Subcategoria: </dt>
                         <dd><?php echo $arrSubcategorias[$dados[0]['idSubcategoria']];?></dd>
 
+                        <br><br><br>
+
                         <dt>Caracteristicas: </dt>
                         <dd><?php echo $dados[0]['caracteristicas'];?></dd>
 
+                        <br><br><br>
+
                         <dt>Descrição: </dt>
                         <dd><?php echo $dados[0]['descricao'];?></dd>
+
+                        <br><br><br>
 
                         </dl>
 
@@ -120,6 +141,7 @@
                 <div class="footer text-center">
                     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-item.php?id=<?php echo $dados[0]['id'];?>">Editar Item</a>
                     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="meus-itens.php">Meus Itens</a>
+                    <a class="btn-criar-report btn btn-default btn-cor-estilo-escuro" href="#" >Criar Report de Perdido</a>
                 </div>
 
             </div>

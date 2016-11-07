@@ -137,9 +137,9 @@
 
              <div class="col-md-8 col-md-offset-2">
 
-               <button href="meus-itens.php" class="btn  btn-default btn-cor-estilo-escuro">Meus Itens
+               <a href="meus-itens.php" class="btn  btn-default btn-cor-estilo-escuro">Meus Itens
 
-               </button>
+               </a>
 
              </div>
 
