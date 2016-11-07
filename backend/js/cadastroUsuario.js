@@ -67,7 +67,7 @@ $('document').ready(function() {
 
                     $('#error').fadeIn(1000, function () {
 
-                        $("#error").html('<div class="alert alert-warning"> <div class="container-fluid"> <div class="alert-icon"> <i class="material-icons">info_outline</i> </div> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true"><i class="material-icons">clear</i></span>   </button>'+data+' !</div> </div>');
+                        $("#error").html('<div class="alert alert-warning"><div class="container-fluid"><div class="alert-icon"><i class="material-icons">info_outline</i></div><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="material-icons">clear</i></span></button>'+data+'</div></div>');
                         $("#btnCadastrarUsuario").val('Cadastrar');
                     });
                 }
@@ -80,26 +80,3 @@ $('document').ready(function() {
         return false;
     }
 });
-
-
-// $(document).ready(function() {
-//     $("#btnCadastrarUsuario").click(function() {
-//
-//         var emailP = $("#email").val();
-//         var senhaP = $("#senha").val();
-//         var confirmaSenhaP = $("#confirmaSenha").val();
-//         var dNascimentoP = $("#dNascimento").val();
-//
-//         $.post("../backend/Usuario.php?tipo=novo", {email: emailP, senha: senhaP, confirmaSenha: confirmaSenhaP, dNascimento: dNascimentoP},
-//             function(response){
-//
-//                 // $("resultados").html("<div class=\"modal fade bs-example-modal-sm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\" > <div class=\"modal-dialog modal-sm\" role=\"document\"> <div class=\"modal-content\">"+response+"</div> </div> </div>");
-//
-//                 $("body").html("<div class=\"center-block card mensagem-alerta\" id=\"alert\"> "+response+"<button onclick=\"Nova()\" class=\"btn btn-default btn-alerta\" type=\"button\" name=\"button\">Ok!</button> </div>");
-//
-//
-//                 // $(".resultados").html(response);
-//             }
-//             , "html");
-//     });
-// });

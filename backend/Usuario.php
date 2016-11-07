@@ -131,7 +131,7 @@ if (isset($_GET['tipo'])) {
 function validarDadosCadastro($arrDados){
 
 	for ($i=0; $i < count($arrDados); $i++) { 
-		
+
 		//Valida contra XSS
 		$arrDados[$i] = validarString($arrDados[$i]);
 
@@ -140,8 +140,10 @@ function validarDadosCadastro($arrDados){
 
 		//Senha
 		$mascaraPwd = '/[^a-z_\-0-9]/i';
-		//$containsLetter  = preg_match('/[a-zA-Z]/',    $string);
-		//$containsDigit   = preg_match('/\d/',          $string);
+		
+		//Verifica se a senha tem letras e numeros
+		$temLetras = preg_match('/[a-zA-Z]/', $arrDados[1]);
+		$temNumeros = preg_match('/\d/', $arrDados[1]);
 
 		//Mascara para e-mail
 		$mascaraEmail = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
@@ -162,16 +164,22 @@ function validarDadosCadastro($arrDados){
 			    } elseif (preg_match($mascaraPwd, $arrDados[1])) {
 					echo "Erro: senha inválida.";
 					exit;
-			    	} elseif ($arrDados[1] != $arrDados[2]) {
-				  		echo "Erro: as senhas devem ser iguais.";
+			    	} elseif (!$temLetras) {
+						echo "Erro: a sem deve conter letras.";
 						exit;
-					    } elseif ($i == 3 && strlen($arrDados[$i]) == 0) {
-					  		echo "Erro: data de nascimento não pode ficar vazia.";
+			    	  } elseif (!$temNumeros) {
+							echo "Erro: a sem deve conter números.";
 							exit;
-					  	  } elseif ($anoNascimento > 1997) {
-					  			echo "Erro: Você precisa ser maior de 18 anos.";
+					    } elseif ($arrDados[1] != $arrDados[2]) {
+					  		echo "Erro: as senhas devem ser iguais.";
+							exit;
+						  } elseif ($i == 3 && strlen($arrDados[$i]) == 0) {
+								echo "Erro: data de nascimento não pode ficar vazia.";
 								exit;
-					  	    }
+						  	} elseif (date('Y') - $anoNascimento < 18) { //So' verifica o ano (fazer verificao do mes tambem)
+						  		echo "Erro: Você precisa ser maior de 18 anos.";
+								exit;
+						  	  }
 	}//for
 
 	return $arrDados;
