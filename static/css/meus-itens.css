@@ -311,17 +311,17 @@ footer{
   margin-bottom: 200px !important;
 }
 
-.btn-exibir-item{
+.exibir-item-icon{
   color: #1E88E5 !important;
 
 }
 
-.btn-editar-item{
+.editar-item-icon{
   color: #43A047 !important;
 
 }
 
-.btn-remover-item{
+.remover-item-icon{
   color: #E53935 !important;
 
 }

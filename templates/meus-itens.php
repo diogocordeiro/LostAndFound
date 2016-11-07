@@ -109,18 +109,18 @@ $('[data-toggle="tooltip"]').tooltip();
               <td><?php echo $dados[$i]['dataInsercao'];?></td>
               <td><?php echo $dados[$i]['titulo'];?></td>
               <td><?php echo $dados[$i]['marca'];?></td>
-              <td>#<?php echo $dados[$i]['categoria'];?></td>
+              <td><?php echo $dados[$i]['categoria'];?></td>
               <td class="td-actions text-right">
                 <button data-toggle="tooltip" data-placement="bottom" title="Exibir Item" type="button"  class="btn btn-exibir-item btn-simple btn-xs">
-                  <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">visibility</i></a>
+                  <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons exibir-item-icon">visibility</i></a>
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Editar Item"  type="button"  class="btn btn-editar-item btn-simple btn-xs">
-                  <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">mode_edit</i></a>
+                  <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="editar-item-icon material-icons">mode_edit</i></a>
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Remover Item"  type="button"  class="btn btn-remover-item btn-simple btn-xs">
-                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o item?')){window.location = 'meus-itens.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="material-icons">remove_circle_outline</i></a>
+                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o item?')){window.location = 'meus-itens.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="material-icons remover-item-icon">remove_circle_outline</i></a>
                 </button>
               </td>
           </tr>

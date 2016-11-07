@@ -126,7 +126,10 @@
                         <br><br><br>
 
                         <dt>Descrição: </dt>
-                        <dd class="teste"><?php echo $dados[0]['descricao'];?></dd>
+                        <div class="col-md-12">
+                          <dd><?php echo $dados[0]['descricao'];?></dd>
+                        </div>
+
 
                         <br><br><br>
 
