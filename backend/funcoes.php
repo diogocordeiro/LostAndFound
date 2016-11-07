@@ -149,4 +149,50 @@ function getItensUsuario($myDb, $idSession){
 	return $myArr;
 }//getItensUsuario()
 
+//Funcao para remover um item do usuariao no bd
+function removeItem($myDb, $idItem, $tipo){
+
+	//$idItem ja' vem validado com validarString()
+
+	//Carrega nomes das tabelas do bd
+	require("nomesTabelas.php");
+
+	global $tabItens;
+
+	//Caso o item NAO pertenca a nenhum report (remove o item completamente)
+	if ($tipo == "tudo") {
+		$sql = "DELETE FROM ".$tabItens." WHERE id = ?";
+
+	//Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
+	} elseif ($tipo == "ref") {
+		$sql = "UPDATE ".$tabItens." SET idUsuario=? WHERE id=?";
+	  }
+
+	//Novo id para eliminar a referencia
+	$novoId = 0;
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Valida o atributo
+	if ($tipo == "tudo") {
+		$stmt->bind_param("s", $idItem);
+	} elseif ($tipo == "ref") {
+		$stmt->bind_param("is", $novoId, $idItem);
+	  }
+
+	//Executa o statement
+	if ($stmt->execute()) {
+		return "sucesso";
+	} else {
+		echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
+		exit;
+	  }
+}//removeItem()
+
 ?>
