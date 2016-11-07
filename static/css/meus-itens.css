@@ -310,3 +310,15 @@ footer{
 
   margin-bottom: 200px !important;
 }
+
+.btn-exibir-item{
+  background-color: #1E88E5 !important;
+}
+
+.btn-editar-item{
+  background-color: #43A047 !important;
+}
+
+.btn-remover-item{
+  background-color: #E53935 !important;
+}

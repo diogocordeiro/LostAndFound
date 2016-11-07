@@ -1,5 +1,5 @@
 <?php
-     
+
      $arrCores = array("FFFF00" => "Amarelo",
                     "00FFFF" => "Aqua",
                     "0000FF" => "Azul",

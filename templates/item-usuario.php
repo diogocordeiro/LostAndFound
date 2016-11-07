@@ -141,7 +141,7 @@
                 <div class="footer text-center">
                     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-item.php?id=<?php echo $dados[0]['id'];?>">Editar Item</a>
                     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="meus-itens.php">Meus Itens</a>
-                    <a class="btn-criar-report btn btn-default btn-cor-estilo-escuro" href="#" >Criar Report de Perdido</a>
+                    <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="#" >Criar Report de Perdido</a>
                 </div>
 
             </div>
