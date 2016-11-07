@@ -16,6 +16,13 @@
       }
     </script>
 
+    <script type="text/javascript">
+
+    <!-- Javascript -->
+$('[data-toggle="tooltip"]').tooltip();
+
+    </script>
+
 </head>
 
 <body>
