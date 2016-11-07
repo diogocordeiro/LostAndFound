@@ -45,7 +45,7 @@
               if (count($dadosItem) < 1) {
                 echo "<center><br/><br/><br/>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
                 exit;
-              
+
               //Caso o item exista
               } else {
 
@@ -53,14 +53,14 @@
                   if ($dadosItem[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
                     echo "<center><br/><br/><br/>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
                     exit;
-                  
+
                   //Caso o item perteca ao usuario da session
                   } else {
 
                       //Caso o item NAO pertenca a nenhum report (remove o item completamente)
                       if ($dadosItem[0]['idRelAchado'] == 0 && $dadosItem[0]['idRelPerdido'] == 0) {
                         $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "tudo");
-                      
+
                       //Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
                       } else {
                           $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "ref");
@@ -72,7 +72,7 @@
                       }
                     }
                 }
-              
+
             }//if remover itens
           ?>
         <h2 class="title titulo-busca">Meus Itens</h2>
@@ -103,8 +103,8 @@
               <td><?php echo $dados[$i]['titulo'];?></td>
               <td><?php echo $dados[$i]['marca'];?></td>
               <td>#<?php echo $dados[$i]['cor1'];?></td>
-              <td class="td-actions text-right">     
-                <button type="button"  class="btn btn-info btn-simple btn-xs">
+              <td class="td-actions text-right">
+                <button type="button"  class="btn btn-default btn-info btn-simple btn-xs">
                   <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons">visibility</i></a>
                 </button>
 
@@ -127,7 +127,7 @@
                 <thead>
                   <tr class="text-center"><th>Sem itens</th></tr>
                 </thead>
-        
+
         <?php } ?>
 
         </table>

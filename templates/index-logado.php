@@ -4,7 +4,7 @@
 <head>
 
   <?php require 'header.php'; ?>
-  
+
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
@@ -137,7 +137,7 @@
 
              <div class="col-md-8 col-md-offset-2">
 
-               <button class="btn  btn-default btn-cor-estilo-escuro">Meus Itens
+               <button href="meus-itens.php" class="btn  btn-default btn-cor-estilo-escuro">Meus Itens
 
                </button>
 
