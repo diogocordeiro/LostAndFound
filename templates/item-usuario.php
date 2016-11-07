@@ -126,7 +126,7 @@
                         <br><br><br>
 
                         <dt>Descrição: </dt>
-                        <dd><?php echo $dados[0]['descricao'];?></dd>
+                        <dd class="teste"><?php echo $dados[0]['descricao'];?></dd>
 
                         <br><br><br>
 
