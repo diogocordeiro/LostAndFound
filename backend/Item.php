@@ -205,13 +205,15 @@ function incluirItem($myDb, $arrDados){
 
 	$dataHoje = date('Y-m-d');
 
+	$idReport = 0;
+
 	//Tipos dos atributos passados (para validação)
 	//i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
-	$tiposAtts = "sisssssiissss";
+	$tiposAtts = "siiisssssiissss";
 
-	$sql = "INSERT INTO ".$tabItens." (id, idUsuario, identificador, marca, titulo, descricao,
+	$sql = "INSERT INTO ".$tabItens." (id, idUsuario, idRelAchado, idRelPerdido, identificador, marca, titulo, descricao,
 		caracteristicas, idCategoria, idSubcategoria, cor1, cor2, enderFoto, dataInsercao) 
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -223,14 +225,14 @@ function incluirItem($myDb, $arrDados){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $idUnico, $arrDados[10], $arrDados[2], $arrDados[1], $arrDados[0], $arrDados[8],
-		$arrDados[7], $arrDados[3], $arrDados[4], $arrDados[5], $arrDados[6], $arrDados[9], $dataHoje);
+	$stmt->bind_param($tiposAtts, $idUnico, $arrDados[10], $idReport, $idReport, $arrDados[2], $arrDados[1], $arrDados[0],
+		$arrDados[8], $arrDados[7], $arrDados[3], $arrDados[4], $arrDados[5], $arrDados[6], $arrDados[9], $dataHoje);
 
 	//Executa o statement
 	if ($stmt->execute()){
 		return "sucesso";
 	} else {
-		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		//echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
 	  }
 }//function incluirItem()
