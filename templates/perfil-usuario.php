@@ -56,17 +56,27 @@
                         <dt>E-mail: </dt>
                         <dd><?php echo $dados[0]['email'];?></dd>
 
+                        <br><br>
+
                         <dt>Data Nascimento: </dt>
-                        <dd><?php echo $dados[0]['dNascimento'];?></dd>
+                        <dd class="data-nascimento-dd"><?php echo $dados[0]['dNascimento'];?></dd>
+
+                        <br><br>
 
                         <dt>Senha: </dt>
                         <dd><a href="#">Alterar</a></dd>
 
+                        <br><br>
+
                         <dt>Nome: </dt>
                         <dd><?php echo $dados[0]['nome'];?></dd>
 
+                        <br><br>
+
                         <dt>Sobrenome: </dt>
                         <dd><?php echo $dados[0]['sobrenome'];?></dd>
+
+                        <br><br>
 
 
                         <dt>Sexo: </dt>
@@ -80,20 +90,32 @@
                           ?>
                         </dd>
 
+                        <br><br>
+
                         <dt>Cidade: </dt>
-                        <dd style="width:100px" ><?php echo $dados[0]['cidade'];?></dd>
+                        <dd ><?php echo $dados[0]['cidade'];?></dd>
+
+                        <br><br>
 
                         <dt>País: </dt>
                         <dd><?php echo $dados[0]['pais'];?></dd>
 
+                        <br><br>
+
                         <dt>Celular: </dt>
                         <dd><?php echo $dados[0]['celular'];?></dd>
+
+                        <br><br>
 
                         <dt>Telefone: </dt>
                         <dd><?php echo $dados[0]['telefone'];?></dd>
 
+                        <br><br>
+
                         <dt>Facebook: </dt>
                         <dd><?php echo $dados[0]['facebook'];?></dd>
+
+                        <br><br>
 
                         </dl>
 
