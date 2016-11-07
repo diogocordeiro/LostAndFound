@@ -29,6 +29,6 @@
   margin-bottom: 80px !important;
 }
 
-.dl-horizontal dt {
-  white-space: normal !important; 
+.dl-horizontal dd {
+  white-space: normal !important;
 }
