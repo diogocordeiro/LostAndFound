@@ -121,15 +121,17 @@
                         <br><br><br>
 
                         <dt>Caracteristicas: </dt>
-                        <dd><?php echo $dados[0]['caracteristicas'];?></dd>
+                        <dd><p>
+
+                          <?php echo $dados[0]['caracteristicas'];?>
+
+                        </p> </dd>
 
                         <br><br><br>
 
                         <dt>Descrição: </dt>
-                        <div class="col-md-12">
-                          <dd><?php echo $dados[0]['descricao'];?></dd>
-                        </div>
 
+                          <dd ><?php echo $dados[0]['descricao'];?></dd>
 
                         <br><br><br>
 

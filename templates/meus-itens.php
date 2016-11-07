@@ -96,7 +96,7 @@ $('[data-toggle="tooltip"]').tooltip();
                   <th class="text-center">Data Cadastro</th>
                   <th class="text-center">Nome</th>
                   <th class="text-center">Marca</th>
-                  <th class="text-center">Categoria</th>
+                  <th class="text-center">Cor Pedrominante</th>
                   <th class="text-right">Ações</th>
               </tr>
           </thead>
@@ -109,7 +109,7 @@ $('[data-toggle="tooltip"]').tooltip();
               <td><?php echo $dados[$i]['dataInsercao'];?></td>
               <td><?php echo $dados[$i]['titulo'];?></td>
               <td><?php echo $dados[$i]['marca'];?></td>
-              <td>#<?php echo $dados[$i]['categoria'];?></td>
+              <td><span style="background-color:#<?php echo $dados[0]['cor1'];?>;color:#000000;padding:6px 8px"><?php/*  echo $dados[$i]['cor1'];?*/></span></td>
               <td class="td-actions text-right">
                 <button data-toggle="tooltip" data-placement="bottom" title="Exibir Item" type="button"  class="btn btn-exibir-item btn-simple btn-xs">
                   <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons exibir-item-icon">visibility</i></a>

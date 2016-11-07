@@ -40,7 +40,7 @@
 
               <div class="col-md-4 col-md-offset-1">
 
-                <img style="width: 250px;height:250px;border-radius:150px;-webkit-border-radius: 150px;-moz-border-radius: 150px"src="../usuarios/fotos/<?php echo $dados[0]['imagemPerfil'];?>" class="img-rounded img-responsive img-raised">
+                <img src="../usuarios/fotos/<?php echo $dados[0]['imagemPerfil'];?>" class="img-circle img-responsive img-raised">
 
               </div>
 
@@ -54,33 +54,33 @@
 
                       <dl class="dl-horizontal">
                         <dt>E-mail: </dt>
-                        <dd><?php echo $dados[0]['email'];?></dd>
+                        <dd class="dd-conteudo-email"><?php echo $dados[0]['email'];?></dd>
 
                         <br><br>
 
                         <dt>Data Nascimento: </dt>
-                        <dd class="data-nascimento-dd"><?php echo $dados[0]['dNascimento'];?></dd>
+                        <dd class="dd-conteudo-data"><?php echo $dados[0]['dNascimento'];?></dd>
 
                         <br><br>
 
                         <dt>Senha: </dt>
-                        <dd><a href="#">Alterar</a></dd>
+                        <dd class="dd-conteudo-senha"><a href="#">Alterar</a></dd>
 
                         <br><br>
 
                         <dt>Nome: </dt>
-                        <dd><?php echo $dados[0]['nome'];?></dd>
+                        <dd class="dd-conteudo"><?php echo $dados[0]['nome'];?></dd>
 
                         <br><br>
 
                         <dt>Sobrenome: </dt>
-                        <dd><?php echo $dados[0]['sobrenome'];?></dd>
+                        <dd class="dd-conteudo-sobrenome"><?php echo $dados[0]['sobrenome'];?></dd>
 
                         <br><br>
 
 
                         <dt>Sexo: </dt>
-                        <dd>
+                        <dd class="dd-conteudo">
                           <?php
                               if($dados[0]['sexo'] == 1){
                                 echo "Feminino";
@@ -93,27 +93,27 @@
                         <br><br>
 
                         <dt>Cidade: </dt>
-                        <dd ><?php echo $dados[0]['cidade'];?></dd>
+                        <dd class="dd-conteudo" ><?php echo $dados[0]['cidade'];?></dd>
 
                         <br><br>
 
                         <dt>País: </dt>
-                        <dd><?php echo $dados[0]['pais'];?></dd>
+                        <dd class="dd-conteudo-pais"><?php echo $dados[0]['pais'];?></dd>
 
                         <br><br>
 
                         <dt>Celular: </dt>
-                        <dd><?php echo $dados[0]['celular'];?></dd>
+                        <dd class="dd-conteudo-telefone"><?php echo $dados[0]['celular'];?></dd>
 
                         <br><br>
 
                         <dt>Telefone: </dt>
-                        <dd><?php echo $dados[0]['telefone'];?></dd>
+                        <dd class="dd-conteudo-telefone"><?php echo $dados[0]['telefone'];?></dd>
 
                         <br><br>
 
                         <dt>Facebook: </dt>
-                        <dd><?php echo $dados[0]['facebook'];?></dd>
+                        <dd class="dd-conteudo"><?php echo $dados[0]['facebook'];?></dd>
 
                         <br><br>
 
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="footer text-center">
-                    <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-perfil.php">Editar Perfil</a>
+                    <a class="btn-editar btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-perfil.php">Editar Perfil</a>
                 </div>
 
             </div>

@@ -19,6 +19,100 @@ body {
 
 }
 
-.data-nascimento-dd{
-  width: 100px !important;
+.dd-conteudo{
+  width: 150px !important;
+  margin-left: 165px !important;
+}
+
+.dd-conteudo-data{
+  width: 150px !important;
+  margin-left: 160px !important;
+}
+
+.dd-conteudo-email{
+  width: 150px !important;
+  margin-left: 200px !important;
+}
+
+.dd-conteudo-senha{
+  width: 150px !important;
+  margin-left: 140px !important;
+}
+
+.dd-conteudo-sobrenome{
+  width: 150px !important;
+  margin-left: 150px !important;
+}
+
+.dd-conteudo-pais{
+  width: 150px !important;
+  margin-left: 140px !important;
+}
+
+.dd-conteudo-telefone{
+  width: 150px !important;
+  margin-left: 185px !important;
+}
+
+
+.dl-horizontal{
+  margin-top: 20px !important;
+}
+
+.btn-editar{
+  margin-bottom: 80px !important;
+  margin-top: 80px !important;
+}
+
+.img-circle{
+
+  width: 300px !important;
+  height: 300px !important;
+}
+
+@media (max-width: 768px){
+
+  .img-circle{
+    margin-top: 80px !important;
+    margin-bottom: 80px !important;
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .dd-conteudo-data{
+    width: 100px !important;
+    margin-left: 100px !important;
+  }
+
+  .dd-conteudo-senha{
+    width: 150px !important;
+    margin-left: 80px !important;
+  }
+
+  .dd-conteudo-sobrenome{
+    width: 150px !important;
+    margin-left: 80px !important;
+  }
+
+  .dd-conteudo-pais{
+    width: 150px !important;
+    margin-left: 80px !important;
+  }
+
+  .dd-conteudo-telefone{
+    width: 150px !important;
+    margin-left: 80px !important;
+  }
+
+
+  .dd-conteudo{
+    width: 100px !important;
+    margin-left: 100px !important;
+  }
+
+  .dd-conteudo-email{
+    width: 150px !important;
+    margin-left: 80px !important;
+  }
+
 }
