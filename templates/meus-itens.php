@@ -21,19 +21,60 @@
 <body>
 
   <?php require 'top-menu-logado.php'; ?>
- 
-  <!-- coletar informacoes no banco -->
-  <?php
-    require('../backend/funcoes.php');
-    require('../backend/conBd.php');
-
-    $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
-  ?>
 
   <div class="container-fluid">
     <div class="section text-center section-landing">
       <div class="row">
+          <?php
+            require('../backend/funcoes.php');
+            require('../backend/conBd.php');
 
+            //Coleta os itens do usuario
+            $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
+
+            //Remover Itens
+            if (isset($_GET['remove'])) {
+
+              //Valida string
+              $idRemove = validarString($_GET['remove']);
+
+              //Coleta o item passado
+              $dadosItem = getData(BaseDados::conBdUser(), $tabItens, "id", $idRemove, "s");
+
+              //Caso o item nao exista
+              if (count($dadosItem) < 1) {
+                echo "<center><br/><br/><br/>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                exit;
+              
+              //Caso o item exista
+              } else {
+
+                  //Caso o item NAO perteca ao usuario da session
+                  if ($dadosItem[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
+                    echo "<center><br/><br/><br/>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                    exit;
+                  
+                  //Caso o item perteca ao usuario da session
+                  } else {
+
+                      //Caso o item NAO pertenca a nenhum report (remove o item completamente)
+                      if ($dadosItem[0]['idRelAchado'] == 0 && $dadosItem[0]['idRelPerdido'] == 0) {
+                        $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "tudo");
+                      
+                      //Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
+                      } else {
+                          $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "ref");
+                        }
+
+                      if ($sucesso == "sucesso") {
+                        echo "<center><br/><br/><br/>Item removido com sucesso<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                        exit;
+                      }
+                    }
+                }
+              
+            }//if remover itens
+          ?>
         <h2 class="title titulo-busca">Meus Itens</h2>
 
         <div class="col-md-8 col-md-offset-2">
@@ -72,7 +113,7 @@
                 </button>
 
                 <button type="button"  class="btn btn-danger btn-simple btn-xs">
-                  <a href="#"><i class="material-icons">remove_circle_outline</i></a>
+                  <a href="javascript:if(confirm('Você tem certeza?')){window.location = 'meus-itens.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="material-icons">remove_circle_outline</i></a>
                 </button>
               </td>
           </tr>
@@ -112,7 +153,6 @@
 
       </div>
     </div>
-
 
 
 
