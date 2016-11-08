@@ -87,7 +87,7 @@ $('document').ready(function() {
             },
             success: function (data) {
 
-                if (data == "Novo item inserido com sucesso!") {
+                if (data == "sucesso!") {
 
                     $("#btnAdicionar").val('Adicionar');
                     //setTimeout('$("#edit-profile-form").fadeOut(500, function(){ $("#edit-profile-form").load("form-editar-perfil.php"); }); ', 5000);
