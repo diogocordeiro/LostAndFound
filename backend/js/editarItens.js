@@ -49,10 +49,6 @@ $('document').ready(function() {
 
             descricao: {
                 required: true
-            },
-
-            enderFoto: {
-                required: true
             }
         },
         messages:
@@ -66,7 +62,6 @@ $('document').ready(function() {
             cor2: "Escolha uma cor predominante para seu objeto.",
             caracteristicas: "Descreva as características de seu objeto.",
             descricao: "Descreva outras informações relevantes.",
-            enderFoto: "Selecione uma foto e envie-nos para que possamos saber que o objeto é realmente seu."
         },
         errorElement: 'div',
         errorLabelContainer: '#error-editar-perfil',
@@ -76,7 +71,7 @@ $('document').ready(function() {
     /*Form submit*/
     function submitForm() {
 
-        var dados = new FormData($('#add-item-form')[0]);
+        var dados = new FormData($('#edit-item-form')[0]);
 
         $.ajax({
             type: 'POST',
