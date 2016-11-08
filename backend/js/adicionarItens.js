@@ -87,7 +87,7 @@ $('document').ready(function() {
             },
             success: function (data) {
 
-                console.lof(data);
+                console.log(data);
                 if (data == "Novo item inserido com sucesso!") {
 
                     $("#btnAdicionar").val('Adicionar');

@@ -30,11 +30,11 @@
       <file leaf-file-name="adicionarItens.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/js/adicionarItens.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+            <state relative-caret-position="362">
+              <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="false" />
-                <marker date="1478631081895" expanded="true" signature="2798:2804" ph=" " />
+                <marker date="1478631664541" expanded="true" signature="2798:2804" ph=" " />
               </folding>
             </state>
           </provider>
@@ -753,11 +753,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/js/adicionarItens.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+        <state relative-caret-position="362">
+          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
-            <marker date="1478631081895" expanded="true" signature="2798:2804" ph=" " />
+            <marker date="1478631664541" expanded="true" signature="2798:2804" ph=" " />
           </folding>
         </state>
       </provider>
