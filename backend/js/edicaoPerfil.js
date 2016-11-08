@@ -61,13 +61,23 @@ $('document').ready(function() {
     /*Form submit*/
     function submitForm() {
 
-        var dados = $('#edit-profile-form').serialize();
+
+        var dados = new FormData($('#edit-profile-form')[0]);
 
         $.ajax({
             type: 'POST',
             url: "../backend/Usuario.php?tipo=edita",
             data: dados,
+            contentType: false,
+            processData: false,
             beforeSend: function () {
+        // var dados = $('#edit-profile-form').serialize();
+        //
+        // $.ajax({
+        //     type: 'POST',
+        //     url: "../backend/Usuario.php?tipo=edita",
+        //     data: dados,
+        //     beforeSend: function () {
 
                 $('error').fadeOut();
                 $("#btnSalvar").val('Alterando...');
