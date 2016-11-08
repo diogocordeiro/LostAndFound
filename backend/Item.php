@@ -58,20 +58,19 @@ if (isset($_GET['tipo'])) {
 		$sucesso = incluirItem(BaseDados::conBdUser(), $arr);
 
 		//Caso o item seja inserido
-		if ($sucesso == "Novo item inserido com sucesso!") {
+		if ($sucesso == "sucesso") {
 			echo "Novo item inserido com sucesso!";
 			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
 		} else {
 			echo "<br/>Erro: item não inserido!";
-			exit;
 		  }
 
 	//POST para alteração do usuário
 	} elseif ($tipo == "edita") {
 
-		exit;
 		//Valida contra XSS
 		$idSession = validarString($_POST['idSession']);
+		$idItem = validarString($_POST['idItem']);
 
 		session_start();
 		
@@ -79,41 +78,38 @@ if (isset($_GET['tipo'])) {
 		if ($_SESSION['Lost_Found']["id"] == $idSession) {
 			$arr = [];
 
-			array_push($arr, $_POST['nome']); #0
-			array_push($arr, $_POST['sobrenome']); #1
-			array_push($arr, $_POST['sexo']); #2
-			array_push($arr, $_POST['cidade']); #3
-			array_push($arr, $_POST['pais']); #4
-			array_push($arr, $_POST['celular']); #5
-			array_push($arr, $_POST['telefone']); #6
-			array_push($arr, $_POST['facebook']); #7
+			array_push($arr, $_POST['titulo']); #0
+			array_push($arr, $_POST['marca']); #1
+			array_push($arr, $_POST['identificador']); #2
+			array_push($arr, $_POST['categoria']); #3
+			array_push($arr, $_POST['subcategoria']); #4
+			array_push($arr, $_POST['cor1']); #5
+			array_push($arr, $_POST['cor2']); #6
+			array_push($arr, $_POST['caracteristicas']); #7
+			array_push($arr, $_POST['descricao']); #8
 
 			//Caso haja imagem 
-			if ($_FILES['imagemPerfil']['name'] != ""){
-				array_push($arr, $_FILES['imagemPerfil']); #8
+			if ($_FILES['enderFoto']['name'] != ""){
+				array_push($arr, $_FILES['enderFoto']); #8
 
 			//Caso contrario, passa o endereco da imagem atual
 			} else {
-				array_push($arr, $_POST['imagemPerfilAtual']); #7
+				array_push($arr, $_POST['enderFotoAtual']); #7
 			  }
 
-			$sucesso = alterarUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"], $arr);
+			$sucesso = alterarItem(BaseDados::conBdUser(), $idItem, $arr);
 
 			if ($sucesso == "sucesso") {
 				echo "Atualizado!";
-			}
+			} else {
+				echo "Não atualizado!";
+			  }
 
 		} else {
 			echo "Erro: id da session inválido.";
-			exit;
 		  }
 		
-
-	//POST para exlcuir item da conta do usuário
-	} elseif ($tipo == "excluir") {
-		$idUsuario = validarString($_GET['id']);
-		desativarItem(BaseDados::conBdUser(), $idUsuario, $idItem);
-	}
+	}// elseif alteracao
 }
 
 //Função para validar todos os campos passados nos formulários de cadastro
@@ -141,7 +137,8 @@ function validarDadosCadastro($arrDados, $idUnico){
 					|| $arrDados[$i]['type'] == "image/png") {
 					
 					//Extensao da imagem
-					$tipoImg = explode(".", $arrDados[$i]['name'])[1];
+					$tipoArr = explode(".", $arrDados[$key]['name']);
+					$tipoImg = $tipoArr[count($tipoArr)-1];
 
 					//Verifica tamanho da imagem
 					if($arrDados[$i]['size'] > (1024000*$tamImg)){
@@ -163,7 +160,7 @@ function validarDadosCadastro($arrDados, $idUnico){
 
 			//Caso haja erros
 			} else {
-				echo 'Erro: '.$arrDados[$i]['error'];
+				echo "Erro (".$arrDados[$i]['error']."): escolha outra imagem.<br/>";
 				return "falha";
 			}
 		  } //else tratamento para imagem
@@ -246,114 +243,38 @@ function incluirItem($myDb, $arrDados){
 	  }
 }//function incluirItem()
 
-//Função para validar todos os campos passados nos formulários de edicao do perfil
-function validarDadosAlterarItem($myDb, $arrDados, $idUsuario){
-
-	foreach ($arrDados as $key => $value) {
-
-		//Valida contra XSS (exceto a imagem)
-		if ($key != 8) {
-			$arrDados[$key] = validarString($arrDados[$key]);
-		}
-
-		//Valida campo de sexo
-		if ($key == 2 && ($arrDados[$key] != 0 && $arrDados[$key] != 1)) {
-			echo "Erro: sexo inválido.";
-			exit;
-		
-		//Valida o pais
-		} elseif ($key == 4) {
-
-			global $tabPais;
-
-			//Coleta as informacoes do pais
-			$meuPais = getData($myDb, $tabPais, "abrev", $arrDados[$key], "s");
-
-			//Caso haja o pais passado
-			if (count($meuPais) > 0) {
-				
-				//Atribui o id do pais
-				$arrDados[$key] = $meuPais[0]['id'];
-			} else {
-				echo "Erro: país inválido.";
-				exit;
-			  }
-
-		  //Valida a imagem
-		  } elseif ($key == 8) {
-		  		//[8] => Array ( [name] => Sem título.png [type] => image/png [tmp_name] => C:\Windows\Temp\php47DA.tmp [error] => 0 [size] => 77322 ) )
-
-				//Caso haja alguma imagem sera um array
-				if (is_array($value)){
-					if(!$arrDados[$key]['error']){
-
-						//Caso seja uma extensao valida
-						if ($arrDados[$key]['type'] == "image/jpg"
-							|| $arrDados[$key]['type'] == "image/jpeg"
-							|| $arrDados[$key]['type'] == "image/png") {
-							
-							//Extensao da imagem
-							$tipoImg = explode(".", $arrDados[$key]['name'])[1];
-
-							//Verifica tamanho da imagem
-							if($arrDados[$key]['size'] > (1024000*$tamImg)){
-								echo 'Erro: a imagem é muito grande.';
-								exit;
-							}
-
-							//Renomea da imagem
-							$nomeImg = md5($idUsuario).".".$tipoImg;
-
-							//Sobe a imagem para pasta desejada
-							move_uploaded_file($arrDados[$key]['tmp_name'], $pastaImgs.$nomeImg);
-
-							$arrDados[$key] = $nomeImg;
-						} else {
-							echo "Erro: extensão da imagem inválida." ;
-							exit;
-						  }
-
-					//Caso haja erros
-					} else {
-						echo 'Erro: '.$arrDados[$key]['error'];
-						exit;
-					}
-				} else {
-					$arrDados[$key] = validarString($arrDados[$key]);
-				  }
-			} //elsif
-	}//for
-
-	return $arrDados;
-}//validarDadosPerfil()
-
 //Método para alterar o item
-function alterarItem($myDb, $idUsuario, $idItem, $arrDados){
+function alterarItem($myDb, $idItem, $arrDados){
 
-	global $tabUsuarios;
-	
-	//Valida contra XSS
-	$idUsuario = validarString($idUsuario);
+	//$idItem ja' vem validado com validarString()
 
-	//Trata os campos passados
-	$arrDados = validarDadosPerfil($myDb, $arrDados, $idUsuario);
+	global $tabItens;
 
-	$tiposAtts = "ssisissssi";
+	//Valida cada campo passado
+	$arrDados = validarDadosCadastro($arrDados, $idItem);
 
-	$sql = "UPDATE ".$tabUsuarios." SET nome=?, sobrenome=?, sexo=?, cidade=?, idPais=?, celular=?, telefone=?, facebook=?, imagemPerfil=? WHERE id=?";
+	//Caso haja algum erro na validacao
+	if ($arrDados == "falha") {
+		return "falha";
+	}
+
+	$tiposAtts = "sssssiissss";
+
+	$sql = "UPDATE ".$tabItens." SET identificador=?, marca=?, titulo=?, descricao=?, caracteristicas=?,
+	idCategoria=?, idSubcategoria=?, cor1=?, cor2=?, enderFoto=? WHERE id=?";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
 
 	if(!$stmt){
 		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
-		echo 'Erro: no statement do Mysql. Usuario.php:alterarUsuario()';
+		echo '<br>Erro: no statement do Mysql. Item.php:alterarItem()';
 		exit;
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $arrDados[0], $arrDados[1], $arrDados[2], $arrDados[3], $arrDados[4],
-		$arrDados[5], $arrDados[6], $arrDados[7], $arrDados[8], $idUsuario);
+	$stmt->bind_param($tiposAtts, $arrDados[2], $arrDados[1], $arrDados[0], $arrDados[8], $arrDados[7],
+		$arrDados[3], $arrDados[4], $arrDados[5], $arrDados[6], $arrDados[9], $idItem);
 
 	//Executa o statement
 	if ($stmt->execute()){

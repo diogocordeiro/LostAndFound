@@ -116,16 +116,13 @@ if (isset($_GET['tipo'])) {
 			echo "Erro: id da session inválido.";
 			exit;
 		  }
-		
 
 	//POST para desativação da conta do usuário
 	} elseif ($tipo == "desativa") {
 		$idUsuario = validarString($_GET['id']);
 		desativarUsuario(BaseDados::conBdUser(), $idUsuario);
 	}
-} else {
-	echo "Defina o tipo do POST";
-  }
+}
 
 //Função para validar todos os campos passados nos formulários de cadastro
 function validarDadosCadastro($arrDados){
@@ -311,7 +308,8 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 							|| $arrDados[$key]['type'] == "image/png") {
 							
 							//Extensao da imagem
-							$tipoImg = explode(".", $arrDados[$key]['name'])[1];
+							$tipoArr = explode(".", $arrDados[$key]['name']);
+							$tipoImg = $tipoArr[count($tipoArr)-1];
 							
 							//Verifica tamanho da imagem
 							if($arrDados[$key]['size'] > (1024000*$tamImg)){
@@ -333,7 +331,7 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 
 					//Caso haja erros
 					} else {
-						echo 'Erro: '.$arrDados[$key]['error'];
+						echo "Erro (".$arrDados[$i]['error']."): escolha outra imagem.<br/>";
 						return "falha";
 					}
 				} else {
