@@ -33,7 +33,8 @@ $('[data-toggle="tooltip"]').tooltip();
     <div class="section text-center section-landing">
       <div class="row">
           <?php
-            require('../backend/funcoes.php');
+
+            require('../backend/Item.php');
             require('../backend/conBd.php');
             require('listaCores.php');
 
@@ -67,7 +68,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
                       //Caso o item NAO pertenca a nenhum report (remove o item completamente)
                       if ($dadosItem[0]['idRelAchado'] == 0 && $dadosItem[0]['idRelPerdido'] == 0) {
-                        $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "tudo");
+                        $sucesso = removeItem(BaseDados::conBdUser(), $idRemove, "tudo", $dadosItem[0]['enderFoto']);
 
                       //Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
                       } else {

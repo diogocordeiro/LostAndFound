@@ -1,5 +1,14 @@
 <?php
 
+//Nome da imagem padrao dos itens
+global $imgPadrao; $imgPadrao = "camera.jpg";
+
+//Tamanho maximo da imagem 3MB
+global $tamImg; $tamImg = 3;
+
+//Pasta onde ficam as imagens dos itens
+global $pastaImgs; $pastaImgs = "../itens/fotos/";
+
 //Verifica se o tipo do POST foi passado
 if (isset($_GET['tipo'])) {
 
@@ -38,7 +47,7 @@ if (isset($_GET['tipo'])) {
 		
 		//Caso nao haja imagem, insere o endereco padrao
 		} else {
-			array_push($arr, "camera.jpg"); #9
+			array_push($arr, $imgPadrao); #9
 		  }
 
 		session_start();
@@ -105,18 +114,10 @@ if (isset($_GET['tipo'])) {
 		$idUsuario = validarString($_GET['id']);
 		desativarItem(BaseDados::conBdUser(), $idUsuario, $idItem);
 	}
-} else {
-	echo "Defina o tipo do POST";
-  }
+}
 
 //Função para validar todos os campos passados nos formulários de cadastro
 function validarDadosCadastro($arrDados, $idUnico){
-
-	//Tamanho maximo da imagem 3MB
-	$tamImg = 3;
-
-	//Pasta onde ficam as imagens dos itens
-	$pastaImgs = "../itens/fotos/";
 
 	for ($i=0; $i < count($arrDados); $i++) { 
 		
@@ -128,6 +129,10 @@ function validarDadosCadastro($arrDados, $idUnico){
 		
 		//Tratamento para imagem
 		} else {
+
+			global $pastaImgs;
+			global $tamImg;
+
 			if(!$arrDados[$i]['error']){
 
 				//Caso seja uma extensao valida
@@ -141,7 +146,7 @@ function validarDadosCadastro($arrDados, $idUnico){
 					//Verifica tamanho da imagem
 					if($arrDados[$i]['size'] > (1024000*$tamImg)){
 						echo 'Erro: a imagem é muito grande.';
-						exit;
+						return "falha";
 					}
 
 					//Renomea da imagem
@@ -153,44 +158,43 @@ function validarDadosCadastro($arrDados, $idUnico){
 					$arrDados[$i] = $nomeImg;
 				} else {
 					echo "Erro: extensão da imagem inválida." ;
-					exit;
+					return "falha";
 				  }
 
 			//Caso haja erros
 			} else {
 				echo 'Erro: '.$arrDados[$i]['error'];
-				exit;
+				return "falha";
 			}
 		  } //else tratamento para imagem
 
 		//Valida campos em branco
 		if ($i == 0 && strlen($arrDados[$i]) == 0) {
 			echo "Erro: título não pode ficar em branco.";
-			exit;
+			return "falha";
 		} elseif ($i == 1 && strlen($arrDados[$i]) == 0) {
 			echo "Erro: marca não pode ficar em branco.";
-			exit;
+			return "falha";
 		  } elseif ($i == 3 && strlen($arrDados[$i]) == 0) {
 				echo "Erro: categoria não pode ficar em branco.";
-				exit;
+				return "falha";
 			  } elseif ($i == 5 && strlen($arrDados[$i]) == 0) {
 					echo "Erro: categoria não pode ficar em branco.";
-					exit;
+					return "falha";
 			    } elseif ($i == 7 && strlen($arrDados[$i]) == 0) {
 					echo "Erro: caracteristicas não pode ficar em branco.";
-					exit;
+					return "falha";
 			    	} elseif ($i == 8 && strlen($arrDados[$i]) == 0) {
 						echo "Erro: descrição não pode ficar em branco.";
-						exit;
+						return "falha";
 					  } elseif ($i == 10 && strlen($arrDados[$i]) == 0) {
 							echo "Erro: id da session em branco.";
-							exit;
+							return "falha";
 						}
 	}//for
 
 	return $arrDados;
 }//validarDadosCadastro()
-
 
 //Método para incluir o item
 function incluirItem($myDb, $arrDados){
@@ -202,6 +206,11 @@ function incluirItem($myDb, $arrDados){
 
 	//Valida cada campo passado
 	$arrDados = validarDadosCadastro($arrDados, $idUnico);
+
+	//Caso haja algum erro na validacao
+	if ($arrDados == "falha") {
+		return "falha";
+	}
 
 	$dataHoje = date('Y-m-d');
 
@@ -239,12 +248,6 @@ function incluirItem($myDb, $arrDados){
 
 //Função para validar todos os campos passados nos formulários de edicao do perfil
 function validarDadosAlterarItem($myDb, $arrDados, $idUsuario){
-
-	//Tamanho maximo da imagem 3MB
-	$tamImg = 3;
-
-	//Pasta onde ficam as imagens dos perfis
-	$pastaImgs = "../usuarios/fotos/";
 
 	foreach ($arrDados as $key => $value) {
 
@@ -361,10 +364,96 @@ function alterarItem($myDb, $idUsuario, $idItem, $arrDados){
 	  }
 }//function alterarItem()
 
-//Método para desativar o item
-function removerItem($myDb, $idUsuario, $idItem){
+//Funcao para remover um item do usuariao no bd
+function removeItem($myDb, $idItem, $tipo, $nomeImg = null){
 
-}//function removerItem()
+	//$idItem ja' vem validado com validarString()
 
+	//Carrega nomes das tabelas do bd
+	require("nomesTabelas.php");
+
+	global $tabItens;
+
+	//Caso o item NAO pertenca a nenhum report (remove o item completamente)
+	if ($tipo == "tudo") {
+		$sql = "DELETE FROM ".$tabItens." WHERE id = ?";
+
+	//Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
+	} elseif ($tipo == "ref") {
+		$sql = "UPDATE ".$tabItens." SET idUsuario=? WHERE id=?";
+	  }
+
+	//Novo id para eliminar a referencia
+	$novoId = 0;
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Valida o atributo
+	if ($tipo == "tudo") {
+		$stmt->bind_param("s", $idItem);
+	} elseif ($tipo == "ref") {
+		$stmt->bind_param("is", $novoId, $idItem);
+	  }
+
+	//Executa o statement
+	if ($stmt->execute()) {
+
+		global $imgPadrao;
+
+		//Exclui a imagem do servidor (se nao for a imagem padrao)
+		if ($tipo == "tudo" && strcmp($nomeImg, $imgPadrao) != 0) {
+			global $pastaImgs;
+			unlink($pastaImgs.$nomeImg);
+		}
+
+		return "sucesso";
+	} else {
+		echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
+}//removeItem()
+
+//Funcao para coletar um item do usuariao no bd
+function getItensUsuario($myDb, $idSession){
+
+	//Carrega funções básicas
+	require("funcoes.php");
+
+	//Carrega nomes das tabelas do bd
+	require("nomesTabelas.php");
+
+	global $tabItens;
+
+	//Valida a string
+	$id = validarString($idSession);
+
+	$sql = "SELECT * FROM ".$tabItens." WHERE idUsuario = ? ORDER BY dataInsercao DESC";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Valida o atributo
+	$stmt->bind_param("i", $id);
+
+	//Executa o statement
+	$stmt->execute();
+
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
+
+	//Retornar os itens encontrados
+	return $myArr;
+}//getItensUsuario()
 
 ?>
