@@ -137,7 +137,7 @@
                       <div class="input-group btn-upload-imagem">
                         <?php echo '<input type="hidden" name="imagemPerfilAtual" value="'.$dados[0]['imagemPerfil'].'"/>'; ?>
                         <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
-                          Imagem <input type="file" name="imagemPerfil" id="imagemPerfil" style="display: none;">
+                          Imagem <input type="file" name="imagemPerfil" id="imagemPerfil">
                         </label>
                         <p class="informacao-imagem-upload">
 

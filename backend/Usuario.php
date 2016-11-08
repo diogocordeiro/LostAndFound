@@ -103,7 +103,7 @@ if (isset($_GET['tipo'])) {
 
 			//Caso contrario, passa o endereco da imagem atual
 			} else {
-				array_push($arr, $_POST['imagemPerfilAtual']); #7
+				array_push($arr, $_POST['imagemPerfilAtual']); #8
 			  }
 
 			$sucesso = alterarUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"], $arr);
@@ -162,13 +162,13 @@ function validarDadosCadastro($arrDados){
 					echo "Erro: senha não pode ter menos de 8 dígitos.";
 					exit;
 			    } elseif (preg_match($mascaraPwd, $arrDados[1])) {
-					echo "Erro: senha inválida.";
+					echo "Erro: senha inválida. Não é permitido caracteres especiais.";
 					exit;
 			    	} elseif (!$temLetras) {
-						echo "Erro: a sem deve conter letras.";
+						echo "Erro: a senha deve conter letras.";
 						exit;
 			    	  } elseif (!$temNumeros) {
-							echo "Erro: a sem deve conter números.";
+							echo "Erro: a senha deve conter números.";
 							exit;
 					    } elseif ($arrDados[1] != $arrDados[2]) {
 					  		echo "Erro: as senhas devem ser iguais.";
@@ -278,7 +278,7 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 		//Valida campo de sexo
 		if ($key == 2 && ($arrDados[$key] != 0 && $arrDados[$key] != 1)) {
 			echo "Erro: sexo inválido.";
-			exit;
+			return "falha";
 		
 		//Valida o pais
 		} elseif ($key == 4) {
@@ -295,12 +295,11 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 				$arrDados[$key] = $meuPais[0]['id'];
 			} else {
 				echo "Erro: país inválido.";
-				exit;
+				return "falha";
 			  }
 
 		  //Valida a imagem
 		  } elseif ($key == 8) {
-		  		//[8] => Array ( [name] => Sem título.png [type] => image/png [tmp_name] => C:\Windows\Temp\php47DA.tmp [error] => 0 [size] => 77322 ) )
 
 				//Caso haja alguma imagem sera um array
 				if (is_array($value)){
@@ -313,11 +312,11 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 							
 							//Extensao da imagem
 							$tipoImg = explode(".", $arrDados[$key]['name'])[1];
-
+							
 							//Verifica tamanho da imagem
 							if($arrDados[$key]['size'] > (1024000*$tamImg)){
 								echo 'Erro: a imagem é muito grande.';
-								exit;
+								return "falha";
 							}
 
 							//Renomea da imagem
@@ -329,15 +328,17 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 							$arrDados[$key] = $nomeImg;
 						} else {
 							echo "Erro: extensão da imagem inválida." ;
-							exit;
+							return "falha";
 						  }
 
 					//Caso haja erros
 					} else {
 						echo 'Erro: '.$arrDados[$key]['error'];
-						exit;
+						return "falha";
 					}
 				} else {
+					
+					//Valida string
 					$arrDados[$key] = validarString($arrDados[$key]);
 				  }
 			} //elsif
@@ -356,6 +357,11 @@ function alterarUsuario($myDb, $idUsuario, $arrDados){
 
 	//Trata os campos passados
 	$arrDados = validarDadosPerfil($myDb, $arrDados, $idUsuario);
+
+	//Caso haja alguma falha na validacao, para a alteracao
+	if ($arrDados == "falha") {
+		return "falha";
+	}
 
 	$tiposAtts = "ssisissssi";
 

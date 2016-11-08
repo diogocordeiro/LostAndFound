@@ -40,7 +40,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 		$this->mysqli->query("DROP TABLE paises");
 	}
 
-	//Metodo para testar a insercao de uma novo usuario
+	//Metodo para testar a insercao de uma novo usuario - US cadastrar usuario
 	public function testeIncluirUsuario(){
 		
 		$varIncluir = incluirUsuario($this->mysqli, $this->dadosForm);
@@ -52,7 +52,7 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	/**
 	* @depends testeIncluirUsuario
 	*/
-	//Metodo para testar indisponibilidade do e-mail
+	//Metodo para testar indisponibilidade do e-mail - US cadastrar usuario
 	public function testeEmailDisponivel(){
 
 		//Assert
@@ -62,16 +62,28 @@ class TestesUsuario extends PHPUnit_Framework_TestCase{
 	/**
 	* @depends testeIncluirUsuario
 	*/
-	//Metodo para testar alteracao de dados do perfil
+	//Metodo para testar alteracao de dados do perfil - US editar perfil
 	public function testeAlterarPerfil(){
 
-		//
-		$dadosForm = ["PrimeiroNome", "SegundoNome", "", "", "BR", "", "", "", ""];
+		//Dados para 
+		$dadosForm = ["PrimeiroNome", "SegundoNome", "0", "Garanhuns", "BR", "", "", "", "cam.jpg"];
 
 		//Assert
-		$this->assertEquals("sucesso", alterarUsuario($this->mysqli, 0, $dadosForm));
+		$this->assertEquals("sucesso", alterarUsuario($this->mysqli, 1, $dadosForm));
 	}
+	
+	/**
+	* @depends testeIncluirUsuario
+	*/
+	//Metodo para testar alteracao de dados do perfil com uma imagem de extensao nao permitida - US editar perfil
+	public function testeAlterarPerfilImagemInvalida(){
 
+		//Dados para 
+		$dadosForm = array("PrimeiroNome", "SegundoNome", "0", "Garanhuns", "BR", "", "", "", array('name' => "Sem título.txt", 'type' => "txt", 'tmp_name' => "C:\Windows\Temp\php47DA.tmp", 'error' => 0, 'size' => 77322));
+
+		//Assert
+		$this->assertEquals("falha", alterarUsuario($this->mysqli, 1, $dadosForm));
+	}
 }
 	
 ?>
