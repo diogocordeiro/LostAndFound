@@ -331,7 +331,7 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 
 					//Caso haja erros
 					} else {
-						echo 'Erro: '.$arrDados[$key]['error'];
+						echo "Erro (".$arrDados[$i]['error']."): escolha outra imagem.<br/>";
 						return "falha";
 					}
 				} else {
