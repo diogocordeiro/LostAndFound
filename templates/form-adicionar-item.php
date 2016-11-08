@@ -8,6 +8,7 @@
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/form-adicionar-item.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="../backend/js/adicionarItens.js"></script>
 
 </head>
 
@@ -30,7 +31,7 @@
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-                  <form class="form" id="add-item-form" enctype="multipart/form-data" method="POST" action="../backend/Item.php?tipo=novo">
+                  <form class="form" id="add-item-form" enctype="multipart/form-data">
 
                     <div class="content">
 
@@ -130,6 +131,9 @@
                               </p>
                             </div>
 
+                            <div class="" id="error-editar-perfil">
+                              
+                            </div>
                         </div>
                       </div>
                     </div>
