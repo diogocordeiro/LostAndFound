@@ -61,6 +61,13 @@ $('document').ready(function() {
     /*Form submit*/
     function submitForm() {
 
+        // var dados = $('#edit-profile-form').serialize();
+        //
+        // $.ajax({
+        //     type: 'POST',
+        //     url: "../backend/Usuario.php?tipo=edita",
+        //     data: dados,
+        //     beforeSend: function () {
 
         var dados = new FormData($('#edit-profile-form')[0]);
 
@@ -71,13 +78,6 @@ $('document').ready(function() {
             contentType: false,
             processData: false,
             beforeSend: function () {
-        // var dados = $('#edit-profile-form').serialize();
-        //
-        // $.ajax({
-        //     type: 'POST',
-        //     url: "../backend/Usuario.php?tipo=edita",
-        //     data: dados,
-        //     beforeSend: function () {
 
                 $('error').fadeOut();
                 $("#btnSalvar").val('Alterando...');
