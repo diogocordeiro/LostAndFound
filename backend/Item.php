@@ -49,7 +49,7 @@ if (isset($_GET['tipo'])) {
 		$sucesso = incluirItem(BaseDados::conBdUser(), $arr);
 
 		//Caso o item seja inserido
-		if ($sucesso == "sucesso") {
+		if ($sucesso == "Novo item inserido com sucesso!") {
 			echo "Novo item inserido com sucesso!";
 			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
 		} else {
