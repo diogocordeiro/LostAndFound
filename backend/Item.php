@@ -137,7 +137,8 @@ function validarDadosCadastro($arrDados, $idUnico){
 					|| $arrDados[$i]['type'] == "image/png") {
 					
 					//Extensao da imagem
-					$tipoImg = explode(".", $arrDados[$i]['name'])[1];
+					$tipoArr = explode(".", $arrDados[$key]['name']);
+					$tipoImg = $tipoArr[count($tipoArr)-1];
 
 					//Verifica tamanho da imagem
 					if($arrDados[$i]['size'] > (1024000*$tamImg)){

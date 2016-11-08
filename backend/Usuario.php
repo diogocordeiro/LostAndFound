@@ -308,7 +308,8 @@ function validarDadosPerfil($myDb, $arrDados, $idUsuario){
 							|| $arrDados[$key]['type'] == "image/png") {
 							
 							//Extensao da imagem
-							$tipoImg = explode(".", $arrDados[$key]['name'])[1];
+							$tipoArr = explode(".", $arrDados[$key]['name']);
+							$tipoImg = $tipoArr[count($tipoArr)-1];
 							
 							//Verifica tamanho da imagem
 							if($arrDados[$key]['size'] > (1024000*$tamImg)){
