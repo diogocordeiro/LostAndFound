@@ -88,21 +88,24 @@ $('document').ready(function() {
             success: function (data) {
 
                 console.log(data);
-                if (data == "Novo item inserido com sucesso!") {
+                // if (data == "Novo item inserido com sucesso!") {
 
                     $("#btnAdicionar").val('Adicionar');
                     //setTimeout('$("#edit-profile-form").fadeOut(500, function(){ $("#edit-profile-form").load("form-editar-perfil.php"); }); ', 5000);
                     console.log(data);
-                }
+                    setTimeout(function () {
+                        window.location.href = "meus-itens.php";
+                    }, 2000);
+                // }
 
-                else {
-
-                    $('#error').fadeIn(1000, function () {
-
-                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
-                        $("#btnAdicionar").val('Adicionar');
-                    });
-                }
+                // else {
+                //
+                //     $('#error').fadeIn(1000, function () {
+                //
+                //         $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
+                //         $("#btnAdicionar").val('Adicionar');
+                //     });
+                // }
             },
             error: function (data) {
                 console.log(data);
