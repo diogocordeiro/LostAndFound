@@ -86,7 +86,7 @@
                       <dl class="dl-horizontal">
 
                         <dt>Data: </dt>
-                        <dd><?php echo $dados[0]['dataInsercao'];?></dd>
+                        <dd class="dd-data" ><?php echo $dados[0]['dataInsercao'];?></dd>
 
                         <br><br><br>
 

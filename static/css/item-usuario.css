@@ -29,10 +29,8 @@
   margin-bottom: 80px !important;
 }
 
-.dl-horizontal dd {
-  white-space: normal !important;
-}
 
-.teste{
-  white-space: normal !important;
+.dd-data{
+  background-color: green !important;
+  width: 150px !important;
 }

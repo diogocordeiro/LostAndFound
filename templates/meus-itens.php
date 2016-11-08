@@ -126,7 +126,7 @@ $('[data-toggle="tooltip"]').tooltip();
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Remover Item"  type="button"  class="btn btn-remover-item btn-simple btn-xs">
-                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o item?')){window.location = 'meus-itens.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="material-icons remove-item-icon">remove_circle_outline</i></a>
+                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o item?')){window.location = 'meus-itens.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="remover-item-icon material-icons ">remove_circle_outline</i></a>
                 </button>
               </td>
           </tr>
