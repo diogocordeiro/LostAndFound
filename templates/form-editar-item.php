@@ -8,6 +8,7 @@
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/form-adicionar-item.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="../backend/js/editarItens.js"></script>
 
 </head>
 
@@ -65,7 +66,7 @@
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-                  <form class="form" id="edit-item-form" enctype="multipart/form-data" method="POST" action="../backend/Item.php?tipo=edita">
+                  <form class="form" id="edit-item-form" enctype="multipart/form-data">
                     <?php echo '<input type="hidden" name="idSession" value="'.$_SESSION["Lost_Found"]["id"].'"/>'; ?>
                     <?php echo '<input type="hidden" name="idItem" value="'.$idItem.'"/>'; ?>
 

@@ -2,11 +2,15 @@
  * Created by root on 08/11/16.
  */
 
+/**
+ * Created by root on 08/11/16.
+ */
+
 
 $('document').ready(function() {
 
     /*Validação de dados*/
-    $("#add-item-form").validate({
+    $("#edit-item-form").validate({
         rules:
         {
             titulo:
@@ -76,20 +80,21 @@ $('document').ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: "../backend/Item.php?tipo=novo",
+            url: "../backend/Item.php?tipo=edita",
             data: dados,
             contentType: false,
             processData: false,
             beforeSend: function () {
 
-                $('error-adicionar-item').fadeOut();
-                $("#btnAdicionar").val('Salvando...');
+                $('error').fadeOut();
+                $("#btnSalvar").val('Salvando...');
             },
             success: function (data) {
 
-                if (data == "Novo item inserido com sucesso!") {
+                console.log(data);
+                if (data == "Atualizado!") {
 
-                    $("#btnAdicionar").val('Adicionar');
+                    $("#btnSalvar").val('Salvar');
                     //setTimeout('$("#edit-profile-form").fadeOut(500, function(){ $("#edit-profile-form").load("form-editar-perfil.php"); }); ', 5000);
                     console.log(data);
                     setTimeout(function () {
@@ -99,10 +104,10 @@ $('document').ready(function() {
 
                 else {
 
-                    $('#error-adicionar-item').fadeIn(1000, function () {
+                    $('#error').fadeIn(1000, function () {
 
-                        $("#error-adicionar-item").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
-                        $("#btnAdicionar").val('Adicionar');
+                        $("#error").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
+                        $("#btnSalvar").val('Salvar');
                     });
                 }
             },
