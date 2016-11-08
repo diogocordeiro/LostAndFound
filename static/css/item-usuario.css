@@ -10,7 +10,7 @@
 }
 
 .card-content-item{
-  margin-top: 80px !important;
+  /*margin-top: 80px !important;*/
   margin-bottom: 80px !important;
 
 }
@@ -31,6 +31,25 @@
 
 
 .dd-data{
-  background-color: green !important;
-  width: 150px !important;
+    width: 150px !important;
+    margin-left: 120px !important;
+}
+
+.dd-caracteristicas{
+  text-align: justify !important;
+  width: 350px !important;
+
+}
+
+.dd-descricao{
+  text-align: justify !important;
+  width: 350px !important;
+
+}
+
+@media (max-width: 768px){
+  .dd-data{
+      width: 150px !important;
+      margin-left: 50px !important;
+  }
 }

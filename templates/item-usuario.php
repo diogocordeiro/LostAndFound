@@ -46,6 +46,7 @@
     <link href="../static/css/index-logado.css" rel="stylesheet">
     <link href="../static/css/perfil-usuario.css" rel="stylesheet">
     <link href="../static/css/pagina-item.css" rel="stylesheet">
+    <link href="../static/css/item-usuario.css" rel="stylesheet">
 
 </head>
 
@@ -86,7 +87,7 @@
                       <dl class="dl-horizontal">
 
                         <dt>Data: </dt>
-                        <dd class="dd-data" ><?php echo $dados[0]['dataInsercao'];?></dd>
+                        <dd class="dd-data"><?php echo $dados[0]['dataInsercao'];?></dd>
 
                         <br><br><br>
 
@@ -121,17 +122,13 @@
                         <br><br><br>
 
                         <dt>Caracteristicas: </dt>
-                        <dd><p>
-
-                          <?php echo $dados[0]['caracteristicas'];?>
-
-                        </p> </dd>
+                        <dd class="dd-caracteristicas" ><?php echo $dados[0]['caracteristicas'];?></dd>
 
                         <br><br><br>
 
                         <dt>Descrição: </dt>
 
-                          <dd ><?php echo $dados[0]['descricao'];?></dd>
+                          <dd class="dd-descricao"><?php echo $dados[0]['descricao'];?></dd>
 
                         <br><br><br>
 
