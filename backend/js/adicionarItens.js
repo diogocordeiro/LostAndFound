@@ -87,7 +87,7 @@ $('document').ready(function() {
             },
             success: function (data) {
 
-                if (data == "Novo item inserido com sucesso!") {
+                // if (data == "Novo item inserido com sucesso!") {
 
                     $("#btnAdicionar").val('Adicionar');
                     //setTimeout('$("#edit-profile-form").fadeOut(500, function(){ $("#edit-profile-form").load("form-editar-perfil.php"); }); ', 5000);
@@ -95,16 +95,16 @@ $('document').ready(function() {
                     setTimeout(function () {
                         window.location.href = "meus-itens.php";
                     }, 2000);
-                }
+                // }
 
-                else {
-
-                    $('#error-adicionar-item').fadeIn(1000, function () {
-
-                        $("#error-adicionar-item").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
-                        $("#btnAdicionar").val('Adicionar');
-                    });
-                }
+                // else {
+                //
+                //     $('#error-adicionar-item').fadeIn(1000, function () {
+                //
+                //         $("#error-adicionar-item").html('<div class=""><span class=""></span> &nbsp; '+data+'</div>');
+                //         $("#btnAdicionar").val('Adicionar');
+                //     });
+                // }
             },
             error: function (data) {
                 console.log(data);
