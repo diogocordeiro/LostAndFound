@@ -116,16 +116,13 @@ if (isset($_GET['tipo'])) {
 			echo "Erro: id da session inválido.";
 			exit;
 		  }
-		
 
 	//POST para desativação da conta do usuário
 	} elseif ($tipo == "desativa") {
 		$idUsuario = validarString($_GET['id']);
 		desativarUsuario(BaseDados::conBdUser(), $idUsuario);
 	}
-} else {
-	echo "Defina o tipo do POST";
-  }
+}
 
 //Função para validar todos os campos passados nos formulários de cadastro
 function validarDadosCadastro($arrDados){
