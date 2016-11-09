@@ -113,7 +113,7 @@ if (isset($_GET['tipo'])) {
 }
 
 //Função para validar todos os campos passados nos formulários de cadastro
-function validarDadosCadastro($arrDados, $idUnico){
+function validarDadosCadastroItem($arrDados, $idUnico){
 
 	for ($i=0; $i < count($arrDados); $i++) { 
 		
@@ -191,7 +191,7 @@ function validarDadosCadastro($arrDados, $idUnico){
 	}//for
 
 	return $arrDados;
-}//validarDadosCadastro()
+}//validarDadosCadastroItem()
 
 //Método para incluir o item
 function incluirItem($myDb, $arrDados){
@@ -202,7 +202,7 @@ function incluirItem($myDb, $arrDados){
 	$idUnico = md5(uniqid(rand(), true));
 
 	//Valida cada campo passado
-	$arrDados = validarDadosCadastro($arrDados, $idUnico);
+	$arrDados = validarDadosCadastroItem($arrDados, $idUnico);
 
 	//Caso haja algum erro na validacao
 	if ($arrDados == "falha") {
@@ -251,7 +251,7 @@ function alterarItem($myDb, $idItem, $arrDados){
 	global $tabItens;
 
 	//Valida cada campo passado
-	$arrDados = validarDadosCadastro($arrDados, $idItem);
+	$arrDados = validarDadosCadastroItem($arrDados, $idItem);
 
 	//Caso haja algum erro na validacao
 	if ($arrDados == "falha") {
