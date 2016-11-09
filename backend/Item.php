@@ -58,9 +58,9 @@ if (isset($_GET['tipo'])) {
 		$sucesso = incluirItem(BaseDados::conBdUser(), $arr);
 
 		//Caso o item seja inserido
-		if ($sucesso == "sucesso") {
+		if ($sucesso[0] == "sucesso") {
 			echo "Novo item inserido com sucesso!";
-			echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
+			// echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
 		} else {
 			echo "<br/>Erro: item não inserido!";
 		  }
@@ -90,11 +90,11 @@ if (isset($_GET['tipo'])) {
 
 			//Caso haja imagem 
 			if ($_FILES['enderFoto']['name'] != ""){
-				array_push($arr, $_FILES['enderFoto']); #8
+				array_push($arr, $_FILES['enderFoto']); #9
 
 			//Caso contrario, passa o endereco da imagem atual
 			} else {
-				array_push($arr, $_POST['enderFotoAtual']); #7
+				array_push($arr, $_POST['enderFotoAtual']); #9
 			  }
 
 			$sucesso = alterarItem(BaseDados::conBdUser(), $idItem, $arr);
@@ -137,7 +137,7 @@ function validarDadosCadastro($arrDados, $idUnico){
 					|| $arrDados[$i]['type'] == "image/png") {
 					
 					//Extensao da imagem
-					$tipoArr = explode(".", $arrDados[$key]['name']);
+					$tipoArr = explode(".", $arrDados[$i]['name']);
 					$tipoImg = $tipoArr[count($tipoArr)-1];
 
 					//Verifica tamanho da imagem
@@ -236,7 +236,7 @@ function incluirItem($myDb, $arrDados){
 
 	//Executa o statement
 	if ($stmt->execute()){
-		return "sucesso";
+		return array("sucesso", $idUnico);
 	} else {
 		//echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
@@ -296,7 +296,7 @@ function removeItem($myDb, $idItem, $tipo, $nomeImg = null){
 	global $tabItens;
 
 	//Caso o item NAO pertenca a nenhum report (remove o item completamente)
-	if ($tipo == "tudo") {
+	if ($tipo == "tudo" || $tipo == "tudo_teste") {
 		$sql = "DELETE FROM ".$tabItens." WHERE id = ?";
 
 	//Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
@@ -316,7 +316,7 @@ function removeItem($myDb, $idItem, $tipo, $nomeImg = null){
 	}
 
 	//Valida o atributo
-	if ($tipo == "tudo") {
+	if ($tipo == "tudo" || $tipo == "tudo_teste") {
 		$stmt->bind_param("s", $idItem);
 	} elseif ($tipo == "ref") {
 		$stmt->bind_param("is", $novoId, $idItem);
