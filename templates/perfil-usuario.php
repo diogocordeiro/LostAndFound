@@ -16,138 +16,212 @@
 
   <?php require 'top-menu-logado.php'; ?>
 
-  <!-- coletar informacoes no banco -->
-  <?php
+    <!-- coletar informacoes no banco -->
+    <?php
     require('../backend/funcoes.php');
     require('../backend/conBd.php');
 
     $dados = getPerfil(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
   ?>
 
-  <div class="container-fluid">
+      <div class="container-fluid">
 
-    <div class="section text-center section-landing">
+        <div class="section text-center section-landing">
 
-      <div class="row">
+          <div class="row">
 
-        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
 
-          <div class="card card-content">
+              <div class="card card-content">
 
-            <h2 class="title titulo-adicionar-item">Perfil</h2>
+                <h2 class="title titulo-adicionar-item">Perfil</h2>
 
-            <div class="row">
+                <div class="row">
 
-              <div class="col-md-4 col-md-offset-1">
+                  <div class="col-md-4 col-md-offset-1">
 
-                <img src="../usuarios/fotos/<?php echo $dados[0]['imagemPerfil'];?>" class="img-circle img-responsive img-raised">
+                    <img src="../usuarios/fotos/<?php echo $dados[0]['imagemPerfil'];?>" class="img-circle img-responsive img-raised">
 
-              </div>
+                  </div>
 
-              <div class="col-md-6 ">
+                  <div class="col-md-6 ">
 
-                <div class="card card-content-item">
+                    <div class="card card-content-item">
 
-                  <div class="row">
+                      <div class="row">
 
-                    <div class="col-md-4 col-md-offset-1">
+                        <div class="col-md-4 col-md-offset-1">
 
-                      <dl class="dl-horizontal">
-                        <dt>E-mail: </dt>
-                        <dd class="dd-conteudo-email"><?php echo $dados[0]['email'];?></dd>
+                          <dl class="dl-horizontal">
+                            <dt>E-mail: </dt>
+                            <dd class="dd-conteudo-email">
+                              <?php echo $dados[0]['email'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Data Nascimento: </dt>
-                        <dd class="dd-conteudo-data"><?php echo $dados[0]['dNascimento'];?></dd>
+                            <dt>Data Nascimento: </dt>
+                            <dd class="dd-conteudo-data">
+                              <?php echo $dados[0]['dNascimento'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Senha: </dt>
-                        <dd class="dd-conteudo-senha"><a href="#">Alterar</a></dd>
+                            <dt>Senha: </dt>
+                            <dd class="dd-conteudo-senha"><a data-toggle="modal" data-target="#modalAlterarSenha" href="#">Alterar</a></dd>
 
-                        <br><br>
+                            <!-- MODAL ONDE APARECE O FORM PARA COLOCAR EMAIL DE ALTERAR SENHA  -->
+                          <div class="modal fade" id="modalAlterarSenha" tabindex="-1" role="dialog" aria-labelledby="modalAlterarSenhaLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalAlterarSenhaLabel">Alterar Senha</h4>
+                                  </div>
+                                  <div class="modal-body">
 
-                        <dt>Nome: </dt>
-                        <dd class="dd-conteudo"><?php echo $dados[0]['nome'];?></dd>
+                                    <h5>Digite seu email para receber o link</h5>
+                                    <form>
+                                      <div class="form-group">
+                                        <div class="section text-center section-landing">
 
-                        <br><br>
+                                          <div class="input-group">
+                                            <span class="input-group-addon">
+                      											<i class="material-icons">email</i>
+                      										</span>
+                                            <input type="email" class="form-control input-lg " id="email" name="email" ng-model="email" placeholder="Email..." required />
+                                          </div>
 
-                        <dt>Sobrenome: </dt>
-                        <dd class="dd-conteudo-sobrenome"><?php echo $dados[0]['sobrenome'];?></dd>
 
-                        <br><br>
+                                        </div>
+
+                                      </div>
+
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+
+                                    <div class="section text-center section-landing">
+
+                                        <button type="button" class="btn btn-default btn-lg btn-cor-estilo-escuro">Enviar</button>
+
+                                    </div>
 
 
-                        <dt>Sexo: </dt>
-                        <dd class="dd-conteudo">
-                          <?php
+                                  </div>
+                                </div>
+                              </div>
+                            </div> <!--FIM DO MODAL-->
+
+                            <br>
+                            <br>
+
+                            <dt>Nome: </dt>
+                            <dd class="dd-conteudo">
+                              <?php echo $dados[0]['nome'];?>
+                            </dd>
+
+                            <br>
+                            <br>
+
+                            <dt>Sobrenome: </dt>
+                            <dd class="dd-conteudo-sobrenome">
+                              <?php echo $dados[0]['sobrenome'];?>
+                            </dd>
+
+                            <br>
+                            <br>
+
+
+                            <dt>Sexo: </dt>
+                            <dd class="dd-conteudo">
+                              <?php
                               if($dados[0]['sexo'] == 1){
                                 echo "Feminino";
                               } else {
                                   echo "Masculino";
                                 }
                           ?>
-                        </dd>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Cidade: </dt>
-                        <dd class="dd-conteudo" ><?php echo $dados[0]['cidade'];?></dd>
+                            <dt>Cidade: </dt>
+                            <dd class="dd-conteudo">
+                              <?php echo $dados[0]['cidade'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>País: </dt>
-                        <dd class="dd-conteudo-pais"><?php echo $dados[0]['pais'];?></dd>
+                            <dt>País: </dt>
+                            <dd class="dd-conteudo-pais">
+                              <?php echo $dados[0]['pais'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Celular: </dt>
-                        <dd class="dd-conteudo-telefone"><?php echo $dados[0]['celular'];?></dd>
+                            <dt>Celular: </dt>
+                            <dd class="dd-conteudo-telefone">
+                              <?php echo $dados[0]['celular'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Telefone: </dt>
-                        <dd class="dd-conteudo-telefone"><?php echo $dados[0]['telefone'];?></dd>
+                            <dt>Telefone: </dt>
+                            <dd class="dd-conteudo-telefone">
+                              <?php echo $dados[0]['telefone'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        <dt>Facebook: </dt>
-                        <dd class="dd-conteudo"><?php echo $dados[0]['facebook'];?></dd>
+                            <dt>Facebook: </dt>
+                            <dd class="dd-conteudo">
+                              <?php echo $dados[0]['facebook'];?>
+                            </dd>
 
-                        <br><br>
+                            <br>
+                            <br>
 
-                        </dl>
+                          </dl>
 
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="footer text-center">
+                      <a class="btn-editar btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-perfil.php">Editar Perfil</a>
                     </div>
 
                   </div>
 
+
+
                 </div>
 
-                <div class="footer text-center">
-                    <a class="btn-editar btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-perfil.php">Editar Perfil</a>
-                </div>
 
-            </div>
+
+              </div>
 
 
 
             </div>
-
-
 
           </div>
-
-
 
         </div>
 
       </div>
-
-    </div>
-
-  </div>
 
 
 
