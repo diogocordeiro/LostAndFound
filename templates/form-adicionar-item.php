@@ -61,52 +61,54 @@
                           </div>
 
                           <div class="row">
-                            <div class="col-md-4">
-                              <select name="categoria">
+                            <div class="col-md-3">
+                              <select class="form-control"  name="categoria">
                                 <option value="">Categoria</option>
-                                <?php 
+                                <?php
 
                                     //Php com categorias
                                     require('listaCategorias.php');
                                     echo $minhasCategorias;
-                                  ?>  
+                                  ?>
                               </select>
                             </div>
 
-                            <div class="col-md-4">
-                              <select name="subcategoria">
+                            <div class="col-md-3">
+                              <select class="form-control" name="subcategoria">
                                 <option value="">Subcategoria</option>
-                                <?php 
+                                <?php
 
                                     //Php com subcategorias
                                     require('listaSubcategorias.php');
                                     echo $minhasSubcategorias;
-                                  ?>  
+                                  ?>
                               </select>
                             </div>
 
-                            <div class="col-md-4">
-                              <select id="SelectCor1" name="cor1" onChange="javascript:var s = document.getElementById('SelectCor1');document.getElementById('divCor1').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
+                            <div class="col-md-3">
+                              <select class="form-control" id="SelectCor1" name="cor1" onChange="javascript:var s = document.getElementById('SelectCor1');document.getElementById('divCor1').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
                                 <option value="">Cor Predominante</option>
-                                  <?php 
+                                  <?php
 
                                     //Php com as cores
                                     require('listaCores.php');
                                     echo $minhasCores;
-                                  ?>                                
+                                  ?>
                               </select>
                               <span id="divCor1" align="center" style="font-size:10px;color:black;border-radius:10px;padding:6px 8px">P</span>
                             </div>
-                            
-                            <div class="col-md-4">
-                              <select id="SelectCor2" name="cor2" onChange="javascript:var s = document.getElementById('SelectCor2');document.getElementById('divCor2').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
+
+                            <div class="col-md-3">
+                              <select class="form-control" id="SelectCor2" name="cor2" onChange="javascript:var s = document.getElementById('SelectCor2');document.getElementById('divCor2').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
                                 <option value="">Cor Secudária</option>
-                                  <?php 
+                                  <?php
                                     echo $minhasCores;
                                   ?>
                               </select>
                               <span id="divCor2" align="center" style="font-size:10px;color:black;border-radius:10px;padding:6px 8px">S</span>
                             </div>
+
+                            <br>
 
                             <div class="input-group input-size-small-device">
                               <span class="input-group-addon">
@@ -124,7 +126,7 @@
 
                             <div class="input-group btn-upload-imagem">
                               <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i>
-                                Imagem <input name="enderFoto" type="file" >
+                                Imagem <input style="display: none;" name="enderFoto" type="file" >
                               </label>
                               <p class="informacao-imagem-upload">
                                 Enviar foto do item
@@ -132,7 +134,7 @@
                             </div>
 
                             <div class="" id="error-editar-perfil">
-                              
+
                             </div>
                         </div>
                       </div>

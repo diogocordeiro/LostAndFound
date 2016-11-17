@@ -69,9 +69,9 @@
                  </div>
 
                  <span class="input-group-btn">
-                         <button class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
+                         <a href="#" class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
                              Criar Report Perda
-                         </button>
+                         </a>
 
 
                      </span>
@@ -95,9 +95,9 @@
                  </div>
 
                  <span class="input-group-btn">
-                         <button class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
+                         <a href="form-report-achado.php" class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
                           Criar Report Achado
-                         </button>
+                        </a>
 
 
                      </span>
