@@ -31,7 +31,7 @@
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-                <form class="form" id="add-item-form" enctype="multipart/form-data">
+                <form class="form" id="add-report-form" enctype="multipart/form-data">
 
                   <div class="content">
 
@@ -138,7 +138,64 @@
 
                           <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. </h5>
 
-                          <div class="" id="error-editar-perfil">
+                          <div class="input-group input-size-small-device">
+                            <span class="input-group-addon">
+                              <i class="material-icons">home</i>
+                            </span>
+                            <input name="endereco" type="text" class=" form-control input-lg " placeholder="Endereço/Rua... Ex: Rua dos Bobos, N 0" required />
+                          </div>
+
+                          <div class="input-group input-size-small-device">
+                            <span class="input-group-addon">
+                              <i class="material-icons">label</i>
+                            </span>
+                            <input name="complemento" type="text" class=" form-control input-lg " placeholder="Complemento... Ex: Proximo ao viaduto" required />
+                          </div>
+
+                          <div class="input-group input-size-small-device">
+                            <span class="input-group-addon">
+                              <i class="material-icons">label</i>
+                            </span>
+                            <input name="estado" type="text" class=" form-control input-lg " placeholder="Estado... Ex: Pernambuco" required />
+                          </div>
+
+                          <div class="input-group input-size-small-device">
+                            <span class="input-group-addon">
+                              <i class="material-icons">location_city</i>
+                            </span>
+                            <input name="cidade" type="text" class=" form-control input-lg " placeholder="Cidade... Ex: Garanhuns" required />
+                          </div>
+
+                          <div class="input-group input-size-small-device">
+                            <span class="input-group-addon">
+                              <i class="material-icons">local_post_office</i>
+                            </span>
+                            <input name="cep" type="text" class=" form-control input-lg " placeholder="CEP... Ex: xxxxx-xxx" required />
+                          </div>
+
+                          <div class="col-md-4">
+
+                          </div>
+
+                          <div class=" col-md-4">
+                            <select class=" form-control" name="pais">
+                              <option value="">País</option>
+                              <?php
+
+                                    //Php com categorias
+                                    require('listaPaises.php');
+                                    echo $minhasCategorias;
+                                  ?>
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+
+                          </div>
+
+                          <br><br><br><br>
+
+                          <div class="" id="error-editar-report">
 
                           </div>
                         </div>
@@ -146,7 +203,7 @@
                     </div>
 
                     <div class="footer text-center">
-                      <input id="btnAdicionar" value="Adicionar" class="btn btn-default  btn-lg btn-cor-estilo-escuro" type="submit" />
+                      <input id="btnAdicionar" value="Criar" class="btn btn-default  btn-lg btn-cor-estilo-escuro" type="submit" />
                     </div>
 
                 </form>
