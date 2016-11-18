@@ -7,7 +7,7 @@
 
     <!-- Custom Theme CSS -->
 
-    <link href="../static/css/form-report-achado.css" rel="stylesheet">
+    <link href="../static/css/form-report-perdido.css" rel="stylesheet">
     <script type="text/javascript" language="javascript" src="../backend/js/adicionarItens.js"></script>
 
 </head>
@@ -27,7 +27,7 @@
               <div class="card card-adicionar-item">
 
 
-                <h2 class="title titulo-adicionar-item">Reportar Item Encontrado</h2>
+                <h2 class="title titulo-adicionar-item">Reportar Item Perdido</h2>
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
@@ -72,7 +72,7 @@
                               <p class="data-nascimento-label">Data</p>
                               <input type="date" place class="form-control input-lg" id="dataItem" name="dataItem" ng-model="data_nascimento" placeholder="Data..." required>
                               <p class="informacao-data-nascimento">
-                                *Data que o item foi encontrado.
+                                *Data que o item foi perdido.
                               </p>
                             </div>
 
@@ -148,7 +148,7 @@
                             <span class="input-group-addon">
                                 <i class="material-icons">label</i>
                               </span>
-                            <textarea name="informacao" class="form-control" placeholder="Escreva um pequeno texto sobre a situação onde o item foi encontrado. Ex: Econtrei sobre um banco de madeira, que fica na estação de metro N 22, era domingo a tarde, aproximadamente 15h" rows="10"></textarea>
+                            <textarea name="informacao" class="form-control" placeholder="Escreva um pequeno texto sobre a situação onde o item foi perdido. Ex: Perdi a carteira provavelmente na estação de metro N 22, era domingo a tarde, aproximadamente 15h" rows="10"></textarea>
                           </div>
 
                           <div class="input-group btn-upload-imagem">
@@ -161,7 +161,7 @@
                           </div>
 
 
-                          <h2 class="title titulo-adicionar-item">Edereço Onde O Foi Item Encontrado</h2>
+                          <h2 class="title titulo-adicionar-item">Edereço Onde O Foi Perdido</h2>
 
                           <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. </h5>
 

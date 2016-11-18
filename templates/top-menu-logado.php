@@ -41,10 +41,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li class="divider"></li>
-            <li><a href="#">Meus Reports</a></li>
+            <li><a href="meus-reports.php">Meus Reports</a></li>
             <li class="divider"></li>
-            <li><a href="#">Criar Report Achado</a></li>
-            <li><a href="#">Criar Report Perdido</a></li>
+            <li><a href="form-report-achado.php">Criar Report Achado</a></li>
+            <li><a href="form-report-perdido.php">Criar Report Perdido</a></li>
 
           </ul>
         </li>

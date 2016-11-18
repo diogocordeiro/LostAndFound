@@ -69,7 +69,7 @@
                  </div>
 
                  <span class="input-group-btn">
-                         <a href="#" class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
+                         <a href="form-report-perido.php" class="btn-report btn btn-default  btn-lg btn-cor-estilo-escuro" type="button">
                              Criar Report Perda
                          </a>
 

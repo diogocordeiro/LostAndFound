@@ -1,0 +1,327 @@
+html {
+   font-family: Roboto, sans-serif !important;
+   color: #3d3d3d!important;
+   background-color: #FAFAFA!important;
+   height: 100% !important;
+
+}
+
+
+body {
+    font-family: Roboto, sans-serif !important;
+    color: #3d3d3d !important;
+    background-color: #FAFAFA !important;
+    position: relative !important;
+    min-height: 100% !important;
+
+
+}
+
+.mensagem-alerta{
+  width: 300px;
+  height: 100px;
+  background-color: #3d3d3d;
+  text-align: center;
+  color: #FAFAFA;
+  position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-50px;
+}
+
+.btn-alerta{
+  background-color: #2196F3 !important;
+}
+.card-signup{
+
+  margin-top: 300px;
+  margin-bottom: 300px;
+
+}
+.container-form{
+
+  margin-top: 80px;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+.texto-informativo{
+  text-align: justify;
+  margin-top: 250px;
+
+}
+
+.container-panel{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 30px;
+
+}
+
+
+.input-group {
+    padding: 30px;
+}
+
+.btn-estilo{
+  margin-bottom: 30px !important;
+}
+
+.btn-estilo:hover{
+  will-change: box-shadow, transform !important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    /*-webkit-box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;
+    -moz-box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;
+    box-shadow: 0px 0px 60px 6px rgba(38,38,38, 1)!important;*/
+
+    box-shadow: 0 4px 4px 0 rgba(38,38,38, 1), 0 5px 1px -2px rgba(38,38,38, 1), 0 1px 5px 0 rgba(38,38,38, 1) !important;
+
+}
+
+.btn-estilo:hover, .btn-estilo:focus, .btn-estilo:active, .btn-estilo.active {
+    background: #262626
+}
+
+.btn-estilo.active.focus, .btn-estilo.active:focus, .btn-estilo.active:hover, .btn-estilo:active.focus, .btn-estilo:active:focus, .btn-estilo:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff;
+    background-color: #262626;
+    border-color: #494F57;
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #262626;
+}
+.btn-primary:hover,
+.btn-primary.hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #494F57;
+  border-color: #494F57;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background: #494F57;
+  border-color: #494F57;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled.hover,
+.btn-primary[disabled].hover,
+fieldset[disabled] .btn-primary.hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #bdc3c7;
+  border-color: #494F57;
+}
+.btn-primary .badge {
+  color: #494F57;
+  background-color: #ffffff;
+}
+
+  .pagination > .btn:first-child.btn-primary {
+    border-bottom-color: #494F57;
+  }
+
+  .pagination > .btn + ul + .btn.btn-primary {
+    border-bottom-color: #494F57;
+  }
+
+  .texto-panel{
+
+    margin-bottom: 0px;
+    text-align: center;
+
+  }
+
+
+  .signup-header {
+	margin: 150px 0 100px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 4px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.signup-header h3{
+	padding: 20px 0 10px;
+	color: white;
+	font-weight: 300;
+}
+.form-header input {
+	position: relative;
+	padding: 5px 15px;
+}
+.form-header .form-control {
+	border-radius: 0;
+	border: solid 1px #dadada;
+	background-color: #fff;
+	color: #333;
+	height: 55px;
+}
+.form-header .btn {
+	border-radius: 0;
+	height: 55px;
+	width: 100%;
+	background-color: #3eb0f7;
+	color: white;
+	font-size: 17px !important;
+	padding: 0 33px;
+	border: none;
+	margin: 0;
+	-webkit-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.form-header .btn:hover {
+	background-color: #1f96e0;
+	-webkit-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.privacy {
+	padding-top: 0;
+	font-size: 13px;
+}
+.signup-header p {
+	color: white;
+}
+
+.btn:active, .btn:focus {
+
+  background: #262626 !important;
+
+
+}
+
+.btn-cor-estilo-escuro{
+  background-color: #3d3d3d !important;
+}
+
+.btn-cor-estilo-escuro.active.focus, .btn-cor-estilo-escuro.active:focus, .btn-cor-estilo-escuro.active:hover, .btn-cor-estilo-escuro:active.focus, .btn-cor-estilo-escuro:active:focus, .btn-cor-estilo-escuro:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff !important;
+    background-color: #262626 !important;
+    border-color: #494F57 !important;
+}
+
+.btn-cor-estilo-escuro:hover{
+
+  background-color: #494F57 !important;
+
+}
+
+.btn-cor-estilo-escuro{
+
+  margin-top: 10px !important;
+}
+
+.password-login{
+
+
+  margin-right: 30px !important;
+}
+
+.email-login{
+
+  margin-right: 50px !important;
+
+}
+
+.logado-como-texto{
+  text-decoration: none !important;
+  color: #FAFAFA !important;
+  font-size: 18px !important;
+}
+
+.btn-busca-avancada{
+  margin: 10px !important;
+}
+
+
+@media (max-width: 768px) {
+.btn-busca-responsive {
+  padding:2px 4px !important;
+  font-size:80% !important;
+  line-height: 1 !important;
+  border-radius:3px !important;
+}
+}
+
+.card-iformacao-report{
+  margin-top: 80px !important;
+}
+
+.location-icon{
+  color:  #D32F2F !important;
+}
+
+.report-perdido-icon{
+  color: #0277BD !important;
+}
+
+.btn-report{
+  margin-bottom: 40px !important;
+}
+
+.titulo-busca{
+  margin-top: 80px !important;
+}
+
+.descricao-busca{
+  margin-bottom: 40px !important;
+}
+
+.titulo-itens{
+  margin-top: 80px !important;
+}
+
+.tabela-itens{
+
+  margin-top: 80px !important;
+
+}
+
+footer{
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+}
+
+.teste{
+
+  margin-bottom: 200px !important;
+}
+
+.exibir-item-icon{
+  color: #1E88E5 !important;
+
+}
+
+.editar-item-icon{
+  color: #43A047 !important;
+
+}
+
+.remover-item-icon{
+  color: #F44336 !important;
+
+}
