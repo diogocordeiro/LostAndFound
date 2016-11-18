@@ -1,0 +1,66 @@
+.card-content{
+  min-height: 768px !important;
+  margin-top: 80px !important;
+
+}
+
+.imagem-item{
+  margin-top: 80px !important;
+
+}
+
+.card-content-item{
+  /*margin-top: 80px !important;*/
+  margin-bottom: 80px !important;
+
+}
+
+.informacoes{
+  color: #3d3d3d!important;
+}
+
+.btn-criar-report{
+  margin-bottom: 80px !important;
+  margin-top: 50px !important;
+}
+
+.footer{
+
+  margin-bottom: 80px !important;
+}
+
+
+.dd-data{
+    width: 150px !important;
+    margin-left: 120px !important;
+}
+
+.dd-caracteristicas{
+  text-align: justify !important;
+  width: 350px !important;
+
+}
+
+.dd-descricao{
+  text-align: justify !important;
+  width: 350px !important;
+
+}
+
+@media (max-width: 768px){
+  .dd-data{
+      width: 150px !important;
+      margin-left: 50px !important;
+  }
+}
+
+.dl-horizontal{
+  margin-top: 80px !important;
+
+}
+
+.img-badge{
+  max-width: 150px !important;
+  max-height: 150px !important;
+  margin-left: 200px !important;
+}

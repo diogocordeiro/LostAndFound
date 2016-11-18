@@ -45,7 +45,7 @@
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
     <link href="../static/css/perfil-usuario.css" rel="stylesheet">
-    <link href="../static/css/pagina-item.css" rel="stylesheet">
+    
     <link href="../static/css/item-usuario.css" rel="stylesheet">
 
 </head>
