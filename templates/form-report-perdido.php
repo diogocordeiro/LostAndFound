@@ -8,7 +8,7 @@
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/form-report-achado.css" rel="stylesheet">
-    <script type="text/javascript" language="javascript" src="../backend/js/adicionarItens.js"></script>
+    <script type="text/javascript" language="javascript" src="../backend/js/reportPerdido.js"></script>
 
 </head>
 
