@@ -3,18 +3,6 @@
 //Verifica se o tipo do POST foi passado
 if (isset($_GET['tipo'])) {
 
-	// //Carrega nomes das tabelas do bd
-	// require("nomesTabelas.php");
-
-	// //Carrega funções básicas
-	// require("funcoes.php");
-
-	// //Carrega o banco
-	// require("conBd.php");
-
-	// //Carrega o timezone padrão
-	// require("default_timezone.php");
-
 	//Valida query string
 	$tipo = validarString2($_GET['tipo']);
 	$report = validarString2($_GET['report']);
@@ -179,13 +167,18 @@ function geocode($address){
 }//function geocode()
 
 //Método para incluir os reports
-function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport){
+function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport, $idItemExistente=null){
 
 	global $tabAchados;
 	global $tabPerdidos;
 	$tabReport = null;
+	$itemSucesso = null;
 	$idReportAchado = null;
 	$idReportPerdido = null;
+	$idUser = $arrDados[10];
+
+	//Elimina referencia do usuario ao item, pois a referencia e' apenas do relatorio
+	$arrDados[10] = 0;
 
 	//id do report
 	$idUnicoReport = md5(uniqid(rand(), true));
@@ -201,9 +194,15 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport){
 		$idReportPerdido = $idUnicoReport;
 	  }
 
-	//Inclui o item com o correto id
-	$itemSucesso = incluirItem($myDb, $arrDados, $idReportAchado, $idReportPerdido);
-
+	//Caso seja um novo item
+	if ($idItemExistente == null) {
+		$itemSucesso = incluirItem($myDb, $arrDados, $idReportAchado, $idReportPerdido);
+	
+	//Caso seja um item ja' existente
+	} else {
+		$itemSucesso = array("sucesso", $idItemExistente);
+	  }
+	
 	//Caso o item nao seja inserido com sucesso
 	if($itemSucesso[0] != "sucesso") {
 		echo "Erro: falha ao inserir o item.";
@@ -258,7 +257,7 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $idUnicoReport, $itemSucesso[1], $arrDados[10], $localidade[2], $localidade[0],
+	$stmt->bind_param($tiposAtts, $idUnicoReport, $itemSucesso[1], $idUser, $localidade[2], $localidade[0],
 		 $localidade[1], $arrDados[13], $arrDados[11], $arrDados[12], $situacao, $dataHoje);
 
 	//Executa o statement
@@ -312,96 +311,61 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport){
 // 	  }
 // }//function alterarItem()
 
-// //Funcao para remover um item do usuariao no bd
-// function removeItem($myDb, $idItem, $tipo, $nomeImg = null){
+//Funcao para remover um report do usuariao no bd
+function removeReport($myDb, $idReport, $tab){
 
-// 	//$idItem ja' vem validado com validarString()
+	$sql = "DELETE FROM ".$tab." WHERE id = ?";
 
-// 	//Carrega nomes das tabelas do bd
-// 	require("nomesTabelas.php");
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
 
-// 	global $tabItens;
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
 
-// 	//Caso o item NAO pertenca a nenhum report (remove o item completamente)
-// 	if ($tipo == "tudo" || $tipo == "tudo_teste") {
-// 		$sql = "DELETE FROM ".$tabItens." WHERE id = ?";
+	//Valida o atributo
+	$stmt->bind_param("s", $idReport);
 
-// 	//Caso o item pertenca a algum report (remove apenas a referencia entre o item e o usuario)
-// 	} elseif ($tipo == "ref") {
-// 		$sql = "UPDATE ".$tabItens." SET idUsuario=? WHERE id=?";
-// 	  }
+	//Executa o statement
+	if ($stmt->execute()) {
+		return "sucesso";
+	} else {
+		echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
+}//removeReport()
 
-// 	//Novo id para eliminar a referencia
-// 	$novoId = 0;
+//Funcao para coletar os reports do usuariao no bd
+function getReportsUsuario($myDb, $idSession, $tab){
 
-// 	//Prepara o statement
-// 	$stmt = $myDb->prepare($sql);
+	require('nomesTabelas.php');
 
-// 	//Checa erros
-// 	if(!$stmt){
-// 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
-// 	}
+	//Valida a string
+	$id = validarString($idSession);
+	$tabReport = validarString($tab);
 
-// 	//Valida o atributo
-// 	if ($tipo == "tudo" || $tipo == "tudo_teste") {
-// 		$stmt->bind_param("s", $idItem);
-// 	} elseif ($tipo == "ref") {
-// 		$stmt->bind_param("is", $novoId, $idItem);
-// 	  }
+	$sql = "SELECT r.*, i.titulo FROM ".$tabReport." as r, ".$tabItens." as i WHERE r.idUsuario = ? AND i.id = r.idItem ORDER BY dataCadastro DESC";
 
-// 	//Executa o statement
-// 	if ($stmt->execute()) {
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
 
-// 		global $imgPadrao;
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
 
-// 		//Exclui a imagem do servidor (se nao for a imagem padrao)
-// 		if ($tipo == "tudo" && strcmp($nomeImg, $imgPadrao) != 0) {
-// 			global $pastaImgs;
-// 			unlink($pastaImgs.$nomeImg);
-// 		}
+	//Valida o atributo
+	$stmt->bind_param("i", $id);
 
-// 		return "sucesso";
-// 	} else {
-// 		echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
-// 		return "falha";
-// 	  }
-// }//removeItem()
+	//Executa o statement
+	$stmt->execute();
 
-// //Funcao para coletar um item do usuariao no bd
-// function getItensUsuario($myDb, $idSession){
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
 
-// 	//Carrega funções básicas
-// 	require("funcoes.php");
-
-// 	//Carrega nomes das tabelas do bd
-// 	require("nomesTabelas.php");
-
-// 	global $tabItens;
-
-// 	//Valida a string
-// 	$id = validarString($idSession);
-
-// 	$sql = "SELECT * FROM ".$tabItens." WHERE idUsuario = ? ORDER BY dataInsercao DESC";
-
-// 	//Prepara o statement
-// 	$stmt = $myDb->prepare($sql);
-
-// 	//Checa erros
-// 	if(!$stmt){
-// 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
-// 	}
-
-// 	//Valida o atributo
-// 	$stmt->bind_param("i", $id);
-
-// 	//Executa o statement
-// 	$stmt->execute();
-
-// 	//Executa o fetch do resultado e atribuí a variável $myArr
-// 	$myArr = fetch($stmt);
-
-// 	//Retornar os itens encontrados
-// 	return $myArr;
-// }//getItensUsuario()
+	//Retornar os itens encontrados
+	return $myArr;
+}//getReportsUsuario()
 
 ?>
