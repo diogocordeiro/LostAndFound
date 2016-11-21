@@ -100,9 +100,9 @@ $('document').ready(function() {
             success: function (data) {
                     $("#btnAdicionar").val('Adicionar');
                     console.log(data);
-                    // setTimeout(function () {
-                    //     window.location.href = "meus-itens.php";
-                    // }, 2000);
+                    setTimeout(function () {
+                        window.location.href = "meus-reports.php";
+                    }, 2000);
             },
             error: function (data) {
                 console.log(data);
