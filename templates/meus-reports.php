@@ -68,7 +68,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
               //Caso o report nao exista
               if (count($dadosReportA) < 1 && count($dadosReportP) < 1) {
-                echo "<center><br/><br/><br/>Erro: o report não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                echo "<center><br/><br/><br/>Erro: o Report não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
                 exit;
 
               //Caso o report exista
@@ -88,7 +88,7 @@ $('[data-toggle="tooltip"]').tooltip();
                   
                   //Caso o report NAO perteca ao usuario da session
                   if ($dadosReport[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
-                    echo "<center><br/><br/><br/>Erro: o report não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                    echo "<center><br/><br/><br/>Erro: o Report não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
                     exit;
 
                   //Caso o report perteca ao usuario da session
@@ -96,8 +96,6 @@ $('[data-toggle="tooltip"]').tooltip();
 
                       //Coleta os dados do item do report
                       $dadosItemReport = getData(BaseDados::conBdUser(), $tabItens, "id", $dadosReport[0]['idItem'], "s");
-                      // echo "<br><br>";
-                      // print_r($dadosItemReport);exit;
 
                       //Caso o item do report NAO pertenca a nenhum usuario (remove o report e o item completamente)
                       if ($dadosItemReport[0]['idUsuario'] == 0) {
@@ -107,7 +105,9 @@ $('[data-toggle="tooltip"]').tooltip();
 
                         if ($sucessoItem == "sucesso") {
                           $sucessoReport = removeReport(BaseDados::conBdUser(), $dadosReport[0]['id'], $tabRemover);
-                        }
+                        } else {
+                            echo "Erro: ao deletar o item do Report."
+                          }
 
                       //Caso o item do report pertenca a algum usuario (remover apenas o report)
                       } else {
@@ -163,7 +163,7 @@ $('[data-toggle="tooltip"]').tooltip();
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Remover Item"  type="button"  class="btn btn-remover-item btn-simple btn-xs">
-                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o item?')){window.location = 'meus-reports.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="remover-item-icon material-icons ">remove_circle_outline</i></a>
+                  <a href="javascript:if(confirm('Você tem certeza que deseja remover o Report?')){window.location = 'meus-reports.php?remove=<?php echo $dados[$i]['id'];?>';}"><i class="remover-item-icon material-icons ">remove_circle_outline</i></a>
                 </button>
               </td>
           </tr>
