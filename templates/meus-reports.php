@@ -106,7 +106,7 @@ $('[data-toggle="tooltip"]').tooltip();
                         if ($sucessoItem == "sucesso") {
                           $sucessoReport = removeReport(BaseDados::conBdUser(), $dadosReport[0]['id'], $tabRemover);
                         } else {
-                            echo "Erro: ao deletar o item do Report."
+                            echo "Erro: ao deletar o item do Report.";
                           }
 
                       //Caso o item do report pertenca a algum usuario (remover apenas o report)
