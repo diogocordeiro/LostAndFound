@@ -175,8 +175,8 @@ function validarDadosCadastroItem($arrDados, $idUnico){
 		  } elseif ($i == 3 && strlen($arrDados[$i]) == 0) {
 				echo "Erro: categoria não pode ficar em branco.";
 				return "falha";
-			  } elseif ($i == 5 && strlen($arrDados[$i]) == 0) {
-					echo "Erro: categoria não pode ficar em branco.";
+			  } elseif ($i == 4 && strlen($arrDados[$i]) == 0) {
+					echo "Erro: subcategoria não pode ficar em branco.";
 					return "falha";
 			    } elseif ($i == 7 && strlen($arrDados[$i]) == 0) {
 					echo "Erro: caracteristicas não pode ficar em branco.";
@@ -194,7 +194,7 @@ function validarDadosCadastroItem($arrDados, $idUnico){
 }//validarDadosCadastroItem()
 
 //Método para incluir o item
-function incluirItem($myDb, $arrDados){
+function incluirItem($myDb, $arrDados, $idReportAchado=0, $idReportPerdido=0){
 
 	global $tabItens;
 
@@ -211,11 +211,9 @@ function incluirItem($myDb, $arrDados){
 
 	$dataHoje = date('Y-m-d');
 
-	$idReport = 0;
-
 	//Tipos dos atributos passados (para validação)
 	//i, s, d, b (http://php.net/manual/en/mysqli-stmt.bind-param.php)
-	$tiposAtts = "siiisssssiissss";
+	$tiposAtts = "sisssssssiissss";
 
 	$sql = "INSERT INTO ".$tabItens." (id, idUsuario, idRelAchado, idRelPerdido, identificador, marca, titulo, descricao,
 		caracteristicas, idCategoria, idSubcategoria, cor1, cor2, enderFoto, dataInsercao) 
@@ -231,7 +229,7 @@ function incluirItem($myDb, $arrDados){
 	}
 
 	//Valida os atributos
-	$stmt->bind_param($tiposAtts, $idUnico, $arrDados[10], $idReport, $idReport, $arrDados[2], $arrDados[1], $arrDados[0],
+	$stmt->bind_param($tiposAtts, $idUnico, $arrDados[10], $idReportAchado, $idReportPerdido, $arrDados[2], $arrDados[1], $arrDados[0],
 		$arrDados[8], $arrDados[7], $arrDados[3], $arrDados[4], $arrDados[5], $arrDados[6], $arrDados[9], $dataHoje);
 
 	//Executa o statement
