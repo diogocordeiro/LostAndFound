@@ -84,8 +84,10 @@
                                   </div>
                                   <div class="modal-body">
 
-                                    <h5>Digite seu email para receber o link</h5>
-                                    <form>
+                                    <h5>Digite seu e-mail para receber as instruções de alteração de senha.</h5>
+                                    
+                                    <form action="../backend/Senha.php?tipo=on" method="POST">
+                                      
                                       <div class="form-group">
                                         <div class="section text-center section-landing">
 
@@ -100,19 +102,17 @@
                                         </div>
 
                                       </div>
-
-                                    </form>
-                                  </div>
                                   <div class="modal-footer">
 
                                     <div class="section text-center section-landing">
-
-                                        <button type="button" class="btn btn-default btn-lg btn-cor-estilo-escuro">Enviar</button>
-
+                                        <input id="btnEnviar" value="Enviar" class="btn btn-default btn-lg btn-cor-estilo-escuro" type="submit" />
                                     </div>
 
 
                                   </div>
+                                    </form>
+                                  </div>
+
                                 </div>
                               </div>
                             </div> <!--FIM DO MODAL-->

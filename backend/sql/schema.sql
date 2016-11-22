@@ -357,6 +357,15 @@ CREATE TABLE IF NOT EXISTS `relatorios_perdidos` (
   `dataCadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE IF NOT EXISTS `esquece_senha` (
+  `link` varchar(32) NOT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
+  `email` varchar(40) NOT NULL,
+  `situacao` int(11) NOT NULL,
+  `dataSolicitacao` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -390,6 +399,12 @@ ALTER TABLE `relatorios_achados`
 --
 ALTER TABLE `relatorios_perdidos`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `esquece_senha`
+--
+ALTER TABLE `esquece_senha`
+  ADD PRIMARY KEY (`link`);
 
 --
 -- AUTO_INCREMENT for table `paises`
