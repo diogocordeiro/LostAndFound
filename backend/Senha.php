@@ -180,12 +180,15 @@ function enviarEmail($dados, $link){
 	// Additional headers
 	$headers .= 'To: '.$dados[0]['nome'].' '.$dados[0]['sobrenome'].' <'.$para.'>' . "\r\n";
 	$headers .= 'From: Lost and Found Project <suporte@lostandfoundproject.herokuapp.com>' . "\r\n";
+	$headers .= 'Reply-To: suporte@lostandfoundproject.herokuapp.com' . "\r\n";
+    $headers .= 'X-Mailer: PHP/'. PHP_VERSION;
 
 	//Envia e-mail
 	$enviou = mail($para, $assunto, $mensagem, $headers);
 
 	//Caso o e-mail nao seja enviado
 	if (!$enviou) { 
+		echo "Heroku doesnt allow send e-mails, you must use external SMTP server.";
    		print_r(error_get_last());
    		return false;
   	}
