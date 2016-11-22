@@ -331,7 +331,7 @@ function removeReport($myDb, $idReport, $tab){
 	if ($stmt->execute()) {
 		return "sucesso";
 	} else {
-		echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
+		//echo '<br/><br/>Error: '. $myDb->errno .' - '. $myDb->error;
 		return "falha";
 	  }
 }//removeReport()
