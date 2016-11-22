@@ -70,8 +70,8 @@
                             <br>
 
                             <dt>Senha: </dt>
-                            <dd class="dd-conteudo-senha"><a data-toggle="modal" data-target="#modalAlterarSenha" href="#">Alterar</a></dd>
-
+                            <!-- <dd class="dd-conteudo-senha"><a data-toggle="modal" data-target="#modalAlterarSenha" href="#">Alterar</a></dd> -->
+                            <dd class="dd-conteudo-senha"><a href="../backend/Senha.php?tipo=on">Alterar</a></dd>
                             <!-- MODAL ONDE APARECE O FORM PARA COLOCAR EMAIL DE ALTERAR SENHA  -->
                           <div class="modal fade" id="modalAlterarSenha" tabindex="-1" role="dialog" aria-labelledby="modalAlterarSenhaLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
@@ -83,11 +83,11 @@
                                     <h4 class="modal-title" id="modalAlterarSenhaLabel">Alterar Senha</h4>
                                   </div>
                                   <div class="modal-body">
-
+<!-- 
                                     <h5>Digite seu e-mail para receber as instruções de alteração de senha.</h5>
                                     
                                     <form action="../backend/Senha.php?tipo=on" method="POST">
-                                      
+
                                       <div class="form-group">
                                         <div class="section text-center section-landing">
 
@@ -110,7 +110,7 @@
 
 
                                   </div>
-                                    </form>
+                                    </form> -->
                                   </div>
 
                                 </div>

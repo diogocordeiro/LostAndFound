@@ -53,7 +53,7 @@ function getData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	// $result = pg_execute($myDb, "query_id", array($att));
 	// $myArr = pg_fetch_array($result);
 	//Essa query coleta dados específicos da tabela passada por argumento
-	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` = ? ORDER BY `id` ASC";
+	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` = ?";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);

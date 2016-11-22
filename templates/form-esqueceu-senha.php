@@ -33,7 +33,7 @@
 
               </div>
 
-              <form class="form" id="register-form">
+              <form class="form" id="register-form" action="../backend/Senha.php?tipo=off" method="POST">
                 <div class="header header-primary text-center">
                   <h4>Alterar Senha</h4>
 

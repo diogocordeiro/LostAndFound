@@ -17,6 +17,49 @@
   <?php require 'top-menu.php'; ?>
 
   <div class="wrapper">
+            <?php
+              require('../backend/nomesTabelas.php');
+              require('../backend/funcoes.php');
+              require('../backend/conBd.php');
+              require('../backend/default_timezone.php');
+
+              if(isset($_GET['id'])){
+
+                //Valida string
+                $idLink = validarString($_GET['id']);
+
+                $dados = getData(BaseDados::conBdUser(), $tabSenhas, "link", $idLink, "s");
+
+                //Para calcular se o link expirou ou nao
+                $dataHoje = date('Y-m-d h:i:s');
+                $datetime1 = new DateTime($dados[0]['dataSolicitacao']);
+                $datetime2 = new DateTime(date('Y-m-d h:i:s'));
+                $intervalo = $datetime1->diff($datetime2);
+                $diasPassados = $intervalo->format('%a');
+                $horasPassadas = $intervalo->format('%h');
+
+                //Caso o link nao exista no bd
+                if (count($dados) == 0) {
+                  echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><center>Erro: o link não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                  exit;
+
+                //Caso o link tenha sido solicitado ha mais de um dia
+                } elseif ($diasPassados > 1 && $horasPassadas > 24) {
+                    echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><center>Erro: o link expirou<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                    exit;
+                  
+                  //Caso o link tenha ja' tenha sido utilizado
+                  } elseif ($dados[0]['situacao'] != 1) {
+                    echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><center>Erro: a senha já foi alterada.<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+                    exit;
+                  }
+
+              //Caso a variavel id nao seja informada
+              } else {
+                  echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><center>Erro: informe o ID do link!<br/><a href='javascript:history.go(-1);>voltar</a></center></body></html>";
+                  exit;
+                }
+            ?>
     <div class="header header-filter" style="background-image: url('../static/img/bg14.jpg'); background-size: cover; background-position: top center;">
 
       <div class="container">
@@ -30,7 +73,11 @@
 
               </div>
 
-              <form class="form" id="register-form">
+              <form class="form" id="register-form" method="POST" action="../backend/Senha.php?tipo=altera">
+                
+                <input name="email" type="hidden" value="<?php echo $dados[0]['email'];?>"/>
+                <input name="id" type="hidden" value="<?php echo $idLink;?>"/>
+                
                 <div class="header header-primary text-center">
                   <h4>Alterar Senha</h4>
 

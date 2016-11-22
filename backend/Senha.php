@@ -20,14 +20,16 @@ if (isset($_GET['tipo'])) {
 
 	//Quando for solicitado por um usuario logado
 	if ($tipo == "on") {
-		
-		$email = validarString($_POST['email']);
 
 		session_start();
 		
 		//Verifica se realmente ha' uma session
 		if (isset($_SESSION['Lost_Found'])) {
-			$sucesso = linkNovaSenha(BaseDados::conBdUser(), $email);
+
+			//Coleta os dados do usuario da session
+	  		$dados = getData(BaseDados::conBdUser(), $tabUsuarios, "id", $_SESSION['Lost_Found']["id"], "i");
+			
+			$sucesso = linkNovaSenha(BaseDados::conBdUser(), $dados[0]['email']);
 
 			if ($sucesso[0] == "sucesso") {
 				echo "As instruçōes de alteração de senha, foram enviadas para seu E-mail.";
@@ -36,11 +38,44 @@ if (isset($_GET['tipo'])) {
 
 	//Quando for solicitado por um usuario nao logado
 	} elseif ($tipo == "off") {
-		# code...
-	  }
-}
+		
+		$email = validarString($_POST['email']);
+	  	
+	  	$sucesso = linkNovaSenha(BaseDados::conBdUser(), $email);
 
-//
+		if ($sucesso[0] == "sucesso") {
+			echo "As instruçōes de alteração de senha, foram enviadas para seu E-mail.";
+		}
+
+	  //Quando for alterar a senha
+	  } elseif ($tipo == "altera") {
+
+	  		//Valida string contra xss
+	  		$idLink = validarString($_POST['id']);
+
+	  		//Verifica se o usuario da session e' o dono do link
+	  		$dados = getData(BaseDados::conBdUser(), $tabSenhas, "link", $idLink, "s");
+
+	  		// session_start();
+
+	  		// if ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
+	  		// 	echo "Erro: o link não foi encontrado.";
+	  		// 	exit;
+	  		// }
+
+	  		$alteraSenha = alterarSenha(BaseDados::conBdUser(), $_POST['email'], $_POST['senha'],
+	  		 $_POST['confirmaSenha'], $idLink);
+
+	  		if ($alteraSenha == "sucesso") {
+	  			echo "Senha alterada com sucesso!";
+	  		} else {
+	  			echo "Erro ao redefinir a senha.";
+	  		  }
+
+	    }
+}//isset POST
+
+//Funcao para gerar um novo link e envia-lo para o solicitante
 function linkNovaSenha($myDb, $email){
 	
 	global $tabUsuarios;
@@ -62,13 +97,13 @@ function linkNovaSenha($myDb, $email){
 	//Gera um link unico
 	$linkPwd = md5(uniqid(rand(), true));
 
-	$dataHoje = date('Y-m-d');
+	$dataHoje = date('Y-m-d h:i:s');
 	$situacao = 1;
 
-	$tiposAtts = "sisis";
+	$tiposAtts = "ssis";
 
-	$sql = "INSERT INTO ".$tabSenhas." (link, idUsuario, email, situacao,
-		 dataSolicitacao) VALUES (?, ?, ?, ?, ?)";
+	$sql = "INSERT INTO ".$tabSenhas." (link, email, situacao,
+		 dataSolicitacao) VALUES (?, ?, ?, ?)";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -79,7 +114,7 @@ function linkNovaSenha($myDb, $email){
 	}
 
 	//Valida o atributo
-	$stmt->bind_param($tiposAtts, $linkPwd, $dados[0]['id'], $email, $situacao, $dataHoje);
+	$stmt->bind_param($tiposAtts, $linkPwd, $email, $situacao, $dataHoje);
 
 	//Executa o statement
 	if ($stmt->execute()){
@@ -102,12 +137,13 @@ function linkNovaSenha($myDb, $email){
 
 }//function linkNovaSenha()
 
+//Funcao para enviar e-mail
 function enviarEmail($dados, $link){
 	
 	$enderecoAlterarSenha = 'http://lostandfoundproject.herokuapp.com/templates/form-alterar-senha.php?id=';
 
 	$para = $dados[0]['email'];
-	
+
 	//Assunto
 	$assunto = 'Lost and Found Project - Instruçōes para alteração de senha';
 
@@ -149,5 +185,79 @@ function enviarEmail($dados, $link){
 	return mail($para, $assunto, $mensagem, $headers);
 }//function enviarEmail()
 
+//Funcao para alterar a senha
+function alterarSenha($myDb, $email, $senha, $confirmaSenha, $link){
+
+	global $tabUsuarios;
+	global $tabSenhas;
+
+	//Valida strings contra XSS 
+	//$link ja' vem validado
+	$email = validarString($email);
+	$senha = validarString($senha);
+	$confirmaSenha = validarString($confirmaSenha);
+
+	if (strlen($link) < 32) {
+		echo "Erro: ID do link inválido. ";
+		return "falha";
+	}
+
+	//Mascara senha
+	$mascaraPwd = '/[^a-z_\-0-9]/i';
+	
+	//Verifica se a senha tem letras e numeros
+	$temLetras = preg_match('/[a-zA-Z]/', $senha);
+	$temNumeros = preg_match('/\d/', $senha);
+
+	//Efetua validacoes
+	if (strlen($email) == 0) {
+		echo "Erro: e-mail não pode ficar em branco.";
+		return "falha";
+	} elseif (strlen($senha) == 0) {
+		echo "Erro: senha não pode ficar em branco.";
+		return "falha";
+	  } elseif ($senha != $confirmaSenha) {
+			echo "Erro: as senhas devem ser iguais.";
+			exit;
+	    } elseif (strlen($senha) < 8) {
+				echo "Erro: senha não pode ter menos de 8 dígitos.";
+				exit;
+	      } elseif (preg_match($mascaraPwd, $senha)) {
+				echo "Erro: senha inválida. Não é permitido caracteres especiais.";
+				exit;
+	    	} elseif (!$temLetras) {
+				echo "Erro: a senha deve conter letras.";
+				exit;
+	    	  } elseif (!$temNumeros) {
+					echo "Erro: a senha deve conter números.";
+					exit;
+			    }
+
+	//Nova senha
+	$novaSenha = md5($senha);
+
+	$tiposAtts = "sss";
+
+	$sql = "UPDATE ".$tabUsuarios." as u, ".$tabSenhas." as s SET u.senha=?, s.situacao=0 WHERE u.email=? AND s.link=?";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	if(!$stmt){
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo 'Erro: no statement do Mysql. Usuario.php:alterarUsuario()';
+		exit;
+	}
+
+	//Valida os atributos
+	$stmt->bind_param($tiposAtts, $novaSenha, $email, $link);
+
+	//Executa o statement
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		return "falha";
+	  }
+}//function alterarSenha()
 	
 ?>

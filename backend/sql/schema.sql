@@ -360,7 +360,6 @@ CREATE TABLE IF NOT EXISTS `relatorios_perdidos` (
 
 CREATE TABLE IF NOT EXISTS `esquece_senha` (
   `link` varchar(32) NOT NULL,
-  `idUsuario` int(11) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
   `situacao` int(11) NOT NULL,
   `dataSolicitacao` date NOT NULL

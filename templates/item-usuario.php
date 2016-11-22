@@ -3,42 +3,6 @@
 
 <head>
 
-  <!-- coletar informacoes no banco -->
-  <?php
-    require('../backend/nomesTabelas.php');
-    require('../backend/funcoes.php');
-    require('../backend/conBd.php');
-    require('listaCores.php');
-    require('listaCategorias.php');
-    require('listaSubcategorias.php');
-
-    if(isset($_GET['id'])){
-
-      //Valida string
-      $idItem = validarString($_GET['id']);
-
-      $dados = getData(BaseDados::conBdUser(), $tabItens, "id", $idItem, "s");
-
-      session_start();
-
-      //Caso o item nao exista no bd
-      if (count($dados) == 0) {
-        echo "<center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
-        exit;
-
-      //Caso o id da session nao bata com o id do item
-      } elseif ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
-          echo "<center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
-          exit;
-        }
-
-    //Caso a variavel id nao seja informada
-    } else {
-        echo "<center>Erro: informe o ID do item<br/><a href='javascript:history.go(-1);>voltar</a></center>";
-        exit;
-      }
-  ?>
-
   <?php require 'header.php'; ?>
 
     <!-- Custom Theme CSS -->
@@ -59,7 +23,41 @@
     <div class="section text-center section-landing">
 
       <div class="row">
+          <!-- coletar informacoes no banco -->
+  <?php
+    require('../backend/nomesTabelas.php');
+    require('../backend/funcoes.php');
+    require('../backend/conBd.php');
+    require('listaCores.php');
+    require('listaCategorias.php');
+    require('listaSubcategorias.php');
 
+    if(isset($_GET['id'])){
+
+      //Valida string
+      $idItem = validarString($_GET['id']);
+
+      $dados = getData(BaseDados::conBdUser(), $tabItens, "id", $idItem, "s");
+
+      //session_start();
+
+      //Caso o item nao exista no bd
+      if (count($dados) == 0) {
+        echo "<br/><br/><br/><center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+        exit;
+
+      //Caso o id da session nao bata com o id do item
+      } elseif ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
+          echo "<br/><br/><br/><center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+          exit;
+        }
+
+    //Caso a variavel id nao seja informada
+    } else {
+        echo "<br/><br/><br/><center>Erro: informe o ID do item<br/><a href='javascript:history.go(-1);>voltar</a></center>";
+        exit;
+      }
+  ?>
         <div class="col-md-10 col-md-offset-1">
 
           <div class="card card-content">
