@@ -20,7 +20,7 @@ class TestesReport extends PHPUnit_Framework_TestCase{
 		$this->mysqli = new mysqli($GLOBALS['dbHost'], $GLOBALS['dbUser'], $GLOBALS['dbPwd'], $GLOBALS['db']);
 
 		//Query para criar a tabela de itens
-		//$tabelaItensQuery = "CREATE TABLE itens (id varchar(32) NOT NULL,idUsuario int(11) DEFAULT NULL,idRelAchado varchar(32) DEFAULT NULL,idRelPerdido varchar(32) DEFAULT NULL,identificador varchar(50) DEFAULT NULL,marca varchar(25) DEFAULT NULL,titulo varchar(30) NOT NULL,descricao text NOT NULL,caracteristicas text NOT NULL,idCategoria int(11) NOT NULL,idSubcategoria int(11) DEFAULT NULL,cor1 varchar(15) NOT NULL,cor2 varchar(15) DEFAULT NULL,enderFoto varchar(40) NOT NULL,dataInsercao date NOT NULL,PRIMARY KEY ( id ))";
+		// $tabelaItensQuery = "CREATE TABLE itens (id varchar(32) NOT NULL,idUsuario int(11) DEFAULT NULL,idRelAchado varchar(32) DEFAULT NULL,idRelPerdido varchar(32) DEFAULT NULL,identificador varchar(50) DEFAULT NULL,marca varchar(25) DEFAULT NULL,titulo varchar(30) NOT NULL,descricao text NOT NULL,caracteristicas text NOT NULL,idCategoria int(11) NOT NULL,idSubcategoria int(11) DEFAULT NULL,cor1 varchar(15) NOT NULL,cor2 varchar(15) DEFAULT NULL,enderFoto varchar(40) NOT NULL,dataInsercao date NOT NULL,PRIMARY KEY ( id ))";
 		
 		//Query para criar a tabela de reports achados
 		$tabelaReports1Query = "CREATE TABLE relatorios_achados (id varchar(32) NOT NULL,idItem varchar(32) NOT NULL,idUsuario int(11) NOT NULL,mapsLocal varchar(100) NOT NULL,mapsLat float NOT NULL,mapsLng float NOT NULL,informacao text,data date NOT NULL,hora varchar(10) NOT NULL,situacao int(1) NOT NULL,dataCadastro date NOT NULL, PRIMARY KEY (id))";
@@ -29,7 +29,7 @@ class TestesReport extends PHPUnit_Framework_TestCase{
 		$tabelaReports2Query = "CREATE TABLE relatorios_perdidos (id varchar(32) NOT NULL,idItem varchar(32) NOT NULL,idUsuario int(11) NOT NULL,mapsLocal varchar(100) NOT NULL,mapsLat float NOT NULL,mapsLng float NOT NULL,informacao text,data date NOT NULL,hora varchar(10) NOT NULL,situacao int(1) NOT NULL,dataCadastro date NOT NULL, PRIMARY KEY (id))";
 		
 		//Cria tabelas
-		//$this->mysqli->query($tabelaItensQuery);
+		// $this->mysqli->query($tabelaItensQuery);
 		$this->mysqli->query($tabelaReports1Query);
 		$this->mysqli->query($tabelaReports2Query);
 	}
@@ -38,7 +38,7 @@ class TestesReport extends PHPUnit_Framework_TestCase{
 	public function __destruct(){
 		$this->mysqli->query("DROP TABLE relatorios_achados");
 		$this->mysqli->query("DROP TABLE relatorios_perdidos");
-		//$this->mysqli->query("DROP TABLE itens");
+		// $this->mysqli->query("DROP TABLE itens");
 	}
 
 	//Metodo para testar a insercao de um novo report achado - US reportar achado
@@ -57,6 +57,48 @@ class TestesReport extends PHPUnit_Framework_TestCase{
 
 		//Assert
 		$this->assertEquals("sucesso", $varIncluir[0]);
+	}
+
+	//Metodo para testar edicao de report - US editar report (achado)
+	public function testeAlterarReportAchado(){
+		
+		// global $tabAchados;
+		// global $tabItens;
+
+		//Novos dados
+		$dadosForm = ["titulo11", "marca11", "identificador11", 1, 2, "FFFFFF", "000000", "caracteristicas11", "descricao11",  "enderFoto.jpg", 1, "2015-11-22", "00h00", "informacao11"];
+		$endCompleto = "Av. Canhotinho, 50 - Heliopólis, Garanhuns - PE, Brazil";
+
+		$this->idReport = incluirReport($this->mysqli, $this->dadosForm, $this->endCompleto, "achado")[1];
+
+		//Assert
+		$this->assertEquals("sucesso", alterarReport($this->mysqli, $this->idReport, $dadosForm, $endCompleto, "achado"));
+
+		// $teste = getData($this->mysqli, $tabAchados, "id", $this->idReport, "s");
+		// print_r($teste);
+		// $teste = getData($this->mysqli, $tabItens, "id", $teste[0]['idItem'], "s");
+		// print_r($teste);
+	}
+
+	//Metodo para testar edicao de report - US editar report (perdido)
+	public function testeAlterarReportPerdido(){
+		
+		// global $tabPerdidos;
+		// global $tabItens;
+
+		//Novos dados
+		$dadosForm = ["titulo11", "marca11", "identificador11", 1, 2, "FFFFFF", "000000", "caracteristicas11", "descricao11",  "enderFoto.jpg", 1, "2015-11-22", "00h00", "informacao11"];
+		$endCompleto = "Av. Canhotinho, 50 - Heliopólis, Garanhuns - PE, Brazil";
+
+		$this->idReport = incluirReport($this->mysqli, $this->dadosForm, $this->endCompleto, "perdido")[1];
+
+		//Assert
+		$this->assertEquals("sucesso", alterarReport($this->mysqli, $this->idReport, $dadosForm, $endCompleto, "perdido"));
+
+		// $teste = getData($this->mysqli, $tabPerdidos, "id", $this->idReport, "s");
+		// print_r($teste);
+		// $teste = getData($this->mysqli, $tabItens, "id", $teste[0]['idItem'], "s");
+		// print_r($teste);
 	}
 
 	//Metodo para testar remocao de reports - US remover reports (achado)

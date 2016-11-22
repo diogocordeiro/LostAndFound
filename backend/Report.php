@@ -295,8 +295,8 @@ function alterarReport($myDb, $idReport, $arrDados, $endCompleto, $tipoReport){
 	global $tabPerdidos;
 
 	$dados = [];
-	$achados = getReport(BaseDados::conBdUser(), $idReport, $tabAchados);
-	$perdidos = getReport(BaseDados::conBdUser(), $idReport, $tabPerdidos);
+	$achados = getReport($myDb, $idReport, $tabAchados);
+	$perdidos = getReport($myDb, $idReport, $tabPerdidos);
 
 	if (count($achados) > 0) {
 		$dados = $achados;
