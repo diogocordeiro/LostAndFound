@@ -5,15 +5,16 @@ if (isset($_GET['tipo'])) {
 
 	//Valida query string
 	$tipo = validarString2($_GET['tipo']);
-	$report = validarString2($_GET['report']);
 
-	if (strlen($report) == 0) {
-		echo "Erro: informar o tipo de report.";
-		exit;
-	}
-
-	//POST para inclusão de novo usuário
+	//POST para inclusão de novo report
 	if ($tipo == "novoReport") {
+
+		$report = validarString2($_GET['report']);
+
+		if (strlen($report) == 0) {
+			echo "Erro: informar o tipo de report.";
+			exit;
+		}
 
 		//Carrega a pagina de itens
 		require("Item.php");
@@ -59,12 +60,21 @@ if (isset($_GET['tipo'])) {
 			echo "<br/>Erro: relatório não inserido!";
 		  }
 
-	//POST para alteração do usuário
+	//POST para alteração do reports
 	} elseif ($tipo == "editaReport") {
+
+		//Carrega a pagina de itens
+		require("Item.php");
 
 		//Valida contra XSS
 		$idSession = validarString($_POST['idSession']);
-		$idItem = validarString($_POST['idItem']);
+		$idReport = validarString($_POST['idReport']);
+		$report = validarString($_POST['report']);
+
+		if (strlen($report) == 0) {
+			echo "Erro: informar o tipo de report.";
+			exit;
+		}
 
 		session_start();
 		
@@ -91,7 +101,14 @@ if (isset($_GET['tipo'])) {
 				array_push($arr, $_POST['enderFotoAtual']); #9
 			  }
 
-			$sucesso = alterarItem(BaseDados::conBdUser(), $idItem, $arr);
+			//Adiciona id do usuario que esta' editando o item
+			array_push($arr, $_SESSION['Lost_Found']["id"]); #10
+
+			array_push($arr, $_POST['dataItem']); #11
+			array_push($arr, $_POST['horaItem']); #12
+			array_push($arr, $_POST['informacao']); #13
+
+			$sucesso = alterarReport(BaseDados::conBdUser(), $idReport, $arr, $_POST['autocomplete'], $report);
 
 			if ($sucesso == "sucesso") {
 				echo "Atualizado!";
@@ -100,7 +117,7 @@ if (isset($_GET['tipo'])) {
 			  }
 
 		} else {
-			echo "Erro: id da session inválido.";
+			echo "Erro: Report não encontrado.";
 		  }
 		
 	}// elseif alteracao
@@ -236,7 +253,7 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport, $idItemExist
 		return "falha";
 	  }
 
-	$arrDados[11] = date('Y-m-d', strtotime($arrDados[11]));
+	$arrDados[11] = date('Y-m-d', strtotime($arrDados[11])); //Formata a data
 	$dataHoje = date('Y-m-d');
 	$situacao = 1;
 
@@ -269,47 +286,95 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport, $idItemExist
 	  }
 }//function incluirReport()
 
-// //Método para alterar o item
-// function alterarItem($myDb, $idItem, $arrDados){
+//Método para alterar o report
+function alterarReport($myDb, $idReport, $arrDados, $endCompleto, $tipoReport){
 
-// 	//$idItem ja' vem validado com validarString()
+	//$idReport ja' vem validado com validarString()
 
-// 	global $tabItens;
+	global $tabAchados;
+	global $tabPerdidos;
 
-// 	//Valida cada campo passado
-// 	$arrDados = validarDadosCadastroItem($arrDados, $idItem);
+	$dados = [];
+	$achados = getReport(BaseDados::conBdUser(), $idReport, $tabAchados);
+	$perdidos = getReport(BaseDados::conBdUser(), $idReport, $tabPerdidos);
 
-// 	//Caso haja algum erro na validacao
-// 	if ($arrDados == "falha") {
-// 		return "falha";
-// 	}
+	if (count($achados) > 0) {
+		$dados = $achados;
+	} elseif (count($perdidos) > 0) {
+		$dados = $perdidos;
+	}
 
-// 	$tiposAtts = "sssssiissss";
+	//Altera o item passado
+	$itemSucesso = alterarItem($myDb, $dados[0]['idItem'], $arrDados);
 
-// 	$sql = "UPDATE ".$tabItens." SET identificador=?, marca=?, titulo=?, descricao=?, caracteristicas=?,
-// 	idCategoria=?, idSubcategoria=?, cor1=?, cor2=?, enderFoto=? WHERE id=?";
+	//Caso o item nao seja inserido com sucesso
+	if($itemSucesso != "sucesso") {
+		echo "Erro: falha ao inserir o item.";
+		return "falha";
+	}
 
-// 	//Prepara o statement
-// 	$stmt = $myDb->prepare($sql);
+	//Valida query string contra XSS
+	$localidade = validarString2($endCompleto);
 
-// 	if(!$stmt){
-// 		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
-// 		echo '<br>Erro: no statement do Mysql. Item.php:alterarItem()';
-// 		exit;
-// 	}
+	if (strlen($localidade) == 0) {
+		echo "Erro: endereço completo não foi preenchido.";
+		return "falha";
+	} else {
+		
+		//Coleta coordenadas do endereco
+		$localidade = geocode($localidade);
 
-// 	//Valida os atributos
-// 	$stmt->bind_param($tiposAtts, $arrDados[2], $arrDados[1], $arrDados[0], $arrDados[8], $arrDados[7],
-// 		$arrDados[3], $arrDados[4], $arrDados[5], $arrDados[6], $arrDados[9], $idItem);
+		//Caso as coordenadas nao sejam coletadas
+		if (count($localidade) != 3) {
+			echo "Erro: coordenadas não foram coletadas.";
+			return "falha";
+		}
+	  }
 
-// 	//Executa o statement
-// 	if ($stmt->execute()){
-// 		return "sucesso";
-// 	} else {
-// 		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
-// 		return "falha";
-// 	  }
-// }//function alterarItem()
+	//Valida hora e data do achado
+	if (strlen($arrDados[11]) == 0) {
+		echo "Erro: a data não pode ficar em branco.";
+		return "falha";
+	} elseif (strlen($arrDados[12]) == 0) {
+		echo "Erro: a hora não pode ficar em branco.";
+		return "falha";
+	  }
+
+	$arrDados[11] = date('Y-m-d', strtotime($arrDados[11])); //Formata a data
+
+	//Seleciona tabela correta e seta o devido id para tabela de itens
+	if ($tipoReport == "achado") {
+		$tabReport = $tabAchados;
+	} else {
+		$tabReport = $tabPerdidos;
+	  }
+
+	$tiposAtts = "sssssss";
+
+	$sql = "UPDATE ".$tabReport." SET mapsLocal=?, mapsLat=?, mapsLng=?, informacao=?,
+	 data=?, hora=? WHERE id=?";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	if(!$stmt){
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo '<br>Erro: no statement do Mysql. Item.php:alterarReport()';
+		exit;
+	}
+
+	//Valida os atributos
+	$stmt->bind_param($tiposAtts, $localidade[2], $localidade[0], $localidade[1], $arrDados[13],
+	 $arrDados[11], $arrDados[12], $idReport);
+
+	//Executa o statement
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
+}//function alterarReport()
 
 //Funcao para remover um report do usuariao no bd
 function removeReport($myDb, $idReport, $tab){
