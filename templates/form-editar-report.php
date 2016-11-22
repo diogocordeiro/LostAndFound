@@ -77,7 +77,7 @@
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-                  <form class="form" id="edit-item-form" enctype="multipart/form-data" method="POST" action="../backend/Report?tipo=editaReport">
+                  <form class="form" id="edit-item-form" enctype="multipart/form-data" method="POST" action="../backend/Report.php?tipo=editaReport">
                     <?php echo '<input type="hidden" name="idSession" value="'.$_SESSION["Lost_Found"]["id"].'"/>'; ?>
                     <?php echo '<input type="hidden" name="idReport" value="'.$idReport.'"/>'; ?>
                     <?php echo '<input type="hidden" name="report" value="'.$report.'"/>'; ?>
