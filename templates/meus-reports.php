@@ -155,11 +155,11 @@ $('[data-toggle="tooltip"]').tooltip();
               <td><?php echo $dados[$i]['mapsLocal'];?></td>
               <td class="td-actions text-right">
                 <button data-toggle="tooltip" data-placement="bottom" title="Exibir Item" type="button"  class="btn btn-exibir-item btn-simple btn-xs">
-                  <a href="item-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons exibir-item-icon">visibility</i></a>
+                  <a href="report-usuario.php?id=<?php echo $dados[$i]['id'];?>"><i class="material-icons exibir-item-icon">visibility</i></a>
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Editar Item"  type="button"  class="btn btn-editar-item btn-simple btn-xs">
-                  <a href="form-editar-item.php?id=<?php echo $dados[$i]['id'];?>"><i class="editar-item-icon material-icons">mode_edit</i></a>
+                  <a href="form-editar-report.php?id=<?php echo $dados[$i]['id'];?>"><i class="editar-item-icon material-icons">mode_edit</i></a>
                 </button>
 
                 <button data-toggle="tooltip" data-placement="bottom" title="Remover Item"  type="button"  class="btn btn-remover-item btn-simple btn-xs">

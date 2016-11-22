@@ -368,4 +368,49 @@ function getReportsUsuario($myDb, $idSession, $tab){
 	return $myArr;
 }//getReportsUsuario()
 
+//Funcao para coletar um report
+function getReport($myDb, $idReport, $tab){
+
+	require('nomesTabelas.php');
+
+	//Valida a string
+	$id = validarString($idReport);
+	$tabReport = validarString($tab);
+
+	//Para saber o atributo do item ao qual sera' comparado
+	if (strcmp($tabReport, $tabAchados) == 0) {
+		$atributoItem = "i.idRelAchado";
+	} elseif (strcmp($tabReport, $tabPerdidos) == 0) {
+		$atributoItem = "i.idRelPerdido";
+	  } else {
+	  		echo "Erro: tabela de Item inexistente - getReport()";
+	  		return null;
+	    }
+
+	$sql = "SELECT r.*, i.idRelAchado, i.idRelPerdido, i.identificador, i.marca, 
+	i.titulo, i.descricao, i.caracteristicas, i.idCategoria, i.idSubcategoria, i.cor1, i.cor2, 
+	i.enderFoto, i.dataInsercao FROM ".$tabReport." as r, ".$tabItens.
+	" as i WHERE r.id = ? AND ".$atributoItem." = r.id ORDER BY r.dataCadastro DESC";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Valida o atributo
+	$stmt->bind_param("s", $id);
+
+	//Executa o statement
+	$stmt->execute();
+
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
+
+	//Retornar os itens encontrados
+	return $myArr;
+}//getReport()
+
 ?>
