@@ -174,15 +174,23 @@ function enviarEmail($dados, $link){
 	';
 
 	//Headers para o e-mail
-	$headers  = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers  = "MIME-Version: 1.0\r\n";
+  	$headers .= "Content-type: text/html; charset=utf-8\r\n";
 
 	// Additional headers
 	$headers .= 'To: '.$dados[0]['nome'].' '.$dados[0]['sobrenome'].' <'.$para.'>' . "\r\n";
 	$headers .= 'From: Lost and Found Project <suporte@lostandfoundproject.herokuapp.com>' . "\r\n";
 
 	//Envia e-mail
-	return mail($para, $assunto, $mensagem, $headers);
+	$enviou = mail($para, $assunto, $mensagem, $headers);
+
+	//Caso o e-mail nao seja enviado
+	if (!$enviou) { 
+   		print_r(error_get_last());
+   		return false;
+  	}
+	
+	return $enviou;
 }//function enviarEmail()
 
 //Funcao para alterar a senha
