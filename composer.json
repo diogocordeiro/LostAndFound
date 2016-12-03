@@ -4,11 +4,11 @@
 		"behat/mink": "1.5.*@stable",
 		"behat/mink-goutte-driver": "*",
 		"behat/mink-extension": "*",
-		"behat/mink-selenium2-driver": "*"
+		"behat/mink-selenium2-driver": "*",
 		"silex/silex": "^1.3",
-	    "monolog/monolog": "^1.4",
-	    "twig/twig": "^1.8",
-	    "symfony/twig-bridge": "^2"
+		"monolog/monolog": "^1.4",
+		"twig/twig": "^1.8",
+		"symfony/twig-bridge": "^2"
 	},
 	"require-dev": {
 		"heroku/heroku-buildpack-php": "*"
