@@ -375,4 +375,85 @@ function getItensUsuario($myDb, $idSession){
 	return $myArr;
 }//getItensUsuario()
 
+//Funcao para atualizar o id do report do item
+function updateItemReport($myDb, $idItem, $idReport, $tab){
+	
+	require('nomesTabelas.php');
+
+	//Para saber qual atributo do item sera' zerado
+	if (strcmp($tab, $tabAchados) == 0) {
+		$atributoItem = "idRelAchado";
+	} elseif (strcmp($tab, $tabPerdidos) == 0) {
+		$atributoItem = "idRelPerdido";
+	  } else {
+	  		echo "Erro: tabela de Item inexistente - updateItemReport()";
+	  		return "falha";
+	    }
+
+	$tiposAtts = "ss";
+
+	$sql = "UPDATE ".$tabItens." SET ".$atributoItem."=? WHERE id=?";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	if(!$stmt){
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo '<br>Erro: no statement do Mysql. Item.php:updateItemReport()';
+		exit;
+	}
+
+	//Valida os atributos
+	$stmt->bind_param($tiposAtts, $idReport, $idItem);
+
+	//Executa o statement
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
+}//updateItemReport()
+
+//Funcao para zerar o id do report no item (remover referencia), quando mesmo for removido
+function resetIdReportItem($myDb, $idItem, $tab){
+	require('nomesTabelas.php');
+
+	//Para saber qual atributo do item sera' zerado
+	if (strcmp($tab, $tabAchados) == 0) {
+		$atributoItem = "idRelAchado";
+	} elseif (strcmp($tab, $tabPerdidos) == 0) {
+		$atributoItem = "idRelPerdido";
+	  } else {
+	  		echo "Erro: tabela de Item inexistente - resetIdReportItem()";
+	  		return "falha";
+	    }
+
+	$tiposAtts = "is";
+
+	$novoId = 0;
+
+	$sql = "UPDATE ".$tabItens." SET ".$atributoItem."=? WHERE id=?";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	if(!$stmt){
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		echo '<br>Erro: no statement do Mysql. Item.php:resetIdReportItem()';
+		exit;
+	}
+
+	//Valida os atributos
+	$stmt->bind_param($tiposAtts, $novoId, $idItem);
+
+	//Executa o statement
+	if ($stmt->execute()){
+		return "sucesso";
+	} else {
+		//echo 'error: '. $myDb->errno .' - '. $myDb->error;
+		return "falha";
+	  }
+}//resetIdReportItem()
+
 ?>

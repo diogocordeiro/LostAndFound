@@ -9,12 +9,19 @@ if (isset($_GET['tipo'])) {
 	//POST para inclusão de novo report
 	if ($tipo == "novoReport") {
 
+		$controleItemExistente = false;
+
 		$report = validarString2($_GET['report']);
 
 		if (strlen($report) == 0) {
 			echo "Erro: informar o tipo de report.";
 			exit;
 		}
+
+		//Verifica se esta' adicionando um item ja' existente
+		if ($_POST['idItemExistente'] != "") {
+			$controleItemExistente = true;
+		} 
 
 		//Carrega a pagina de itens
 		require("Item.php");
@@ -34,7 +41,7 @@ if (isset($_GET['tipo'])) {
 		//Caso haja imagem
 		if ($_FILES['enderFoto']['name'] != ""){
 			array_push($arr, $_FILES['enderFoto']); #9
-		
+
 		//Caso nao haja imagem, insere o endereco padrao
 		} else {
 			array_push($arr, $imgPadrao); #9
@@ -49,13 +56,16 @@ if (isset($_GET['tipo'])) {
 		array_push($arr, $_POST['horaItem']); #12
 		array_push($arr, $_POST['informacao']); #13
 
-		$sucesso = incluirReport(BaseDados::conBdUser(), $arr, $_POST['autocomplete'], $report);
+		if ($controleItemExistente) {
+			$sucesso = incluirReport(BaseDados::conBdUser(), $arr, $_POST['autocomplete'], $report, $_POST['idItemExistente']);
+		} else {
+			$sucesso = incluirReport(BaseDados::conBdUser(), $arr, $_POST['autocomplete'], $report);
+		  }
 
 		//Caso o report seja inserido
 		if ($sucesso[0] == "sucesso") {
 
 			echo "Novo relatório inserido com sucesso!";
-			// echo "<meta HTTP-EQUIV=\"refresh\" CONTENT=\"2; URL=http:../templates/meus-itens.php\">";
 		} else {
 			echo "<br/>Erro: relatório não inserido!";
 		  }
@@ -217,7 +227,19 @@ function incluirReport($myDb, $arrDados, $endCompleto, $tipoReport, $idItemExist
 	
 	//Caso seja um item ja' existente
 	} else {
-		$itemSucesso = array("sucesso", $idItemExistente);
+		$idMeuItem = validarString2($idItemExistente);
+
+		//Para atualizar o id do report do item
+		if (updateItemReport($myDb, $idMeuItem, $idUnicoReport, $tabReport) != "sucesso") {
+			echo "Erro: falha ao alterar o item.";
+			return "falha";
+		}
+		
+		//Garante que o id tem 32 bits
+		if (strlen($idMeuItem) > 31) {
+			$itemSucesso = array("sucesso", $idMeuItem);
+		}
+		
 	  }
 	
 	//Caso o item nao seja inserido com sucesso
@@ -377,7 +399,12 @@ function alterarReport($myDb, $idReport, $arrDados, $endCompleto, $tipoReport){
 }//function alterarReport()
 
 //Funcao para remover um report do usuariao no bd
-function removeReport($myDb, $idReport, $tab){
+function removeReport($myDb, $idReport, $tab, $idItem=null){
+
+	//Remove referencia do item com o report
+	if ($idItem != null && resetIdReportItem($myDb, $idItem, $tab) != "sucesso") {
+		return "falha";
+	}
 
 	$sql = "DELETE FROM ".$tab." WHERE id = ?";
 

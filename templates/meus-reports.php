@@ -98,7 +98,9 @@ $('[data-toggle="tooltip"]').tooltip();
                       $dadosItemReport = getData(BaseDados::conBdUser(), $tabItens, "id", $dadosReport[0]['idItem'], "s");
 
                       //Caso o item do report NAO pertenca a nenhum usuario (remove o report e o item completamente)
-                      if ($dadosItemReport[0]['idUsuario'] == 0) {
+                      if ($dadosItemReport[0]['idUsuario'] == 0
+                       && $dadosItemReport[0]['idRelAchado'] == 0
+                        && $dadosItemReport[0]['idRelPerdido'] == 0) {
                         require('../backend/Item.php');
 
                         $sucessoItem = removeItem(BaseDados::conBdUser(), $dadosItemReport[0]['id'], "tudo", $dadosItemReport[0]['enderFoto']);
@@ -111,7 +113,8 @@ $('[data-toggle="tooltip"]').tooltip();
 
                       //Caso o item do report pertenca a algum usuario (remover apenas o report)
                       } else {
-                          $sucessoReport = removeReport(BaseDados::conBdUser(), $dadosReport[0]['id'], $tabRemover);
+                          require('../backend/Item.php');
+                          $sucessoReport = removeReport(BaseDados::conBdUser(), $dadosReport[0]['id'], $tabRemover, $dadosItemReport[0]['id']);
                         }
 
                       //Caso o report seja removido com sucesso

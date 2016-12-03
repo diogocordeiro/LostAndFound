@@ -31,8 +31,30 @@
 
                 <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
 
-                <form class="form" id="add-report-form" enctype="multipart/form-data" method="POST" action="../backend/Report.php?tipo=novoReport&report=perdido">
+                <!-- carrega itens do user em um drop-down list -->
+                <?php
 
+                  require('../backend/Item.php');
+                  require('../backend/conBd.php');
+
+                  //Coleta os itens do usuario
+                  $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
+
+                  //Verifica se o usuario tem itens
+                  if (count($dados) > 0) {
+                    echo '<p align="right">Caso queira adicionar um item seu: &nbsp;<select id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
+                    echo '<option value="">escolha...</option>';
+
+                    for ($i=0; $i<count($dados); $i++) { 
+                      echo '<option value="'.$dados[$i]['id'].'">'.$dados[$i]['titulo'].'</option>';
+                    }
+
+                    echo '</select>&nbsp;&nbsp;&nbsp;</p>';
+                  }
+                ?> 
+
+                <form class="form" id="add-report-form" enctype="multipart/form-data" method="POST" action="../backend/Report.php?tipo=novoReport&report=perdido">
+                  <input type="hidden" name="idItemExistente" id="idItemExistente" value="" /> 
                   <div class="content">
 
                     <div class="row">
@@ -43,21 +65,21 @@
                           <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                          <input name="titulo" type="text" class=" form-control input-lg " placeholder="Nome/Título... Ex: casaco preto" required />
+                          <input name="titulo" id="formTitulo" type="text" class=" form-control input-lg " placeholder="Nome/Título... Ex: casaco preto" required />
                         </div>
 
                         <div class="input-group input-size-small-device">
                           <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                          <input name="marca" type="text" class=" form-control input-lg " placeholder="Marca... Ex: Samsung" required />
+                          <input name="marca" id="formMarca" type="text" class=" form-control input-lg " placeholder="Marca... Ex: Samsung" required />
                         </div>
 
                         <div class="input-group input-size-small-device">
                           <span class="input-group-addon">
                             <i class="material-icons">label</i>
                           </span>
-                          <input name="identificador" type="text" class=" form-control input-lg " placeholder="Identificador único... Ex: N de Serie, ID, e etc..." required />
+                          <input name="identificador" id="formIdentificador" type="text" class=" form-control input-lg " placeholder="Identificador único... Ex: N de Serie, ID, e etc..." required />
                         </div>
 
                         <div class="row">
@@ -102,7 +124,7 @@
 
                         <div class="row">
                           <div class="col-md-3">
-                            <select class="form-control" name="categoria">
+                            <select class="form-control" name="categoria" id="formCategoria">
                               <option value="">Categoria</option>
                               <?php
 
@@ -114,7 +136,7 @@
                           </div>
 
                           <div class="col-md-3">
-                            <select class="form-control" name="subcategoria">
+                            <select class="form-control" name="subcategoria" id="formSubcategoria">
                               <option value="">Subcategoria</option>
                               <?php
 
@@ -154,26 +176,26 @@
                             <span class="input-group-addon">
                                 <i class="material-icons">label</i>
                               </span>
-                            <textarea name="caracteristicas" class="form-control" placeholder="Caracteristicas únicas... Ex: arranhoes, amaçados, adesivos, etc." rows="5"></textarea>
+                            <textarea name="caracteristicas" id="formCaracteristicas" class="form-control" placeholder="Caracteristicas únicas... Ex: arranhoes, amaçados, adesivos, etc." rows="5"></textarea>
                           </div>
 
                           <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                                 <i class="material-icons">label</i>
                               </span>
-                            <textarea name="descricao" class="form-control" placeholder="Escreva uma pequena DESCRIÇÃO do item. Você pode informar algumas de suas principais caracteristicas..." rows="10"></textarea>
+                            <textarea name="descricao" id="formDescricao" class="form-control" placeholder="Escreva uma pequena DESCRIÇÃO do item. Você pode informar algumas de suas principais caracteristicas..." rows="10"></textarea>
                           </div>
 
                           <div class="input-group input-size-small-device">
                             <span class="input-group-addon">
                                 <i class="material-icons">label</i>
                               </span>
-                            <textarea name="informacao" class="form-control" placeholder="Escreva um pequeno texto sobre a situação onde o item foi encontrado. Ex: Econtrei sobre um banco de madeira, que fica na estação de metro N 22, era domingo a tarde, aproximadamente 15h" rows="10"></textarea>
+                            <textarea name="informacao" id="formInformacao" class="form-control" placeholder="Escreva um pequeno texto sobre a situação onde o item foi encontrado. Ex: Econtrei sobre um banco de madeira, que fica na estação de metro N 22, era domingo a tarde, aproximadamente 15h" rows="10"></textarea>
                           </div>
 
                           <div class="input-group btn-upload-imagem">
                             <label class="btn btn-md btn-default btn-cor-estilo-escuro"><i class="material-icons">file_upload</i> Imagem
-                              <input style="display: none;" name="enderFoto" type="file">
+                              <input style="display: none;" name="enderFoto" id="formEnderFoto" type="file">
                             </label>
                             <p class="informacao-imagem-upload">
                               Enviar foto do item
@@ -331,6 +353,52 @@
 
                 </form>
 
+                <!-- script para preencher os campos -->
+                <script type="text/javascript">
+                  function preencher(id){
+
+                    //Pega a variavel coletada no php acima e converte para json
+                    var meuArray = <?php echo json_encode($dados); ?>;
+                    var valuesCampos = null;
+
+                    //Procura pelo id passado
+                    for(var i = 0; i<meuArray.length; i++) {
+                      if (meuArray[i]['id'] == id) {
+                        valuesCampos = meuArray[i];
+                      };
+                    };
+                    
+                    //Caso o id passado seja valido, preenche os campos do form
+                    if (valuesCampos != null) {
+                      document.getElementById("idItemExistente").value = valuesCampos['id'];
+                      document.getElementById("formTitulo").value = valuesCampos['titulo'];
+                      document.getElementById("formMarca").value = valuesCampos['marca'];
+                      document.getElementById("formIdentificador").value = valuesCampos['identificador'];
+                      document.getElementById("formCategoria").value = valuesCampos['idCategoria'];
+                      document.getElementById("formSubcategoria").value = valuesCampos['idSubcategoria'];
+                      document.getElementById("SelectCor1").value = valuesCampos['cor1'];
+                      document.getElementById("SelectCor2").value = valuesCampos['cor2'];
+                      document.getElementById("formCaracteristicas").value = valuesCampos['caracteristicas'];
+                      document.getElementById("formDescricao").value = valuesCampos['descricao'];
+                      document.getElementById("formEnderFoto").disabled = true;
+
+                    } else {
+                      // document.getElementById("add-report-form").reset();
+                      document.getElementById("idItemExistente").value = "";
+                      document.getElementById("formTitulo").value = "";
+                      document.getElementById("formMarca").value = "";
+                      document.getElementById("formIdentificador").value = "";
+                      document.getElementById("formCategoria").value = "";
+                      document.getElementById("formSubcategoria").value = "";
+                      document.getElementById("SelectCor1").value = "";
+                      document.getElementById("SelectCor2").value = "";
+                      document.getElementById("formCaracteristicas").value = "";
+                      document.getElementById("formDescricao").value = "";
+                      document.getElementById("formEnderFoto").disabled = false;
+                    };
+                    
+                  }//function preencher()
+                </script>
 
                 </div>
 

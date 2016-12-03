@@ -44,8 +44,10 @@
             
             if (count($achados) > 0) {
               $dados = $achados;
+              $tituloTipo = "Achado";
             } elseif (count($perdidos) > 0) {
                 $dados = $perdidos;
+                $tituloTipo = "Perdido";
               }
 
             //Caso o report nao exista no bd
@@ -70,7 +72,7 @@
 
             <div class="card card-content">
 
-              <h2 class="title titulo-adicionar-item"><?php echo $dados[0]['titulo'];?></h2>
+              <h2 class="title titulo-adicionar-item"><?php echo $tituloTipo.": ".$dados[0]['titulo'];?></h2>
 
               <div class="row">
 
@@ -86,11 +88,21 @@
                   </div>
 
                   <div class="col-md-4">
-                    <img src="../static/img/badge.jpg" class="img-badge img-circle img-responsive img-raised">
+                    
+                    <!-- badge quando for um item previamente cadastrado -->
+                    <?php 
 
-                    <p>
-                      BADGE
-                    </p>
+                    $dadosItem = getData(BaseDados::conBdUser(), $tabItens, "id", $dados[0]['idItem'], "s");
+
+                    if ($dadosItem[0]['idUsuario'] != 0) { 
+
+                    ?>
+                      <img src="../static/img/badge.jpg" class="img-badge img-circle img-responsive img-raised">
+
+                      <p>
+                        ITEM CADASTRADO PREVIAMENTE
+                      </p>
+                    <?php } ?>
                   </div>
 
                 </div>
