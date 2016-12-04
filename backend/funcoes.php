@@ -115,4 +115,31 @@ function getPerfil($myDb, $idSession){
 	return $myArr;
 }//getPerfil()
 
+function searchData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
+	
+	//Essa query coleta dados específicos da tabela passada por argumento
+	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` LIKE %?%";
+
+	//Prepara o statement
+	$stmt = $myDb->prepare($sql);
+
+	//Checa erros
+	if(!$stmt){
+		echo 'error: '. $myDb->errno .' - '. $myDb->error;
+	}
+
+	//Valida o atributo
+	$stmt->bind_param($tipoAtt, $att);
+
+	//Executa o statement
+	$stmt->execute();
+
+	//Executa o fetch do resultado e atribuí a variável $myArr
+	$myArr = fetch($stmt);
+
+	//Retornar os itens encontrados
+	return $myArr;
+}//searchData()
+
+
 ?>

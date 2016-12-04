@@ -13,10 +13,7 @@
 
 <body>
 
-
-
   <?php require 'top-menu-logado.php'; ?>
-
 
     <div class="container-fluid">
       <div class="section text-center section-landing">
@@ -27,31 +24,40 @@
             <h5 class="description descricao-busca">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
                  </div>
 
-          <form class="form">
+          <form class="form" id="form-search-reports">
 
-            <div class="col-md-10 col-md-offset-1 ">
+            <div class="col-md-10 col-md-offset-2 ">
               <div class="input-group">
 
-                <input type="text" class="form-control" placeholder="Pesquise Itens. Ex: Casaco">
-
+                <input type="text" class="form-control" placeholder="Escolha o filtro e pesquise Reports...">
+ 
                 <span class="input-group-btn">
-                        <button class="btn-busca-responsive  btn btn-default  btn-sm btn-cor-estilo-escuro" type="button">
-                            <i class="material-icons">search</i>Buscar
-                        </button>
+                 <!-- <button class="btn-busca-responsive  btn btn-default  btn-sm btn-cor-estilo-escuro" type="button">
+                      <i class="material-icons">search</i>Buscar
+                  </button>-->
+                </span> 
 
-                        <button class="btn-busca-avancada btn-busca-responsive  btn btn-default  btn-sm btn-cor-estilo-escuro" type="button">
-                            <i class="material-icons">filter_list</i>Filtro
-                        </button>
-
-                    </span>
+                <div class="row">
+                  <div class="col-md-5">
+                    <select class="form-control" name="filtro" id="formFiltro">
+                      <option value="">Escolha o filtro</option>
+                      <option value="data">Por data</option>
+                      <option value="titulo">Por título</option>
+                    </select>
+                  </div>
+                </div>
 
               </div>
 
             </div>
           </form>
 
-             </div>
-
+        </div>
+        
+        <div id="resultados-pesquisa">
+          resultados
+        </div>
+             
          <div class="container-fluid">
 
            <div class="row">
@@ -76,10 +82,7 @@
 
                      </span>
 
-
                </div>
-
-
 
              </div>
              <div class="col-md-4 col-md-offset">
