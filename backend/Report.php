@@ -130,8 +130,26 @@ if (isset($_GET['tipo'])) {
 			echo "Erro: Report não encontrado.";
 		  }
 		
-	}// elseif alteracao
-}
+	//POST para procurar reports
+	} elseif ($tipo == "procuraReport") {
+		
+		require('conBd.php');
+
+		//
+		if (isset($_POST['stringBusca']) && isset($_POST['filtroBusca'])) {
+			
+			require('funcoes.php');
+			require('nomesTabelas.php');
+
+			//Procura por reports
+			$resultatos = procurarReports(BaseDados::conBdUser(), $_POST['stringBusca'], $_POST['filtroBusca']);
+
+			//Imprime resultado
+			imprimeResultados(BaseDados::conBdUser(), $resultatos);
+		}
+
+	}//if procuraReport
+}//if isset($_GET['tipo'])
 
 //Função para validar queries strings, assegurando contra Cross-Side Scripting (XSS)
 function validarString2($qString){
@@ -504,5 +522,128 @@ function getReport($myDb, $idReport, $tab){
 	//Retornar os itens encontrados
 	return $myArr;
 }//getReport()
+
+//Funcao que procura reports
+function procurarReports($myDb, $string, $filtro){
+
+	global $tabAchados;
+	global $tabPerdidos;
+	global $tabItens;
+
+	//Valida a string
+	$string = validarString2($string);
+	$filtro = validarString2($filtro);
+
+	if (strlen($string) < 1) {
+		echo "Erro: informar algo para ser buscado.";
+		return "falha";
+	}
+
+	if (strlen($filtro) < 1) {
+		echo "Erro: informar o filtro.";
+		return "falha";
+	}
+
+	//Busca por data
+	if (strcmp($filtro, "data") == 0) {
+
+		//Busca na tabela de achados
+		$resultatosBusca = searchData($myDb, $tabAchados, "data", $string, "s");
+		
+		//Busca na tabela de perdidos
+		$temp = searchData($myDb, $tabPerdidos, "data", $string, "s");
+		
+		for ($i=0; $i<count($temp); $i++) { 
+			array_push($resultatosBusca, $temp[$i]);
+		}
+		
+		return $resultatosBusca;
+	
+	//Busca por local de marcacao
+	} elseif (strcmp($filtro, "local") == 0) {
+
+		//Busca na tabela de achados
+		$resultatosBusca = searchData($myDb, $tabAchados, "mapsLocal", $string, "s");
+		
+		//Busca na tabela de perdidos
+		$temp = searchData($myDb, $tabPerdidos, "mapsLocal", $string, "s");
+		
+		for ($i=0; $i<count($temp); $i++) { 
+			array_push($resultatosBusca, $temp[$i]);
+		}
+		
+		return $resultatosBusca;
+	  
+	  //Busca por titulo do item
+	  } elseif (strcmp($filtro, "titulo") == 0) {
+			return seachTabelaItens($myDb, $tabItens, "titulo", $string, "s");
+			
+		//Busca por marca do item
+		} elseif (strcmp($filtro, "marca") == 0) {
+			return seachTabelaItens($myDb, $tabItens, "marca", $string, "s");
+	      
+	      //Busca por identificador do item
+		  } elseif (strcmp($filtro, "identificador") == 0) {
+				return seachTabelaItens($myDb, $tabItens, "identificador", $string, "s");
+	        }
+
+}//procurarReports()
+
+//Funcao para procurar na tabela de itens e retornar apenas itens que estao em reports
+function seachTabelaItens($myDb, $tabItens, $atributo, $string, $tiposAtts){
+	
+	global $tabAchados;
+	global $tabPerdidos;
+
+	$resultatosBusca = [];
+
+	//Primeiro pesquisa o titulo do item no bd
+	$temp = searchData($myDb, $tabItens, $atributo, $string, $tiposAtts);
+
+	//Segundo verifica quais desses itens estao em reports
+	for ($i=0; $i<count($temp); $i++) { //Terceiro coleta os dados de cada report
+		
+		if (strcmp($temp[$i]['idRelAchado'], "0") != 0) {
+			array_push($resultatosBusca, searchData($myDb, $tabAchados, "id", $temp[$i]['idRelAchado'], "s")[0]);
+		}
+
+		if (strcmp($temp[$i]['idRelPerdido'], "0") != 0) {
+			array_push($resultatosBusca, searchData($myDb, $tabPerdidos, "id", $temp[$i]['idRelPerdido'], "s")[0]);
+		}
+	}
+
+	return $resultatosBusca;
+}//seachTabelaItens()
+
+//Metodo para imprimir os resultados das buscas
+function imprimeResultados($myDb, $resultatos){
+
+	global $tabAchados;
+	global $tabPerdidos;
+
+	if (count($resultatos) < 1) {
+		echo "Nenhum Report foi encontrado.";
+	
+	} else {
+		echo "<strong>".count($resultatos)."</strong> Report(s) encontrado(s).<br/><br/>";
+
+		for ($i=0; $i<count($resultatos); $i++) { 
+			
+			$dados = [];
+            $achados = getReport($myDb, $resultatos[$i]['id'], $tabAchados);
+            $perdidos = getReport($myDb, $resultatos[$i]['id'], $tabPerdidos);
+            
+            if (count($achados) > 0) {
+              $dados = $achados;
+              $tituloTipo = "Achado";
+            } elseif (count($perdidos) > 0) {
+                $dados = $perdidos;
+                $tituloTipo = "Perdido";
+              }
+
+            echo "<div id='div-resultados'><a href='report.php?id=".$dados[0]['id']."'>".$dados[0]['titulo']."</a><br/>".$dados[0]['marca']."<br/>Local: ".$dados[0]['mapsLocal']."</div>";
+		}//for
+	  }
+}//imprimeResultados()
 
 ?>

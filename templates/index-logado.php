@@ -8,6 +8,17 @@
     <!-- Custom Theme CSS -->
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
+    <style type="text/css">
+      
+      #div-resultados{
+        
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        padding: 5px 8px;
+        border-radius: 3px;
+      }
+
+    </style>
 
 </head>
 
@@ -29,7 +40,7 @@
             <div class="col-md-10 col-md-offset-2 ">
               <div class="input-group">
 
-                <input type="text" class="form-control" placeholder="Escolha o filtro e pesquise Reports...">
+                <input type="text" name="stringBusca" id="stringBusca" class="form-control" placeholder="Escolha o filtro e pesquise Reports...">
  
                 <span class="input-group-btn">
                  <!-- <button class="btn-busca-responsive  btn btn-default  btn-sm btn-cor-estilo-escuro" type="button">
@@ -39,9 +50,12 @@
 
                 <div class="row">
                   <div class="col-md-5">
-                    <select class="form-control" name="filtro" id="formFiltro">
+                    <select class="form-control" name="filtroBusca" id="filtroBusca">
                       <option value="">Escolha o filtro</option>
                       <option value="data">Por data</option>
+                      <option value="identificador">Por identificador</option>
+                      <option value="local">Por local</option>
+                      <option value="marca">Por marca</option>
                       <option value="titulo">Por título</option>
                     </select>
                   </div>
@@ -51,14 +65,16 @@
 
             </div>
           </form>
-
+            <script type="text/javascript" language="javascript" src="../backend/js/buscarReports.js"></script>
         </div>
         
-        <div id="resultados-pesquisa">
-          resultados
-        </div>
+        
              
          <div class="container-fluid">
+
+           <div class="row">
+             <div class="col-md-2 col-md-offset" id="resultados-pesquisa"></div>
+           </div>
 
            <div class="row">
 

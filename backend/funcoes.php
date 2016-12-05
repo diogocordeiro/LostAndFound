@@ -115,10 +115,11 @@ function getPerfil($myDb, $idSession){
 	return $myArr;
 }//getPerfil()
 
+//Funcao para procurar dados no bd
 function searchData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 	
 	//Essa query coleta dados específicos da tabela passada por argumento
-	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` LIKE %?%";
+	$sql = "SELECT * FROM `".$dbTable."` WHERE `".$comparisonBdAtt."` LIKE ?";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -128,8 +129,11 @@ function searchData($myDb, $dbTable, $comparisonBdAtt, $att, $tipoAtt){
 		echo 'error: '. $myDb->errno .' - '. $myDb->error;
 	}
 
+	//Com os wildcards, permite que tudo que contenha aquela string possa ser retornado
+	$string = '%'.$att.'%';
+
 	//Valida o atributo
-	$stmt->bind_param($tipoAtt, $att);
+	$stmt->bind_param($tipoAtt, $string);
 
 	//Executa o statement
 	$stmt->execute();
