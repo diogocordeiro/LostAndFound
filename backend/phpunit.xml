@@ -17,6 +17,7 @@
             <file>Testes/TestesLogin.php</file>
             <file>Testes/TestesItem.php</file>
             <file>Testes/TestesReport.php</file>
+            <file>Testes/TestesBusca.php</file>
             
         </testsuite>
     </testsuites>
