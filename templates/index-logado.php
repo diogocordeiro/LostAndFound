@@ -9,9 +9,9 @@
 
     <link href="../static/css/index-logado.css" rel="stylesheet">
     <style type="text/css">
-      
+
       #div-resultados{
-        
+
         background-color: #ffffff;
         border: 1px solid #000000;
         padding: 5px 8px;
@@ -41,12 +41,12 @@
               <div class="input-group">
 
                 <input type="text" name="stringBusca" id="stringBusca" class="form-control" placeholder="Escolha o filtro e pesquise Reports...">
- 
+
                 <span class="input-group-btn">
                  <!-- <button class="btn-busca-responsive  btn btn-default  btn-sm btn-cor-estilo-escuro" type="button">
                       <i class="material-icons">search</i>Buscar
                   </button>-->
-                </span> 
+                </span>
 
                 <div class="row">
                   <div class="col-md-5">
@@ -67,13 +67,13 @@
           </form>
             <script type="text/javascript" language="javascript" src="../backend/js/buscarReports.js"></script>
         </div>
-        
-        
-             
+
+
+
          <div class="container-fluid">
 
            <div class="row">
-             <div class="col-md-2 col-md-offset" id="resultados-pesquisa"></div>
+             <div class="col-md-8 col-md-offset-2" id="resultados-pesquisa"></div>
            </div>
 
            <div class="row">

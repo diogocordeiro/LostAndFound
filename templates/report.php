@@ -258,12 +258,12 @@
 
                     <br><br><br>
 
-                    <p>
-                      CASO O USUARIO LOGADO SEJA O DONO DO REPORT, ELE VERA OS BOTOES.
-                    </p>
-                  <div class="footer text-center">
-                      <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="#" >Negociar</a>
-                  </div>
+                  //   <p>
+                  //     CASO O USUARIO LOGADO SEJA O DONO DO REPORT, ELE VERA OS BOTOES.
+                  //   </p>
+                  // <div class="footer text-center">
+                  //     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="#" >Finalizar</a>
+                  // </div>
 
               </div>
 
