@@ -42,19 +42,21 @@
 
                   //Verifica se o usuario tem itens
                   if (count($dados) > 0) {
-                    echo '<p align="right">Caso queira adicionar um item seu: &nbsp;<select id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
+                    echo '<div class="row">
+
+                      <div class="col-md-8"><p align="right">Caso queira adicionar um item seu: &nbsp;<select class="form-control" id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
                     echo '<option value="">escolha...</option>';
 
-                    for ($i=0; $i<count($dados); $i++) { 
+                    for ($i=0; $i<count($dados); $i++) {
                       echo '<option value="'.$dados[$i]['id'].'">'.$dados[$i]['titulo'].'</option>';
                     }
 
-                    echo '</select>&nbsp;&nbsp;&nbsp;</p>';
+                    echo '</select>&nbsp;&nbsp;&nbsp;</p></div></div>';
                   }
-                ?> 
+                ?>
 
                 <form class="form" id="add-report-form" enctype="multipart/form-data" method="POST" action="../backend/Report.php?tipo=novoReport&report=perdido">
-                  <input type="hidden" name="idItemExistente" id="idItemExistente" value="" /> 
+                  <input type="hidden" name="idItemExistente" id="idItemExistente" value="" />
                   <div class="content">
 
                     <div class="row">
@@ -204,14 +206,14 @@
 
 
                           <h3 class="title titulo-adicionar-item">Por favor, preencha o endereço aproximado de onde <strong>o Item</strong> foi perdido.</h2>
-                          
+
                           <!-- input auto-complete para o endereço -->
                           <div class="input-group input-size-small-device">
                             <input id="autocomplete" name="autocomplete" class=" form-control input-lg " placeholder="Digite o endeço aqui" onFocus="geolocate()" type="text" size="50" required></input>
                           </div>
 
                           <div class="input-group input-size-small-device">
-                            
+
                             <span class="input-group-addon">
                               <i class="material-icons">home</i>
                             </span>
@@ -328,8 +330,8 @@
 
                           </script>
                           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1jcQdqAcbQSi0yuUDshqpLiz-fPqQ3m8&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
-                          
-                          
+
+
 
                           <div class="col-md-4">
 
@@ -367,7 +369,7 @@
                         valuesCampos = meuArray[i];
                       };
                     };
-                    
+
                     //Caso o id passado seja valido, preenche os campos do form
                     if (valuesCampos != null) {
                       document.getElementById("idItemExistente").value = valuesCampos['id'];
@@ -396,7 +398,7 @@
                       document.getElementById("formDescricao").value = "";
                       document.getElementById("formEnderFoto").disabled = false;
                     };
-                    
+
                   }//function preencher()
                 </script>
 
