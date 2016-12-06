@@ -41,7 +41,7 @@
             $dados = [];
             $achados = getReport(BaseDados::conBdUser(), $idReport, $tabAchados);
             $perdidos = getReport(BaseDados::conBdUser(), $idReport, $tabPerdidos);
-            
+
             if (count($achados) > 0) {
               $dados = $achados;
               $tituloTipo = "Achado";
@@ -88,13 +88,13 @@
                   </div>
 
                   <div class="col-md-4">
-                    
+
                     <!-- badge quando for um item previamente cadastrado -->
-                    <?php 
+                    <?php
 
                     $dadosItem = getData(BaseDados::conBdUser(), $tabItens, "id", $dados[0]['idItem'], "s");
 
-                    if ($dadosItem[0]['idUsuario'] != 0) { 
+                    if ($dadosItem[0]['idUsuario'] != 0) {
 
                     ?>
                       <img src="../static/img/badge.jpg" class="img-badge img-circle img-responsive img-raised">
@@ -173,7 +173,7 @@
 
                           <dt>Localização : </dt>
                           <dd class="dd-data"><?php echo $dados[0]['mapsLocal'];?></dd>
-                          
+
                           <br><hr>
 
                           </dl>
@@ -187,11 +187,11 @@
                       <div class="col-md-4 col-md-offset-4">
 
                         <!-- maps -->
-                        
+
                             <center><div style="width:100%;height:20em" id="gmap_canvas">Loading map...</div></center>
                             <center><div id='map-label'>Map shows approximate location.</div></center>
 
-                            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyC1jcQdqAcbQSi0yuUDshqpLiz-fPqQ3m8"></script>    
+                            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyC1jcQdqAcbQSi0yuUDshqpLiz-fPqQ3m8"></script>
                             <script type="text/javascript">
                                 function init_map() {
                                     var myOptions = {
@@ -199,29 +199,29 @@
                                         center: new google.maps.LatLng(<?php echo $dados[0]['mapsLat']; ?>, <?php echo $dados[0]['mapsLng']; ?>),
                                         mapTypeId: google.maps.MapTypeId.ROADMAP
                                     };
-                                    
+
                                     map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-                                    
+
                               var myIcon = {
                                 url: "../static/img/icon.png", // url
                                 scaledSize: new google.maps.Size(18, 35), // scaled size
                                 origin: new google.maps.Point(0, 0), // origin
                             anchor: new google.maps.Point(0, 0) // anchor
                               };
-                                    
+
                                     marker = new google.maps.Marker({
                                         map: map,
                                         position: new google.maps.LatLng(<?php echo $dados[0]['mapsLat']; ?>, <?php echo $dados[0]['mapsLng']; ?>),
                                         icon: myIcon
                                     });
-                                    
+
                                     infowindow = new google.maps.InfoWindow({
                                         content: "Local onde o item foi marcado:<br/><strong><?php echo $dados[0]['mapsLocal']; ?></strong>"
                                     });
                                     google.maps.event.addListener(marker, "click", function () {
                                         infowindow.open(map, marker);
                                     });
-                                    
+
                                     infowindow.open(map, marker);
                                 }
                                 google.maps.event.addDomListener(window, 'load', init_map);
@@ -237,7 +237,7 @@
                     <div class="row">
                       <div class="col-md-4 col-md-offset-4">
                         <br>
-                    <hr> 
+                    <hr>
                         <p>
                           OBS: AQUI VAI A JANELA Dos comentarios, Não uma imagem
                         </p>
@@ -271,6 +271,8 @@
       </div>
 
     </div>
+
+    <script id="dsq-count-scr" src="//los-1.disqus.com/count.js" async></script>
 
   </body>
 
