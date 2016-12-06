@@ -12,10 +12,11 @@
 
       #div-resultados{
 
-        background-color: #ffffff;
+        background-color: #ECEFF1;
         border: 1px solid #000000;
         padding: 5px 8px;
-        border-radius: 3px;
+        border-radius: 10px;
+        margin: 20px;
       }
 
     </style>

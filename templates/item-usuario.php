@@ -43,18 +43,18 @@
 
       //Caso o item nao exista no bd
       if (count($dados) == 0) {
-        echo "<br/><br/><br/><center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+        echo "<br/><br/><br/><center><p>Erro: o item não foi encontrado</p><br/><a href='javascript:history.go(-1);'>voltar</a></center>";
         exit;
 
       //Caso o id da session nao bata com o id do item
       } elseif ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
-          echo "<br/><br/><br/><center>Erro: o item não foi encontrado<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+          echo "<br/><br/><br/><center><p>Erro: o item não foi encontrado</p><br/><a href='javascript:history.go(-1);'>voltar</a></center>";
           exit;
         }
 
     //Caso a variavel id nao seja informada
     } else {
-        echo "<br/><br/><br/><center>Erro: informe o ID do item<br/><a href='javascript:history.go(-1);>voltar</a></center>";
+        echo "<br/><br/><br/><center><p>Erro: informe o ID do item</p><br/><a href='javascript:history.go(-1);>voltar</a></center>";
         exit;
       }
   ?>

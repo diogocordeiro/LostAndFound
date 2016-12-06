@@ -42,9 +42,9 @@
 
                   //Verifica se o usuario tem itens
                   if (count($dados) > 0) {
-                    echo '<div class="row">
+                    echo '<br><br><br><div class="row">
 
-                      <div class="col-md-8"><p align="right">Caso queira adicionar um item seu: &nbsp;<select class="form-control" id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
+                      <div class="col-md-4 col-md-offset-4 "><p align="right"><h5>Caso queira adicionar um item previamente cadastrado selecione abaixo:</h5><br> &nbsp;<select class="form-control" id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
                     echo '<option value="">escolha...</option>';
 
                     for ($i=0; $i<count($dados); $i++) {

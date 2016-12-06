@@ -5,7 +5,6 @@ body {
 }
 
 
-
 .mensagem-alerta{
   width: 300px;
   height: 100px;
@@ -282,7 +281,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .teste{
-  
+
   line-height: 24px !important;
   text-transform: uppercase !important;
   font-size: 12px !important;

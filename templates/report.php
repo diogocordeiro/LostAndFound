@@ -231,6 +231,13 @@
 
                     <div class="row">
                       <div class="col-md-4 col-md-offset-4">
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+                      <strong><h4>Se este item é seu, comente em baixo e fale com a pessoa que cirou o report</h4></strong>
                         <br>
                     <hr>
                     <div id="disqus_thread"></div>
@@ -258,12 +265,6 @@
 
                     <br><br><br>
 
-                  //   <p>
-                  //     CASO O USUARIO LOGADO SEJA O DONO DO REPORT, ELE VERA OS BOTOES.
-                  //   </p>
-                  // <div class="footer text-center">
-                  //     <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="#" >Finalizar</a>
-                  // </div>
 
               </div>
 
@@ -274,6 +275,7 @@
         </div>
 
       </div>
+
 
     </div>
 

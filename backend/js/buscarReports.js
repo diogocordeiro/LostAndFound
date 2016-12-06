@@ -1,5 +1,5 @@
-$('document').ready(function() {    
-    
+$('document').ready(function() {
+
     var typingTimer;                //timer identifier
     var doneTypingInterval = 1000;  //time in ms
     var $input = $('#stringBusca');
@@ -10,7 +10,7 @@ $('document').ready(function() {
       typingTimer = setTimeout(submitBusca, doneTypingInterval);
     });
 
-    //on keydown, clear the countdown 
+    //on keydown, clear the countdown
     $input.on('keydown', function () {
       clearTimeout(typingTimer);
     });
@@ -25,9 +25,9 @@ $('document').ready(function() {
         var filtro = $('#filtroBusca').val();
 
         if (str.length < 2) {
-            $("#resultados-pesquisa").html("Por favor, digite algo para ser buscado.");
+            $("#resultados-pesquisa").html("<h3> Por favor, digite algo para ser buscado.</h3>");
         } else if (filtro.length < 2){
-            $("#resultados-pesquisa").html("Por favor, escolha um filtro.");
+            $("#resultados-pesquisa").html("<h3> Por favor, escolha um filtro. </h3>");
         } else {
             $("#resultados-pesquisa").html("");
 
@@ -40,13 +40,13 @@ $('document').ready(function() {
                 beforeSend: function () {
 
                     $("#resultados-pesquisa").fadeOut();
-                    $("#resultados-pesquisa").html('Procurando...');
+                    $("#resultados-pesquisa").html(' <h3> Procurando... </h3>');
                 },
                 success: function (data) {
 
                     $("#resultados-pesquisa").fadeIn(1000, function () {
 
-                        $("#resultados-pesquisa").html(''+data+'');
+                        $("#resultados-pesquisa").html('<h5>'+data+'</h5>');
                     });
                     // console.log(data);
                 },
