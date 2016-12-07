@@ -237,8 +237,10 @@
                       <br>
                       <br>
 
-                      <strong><h4>Se este item é seu, comente em baixo e fale com a pessoa que cirou o report</h4></strong>
-                        <br>
+                      <strong><h4>Se este item é seu, comente abaixo e fale com a pessoa que criou o Report.</h4></strong>
+                      <br>
+                      <strong>Criador do Report: <?php echo $dados[0]['nome']." ".$dados[0]['sobrenome'];?></strong>
+                      <br>
                     <hr>
                     <div id="disqus_thread"></div>
 <script>

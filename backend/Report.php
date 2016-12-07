@@ -499,8 +499,8 @@ function getReport($myDb, $idReport, $tab){
 
 	$sql = "SELECT r.*, i.idRelAchado, i.idRelPerdido, i.identificador, i.marca, 
 	i.titulo, i.descricao, i.caracteristicas, i.idCategoria, i.idSubcategoria, i.cor1, i.cor2, 
-	i.enderFoto, i.dataInsercao FROM ".$tabReport." as r, ".$tabItens.
-	" as i WHERE r.id = ? AND ".$atributoItem." = r.id ORDER BY r.dataCadastro DESC";
+	i.enderFoto, i.dataInsercao, u.nome, u.sobrenome, u.email FROM ".$tabReport." as r, ".$tabItens.
+	" as i, ".$tabUsuarios." as u WHERE r.id = ? AND ".$atributoItem." = r.id AND r.idUsuario = u.id ORDER BY r.dataCadastro DESC";
 
 	//Prepara o statement
 	$stmt = $myDb->prepare($sql);
@@ -641,7 +641,7 @@ function imprimeResultados($myDb, $resultatos){
                 $tituloTipo = "Perdido";
               }
 
-            echo "<div id='div-resultados'><a href='report.php?id=".$dados[0]['id']."'>".$dados[0]['titulo']."</a><br/>".$dados[0]['marca']."<br/>Local: ".$dados[0]['mapsLocal']."</div>";
+            echo "<div id='div-resultados'>".$tituloTipo.": <a href='report.php?id=".$dados[0]['id']."'>".$dados[0]['titulo']."</a><br/>".$dados[0]['marca']."<br/>Local: ".$dados[0]['mapsLocal']."</div>";
 		}//for
 	  }
 }//imprimeResultados()
