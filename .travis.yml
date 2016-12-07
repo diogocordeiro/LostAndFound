@@ -1,7 +1,7 @@
 deploy:
  provider: heroku
  api_key: 
-  secure: "d7379630-11d8-433e-b7b0-7513eaa72d7e"
+  secure: "474fab97-589e-4a98-8155-1c1e24d54993"
  app: "lostandfoundproject"
 
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
@@ -40,6 +40,7 @@ matrix:
   - php: 5.2
   - php: 5.3
   - php: 5.4
+  - php: 5.5
   - php: hhvm
 
 # execute any number of scripts before the test run, custom env's are available as variables
