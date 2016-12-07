@@ -14,7 +14,7 @@
 
 <body>
   <?php require 'top-menu-logado.php'; ?>
-  
+
   <!-- coletar informacoes no banco -->
   <?php
     require('../backend/nomesTabelas.php');
@@ -64,7 +64,7 @@
 
                 <h2 class="title titulo-adicionar-item">Editar Item</h2>
 
-                <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
+                <h5 class="description descricao-adicionar-item">Você pode editar as informações do seu item</h5>
 
                   <form class="form" id="edit-item-form" enctype="multipart/form-data">
                     <?php echo '<input type="hidden" name="idSession" value="'.$_SESSION["Lost_Found"]["id"].'"/>'; ?>
@@ -102,16 +102,16 @@
                               <select name="categoria">
                                 <option value="">Categoria</option>
                                   <?php
-                            
+
                                     //Php com categorias
                                     require('listaCategorias.php');
 
                                     //Procura qual a categoria (na lista de categorias), para poder seleciona-lo para preencher o select
                                     $pos = strpos($minhasCategorias, $dados[0]['idCategoria']."");
                                     $minhasCategorias = substr($minhasCategorias, 0, $pos+2)." selected".substr($minhasCategorias, $pos+2, strlen($minhasCategorias));
-                                    
+
                                     echo $minhasCategorias;
-                                  ?> 
+                                  ?>
                               </select>
                             </div>
 
@@ -119,16 +119,16 @@
                               <select name="subcategoria">
                                 <option value="">Subcategoria</option>
                                   <?php
-                            
+
                                     //Php com subcategorias
                                     require('listaSubcategorias.php');
 
                                     //Procura qual a subcategoria (na lista de subcategorias), para poder seleciona-lo para preencher o select
                                     $pos = strpos($minhasSubcategorias, $dados[0]['idSubcategoria']."");
                                     $minhasSubcategorias = substr($minhasSubcategorias, 0, $pos+2)." selected".substr($minhasSubcategorias, $pos+2, strlen($minhasSubcategorias));
-                                    
+
                                     echo $minhasSubcategorias;
-                                  ?>   
+                                  ?>
                               </select>
                             </div>
 
@@ -136,7 +136,7 @@
                               <select id="SelectCor1" name="cor1" onChange="javascript:var s = document.getElementById('SelectCor1');document.getElementById('divCor1').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
                                 <option value="">Cor Predominante</option>
                                   <?php
-                            
+
                                     //Php com as cores
                                     require('listaCores.php');
 
@@ -145,23 +145,23 @@
                                     //Procura qual a cor (na lista de cores), para poder seleciona-lo para preencher o select
                                     $pos = strpos($cores1, $dados[0]['cor1']."");
                                     $cores1 = substr($cores1, 0, $pos+7)." selected".substr($cores1, $pos+7, strlen($cores1));
-                                    
+
                                     echo $cores1;
-                                  ?>                                 
+                                  ?>
                               </select>
                               <span id="divCor1" align="center" style="font-size:10px;color:black;border-radius:10px;padding:6px 8px">P</span>
                             </div>
-                            
+
                             <div class="col-md-4">
                               <select id="SelectCor2" name="cor2" onChange="javascript:var s = document.getElementById('SelectCor2');document.getElementById('divCor2').style.backgroundColor = '#'+s.options[s.selectedIndex].value;">
                                 <option value="">Cor Secudária</option>
-                                  <?php 
+                                  <?php
                                     $cores2 = $minhasCores;
 
                                     //Procura qual a cor (na lista de cores), para poder seleciona-lo para preencher o select
                                     $pos = strpos($cores2, $dados[0]['cor2']."");
                                     $cores2 = substr($cores2, 0, $pos+7)." selected".substr($cores2, $pos+7, strlen($cores2));
-                                    
+
                                     echo $cores2;
                                   ?>
                               </select>
@@ -193,7 +193,7 @@
                             </div>
 
                             <div class="" id="error-editar-perfil">
-                              
+
                             </div>
                         </div>
                       </div>

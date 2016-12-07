@@ -29,32 +29,13 @@
 
                 <h2 class="title titulo-adicionar-item">Reportar Item Encontrado</h2>
 
-                <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
+                <h5 class="description descricao-adicionar-item">Por favor preencha os campos obrigatorios para criar o seu report de item encontrado.</h5>
 
                 <!-- carrega itens do user em um drop-down list -->
-                <?php
 
-                  require('../backend/Item.php');
-                  require('../backend/conBd.php');
-
-                  //Coleta os itens do usuario
-                  $dados = getItensUsuario(BaseDados::conBdUser(), $_SESSION['Lost_Found']["id"]);
-
-                  //Verifica se o usuario tem itens
-                  if (count($dados) > 0) {
-                    echo '<p align="right">Caso queira adicionar um item seu: &nbsp;<select id="meusItens" onChange="preencher(this.options[this.selectedIndex].value)">';
-                    echo '<option value="">escolha...</option>';
-
-                    for ($i=0; $i<count($dados); $i++) { 
-                      echo '<option value="'.$dados[$i]['id'].'">'.$dados[$i]['titulo'].'</option>';
-                    }
-
-                    echo '</select>&nbsp;&nbsp;&nbsp;</p>';
-                  }
-                ?> 
 
                 <form class="form" id="add-report-form" enctype="multipart/form-data" method="POST" action="../backend/Report.php?tipo=novoReport&report=achado">
-                  <input type="hidden" name="idItemExistente" id="idItemExistente" value=""  /> 
+                  <input type="hidden" name="idItemExistente" id="idItemExistente" value=""  />
                   <div class="content">
 
                     <div class="row">
@@ -204,7 +185,7 @@
 
 
                           <h3 class="title titulo-adicionar-item">Por favor, preencha o endereço onde <strong>o Item</strong> foi encontrado.</h2>
-                          
+
                           <!-- input auto-complete para o endereço -->
                           <script>
                             // This example displays an address form, using the autocomplete feature
@@ -283,7 +264,7 @@
                           </div>
 
                           <div class="input-group input-size-small-device">
-                            
+
                             <span class="input-group-addon">
                               <i class="material-icons">home</i>
                             </span>
@@ -328,7 +309,7 @@
                           <div class="col-md-4">
 
                           </div>
-                          
+
                           <div class="col-md-4">
 
                           </div>
@@ -350,7 +331,7 @@
                     </div>
 
                 </form>
-                
+
                 <!-- script para preencher os campos -->
                 <script type="text/javascript">
                   function preencher(id){
@@ -365,7 +346,7 @@
                         valuesCampos = meuArray[i];
                       };
                     };
-                    
+
                     //Caso o id passado seja valido, preenche os campos do form
                     if (valuesCampos != null) {
                       document.getElementById("idItemExistente").value = valuesCampos['id'];
@@ -394,7 +375,7 @@
                       document.getElementById("formDescricao").value = "";
                       document.getElementById("formEnderFoto").disabled = false;
                     };
-                    
+
                   }//function preencher()
                 </script>
 

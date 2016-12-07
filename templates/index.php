@@ -15,7 +15,6 @@
       function Nova() {
         location.href = " index.php"
       }
-
     </script>
 
 </head>
@@ -86,10 +85,10 @@
                       </p>
                     </div>
 
-                      <div id="error">
+                    <div id="error">
 
 
-                      </div>
+                    </div>
 
 
                   </div>
@@ -122,7 +121,7 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h2 class="title">Lost & Found</h2>
-            <h5 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
+            <h5 class="description">O Lost And Found Project é uma plataforma web onde é possível conectar pessoas que perderam algum item com usuários que encontraram o objeto, e vise-versa. Esta interação de mão dupla entre as pessoas é o principal objetivo desta ferramenta. Um usuário que faz a busca por itens perdidos pode visualizar um item individualmente e postar um comentário na página deste item o  comentário servirá para que ambos o usuário que possivelmente perdeu algo, com o usuário que achou o item possam comunicar-se.
                  </div>
              </div>
 
@@ -135,7 +134,7 @@
                <i class="material-icons usuario-icon">person</i>
              </div>
              <h4 class="info-title">Usuários</h4>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.</p>
+             <p>O contato com outras pessoas que compartilham o mesmo que você é uma parte fundamental da interação humana, pensando nisso o nosso sistema possui uma base de usuarios, com interesses em comum. Se voê perdeu algum item e acredita que alguém pode achar e devolver para você ou se achou algo e quer devolver para o dono, este é o local.</p>
            </div>
                    </div>
                    <div class="col-md-4">
@@ -144,7 +143,7 @@
                <i class="material-icons">map</i>
              </div>
              <h4 class="info-title">Localização</h4>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ex quam, mattis ac nisl sed, commodo dapibus quam. In fermentum auctor lacus, id imperdiet magna pellentesque egestas. Cras at arcu nec lectus rutrum tempor. Vivamus semper dolor eros, non imperdiet nulla vulputate id. Duis sit amet nisi sapien. Proin vitae dolor nec leo sagittis mollis. Vestibulum in tempor lectus. Fusce ut justo placerat, aliquet tortor sed, suscipit sem. Sed aliquam scelerisque m...(line truncated)...
+             <p>De maneira fácil e intuitiva os usuarios podem informar a localização onde o item foi perdido ou achado. Durante a busca é possivel filtrar pelo local desejado. A informação visual de um mapa pode ser de grande ajuda nessas horas, por isso nosso sistema possui integração com o Google Maps.
 
                </p>
            </div>
@@ -155,7 +154,7 @@
                <i class="material-icons">view_agenda</i>
              </div>
              <h4 class="info-title">Itens</h4>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.</p>
+             <p>Os usuários poderão cadastrar seus itens previamente no sistema, com esse cadastro será mais fácil para o usuário reportar sua perda tendo em vista que os dados dos itens já constam no sistema. Outro diferencial de cadastrar previamente os itens é que se um report de perda é criado a partir de um item que já estava cadastrado previamente no sistema a página deste report vai ter um selo especial identificando isso.</p>
            </div>
                    </div>
                </div>

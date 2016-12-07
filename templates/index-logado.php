@@ -33,7 +33,7 @@
 
           <div class="col-md-8 col-md-offset-2">
             <h2 class="title titulo-busca">Busca</h2>
-            <h5 class="description descricao-busca">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
+            <h5 class="description descricao-busca">Perdeu algo? faça uma busca e veja os reports de itens econtrados por outros usuários. Achou algo? pesquise os possiveis donos do item encontrado.
                  </div>
 
           <form class="form" id="form-search-reports">
@@ -88,7 +88,7 @@
                      <i class="material-icons report-perdido-icon">find_in_page</i>
                    </div>
                    <h4 class="info-title">Reportar Item Perdido</h4>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p>
+                   <p>Ao criar um report de item perdido, outros usuarios poderão iteragir nesta pagina prestar informações caso achem o seu item. </p>
                  </div>
 
                  <span class="input-group-btn">
@@ -111,7 +111,7 @@
                      <i class="material-icons location-icon">location_on</i>
                    </div>
                    <h4 class="info-title">Reportar Item Econtrado</h4>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p>
+                   <p>Ao criar um report de item achado, outros usuarios poderão iteragir nesta pagina prestar informações caso tenha perdido o item informado por você. </p>
                  </div>
 
                  <span class="input-group-btn">
@@ -142,7 +142,7 @@
 
              <div class="col-md-8 col-md-offset-2">
                <h2 class="title titulo-itens">Itens</h2>
-               <h5 class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut pretium velit, eu aliquam purus. Nulla aliquam mauris et mi vehicula dapibus. Pellentesque id tincidunt nunc. Aliquam interdum enim ac nulla tempus, sit amet maximus nibh cursus. Praesent maximus neque urna, eu bibendum felis placerat rhoncus. Cras tincidunt sollicitudin bibendum. Aliquam pellentesque egestas magna, sed dictum metus tincidunt eu. Maecenas congue, dui sodales hendrerit maximus, ligula risus viverra felis, eu suscipit urna felis quis massa. Etiam feugiat mattis mattis. Praesent eleifend semper nisl, vitae posuere est vulputate at. Cras blandit ac magna at gravida. Vivamus non rhoncus tellus, eu pulvinar mauris. Sed finibus auctor risus in mollis. Nullam auctor luctus justo et elementum. Donec imperdiet eleifend fringilla.
+               <h5 class="description">Você pode manter um cadastrar seus itens previamente no sistema, com esse cadastro será mais fácil na hora de reportar sua perda tendo em vista que os dados dos itens já constam no sistema. Outro diferencial de cadastrar previamente os itens é que se um report de perda é criado a partir de um item que já estava cadastrado no sistema a página deste report vai ter um selo especial identificando isso.
                     </div>
 
 

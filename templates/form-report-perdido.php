@@ -29,7 +29,7 @@
 
                 <h2 class="title titulo-adicionar-item">Reportar Item Perdido</h2>
 
-                <h5 class="description descricao-adicionar-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</h5>
+                <h5 class="description descricao-adicionar-item">Por favor preencha os campos obrigatorios para criar o seu report de item perdido.</h5>
 
                 <!-- carrega itens do user em um drop-down list -->
                 <?php
