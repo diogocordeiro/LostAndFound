@@ -15,7 +15,7 @@
 
   <body>
 
-    <?php require 'top-menu-logado.php'; ?>
+    <?php require 'top-menu-logado-en-us.php'; ?>
 
     <div class="container-fluid">
 
@@ -52,18 +52,13 @@
 
             //Caso o report nao exista no bd
             if (count($dados) == 0) {
-              echo "<br/><br/><br/><center>Erro: o Report não foi encontrado.<br/><a href='javascript:history.go(-1);'>voltar</a></center>";
+              echo "<br/><br/><br/><center><h4> Erro:  Report not found </h4><br/><a href='javascript:history.go(-1);'>back</a></center>";
               exit;
-
-            //Caso o id da session nao bata com o id do report
-            } elseif ($dados[0]['idUsuario'] != $_SESSION['Lost_Found']["id"]) {
-                echo "<br/><br/><br/><center><h4> Erro: o Report não foi encontrado. </h4><br/><a href='javascript:history.go(-1);'>voltar</a></center>";
-                exit;
-              }
+            }
 
           //Caso a variavel id nao seja informada
           } else {
-              echo "<br/><br/><br/><center><h4> Erro: informe o ID do Report. </h4><br/><a href='javascript:history.go(-1);>voltar</a></center>";
+              echo "<br/><br/><br/><center><h4> Erro:  Enter Report ID </h4><br/><a href='javascript:history.go(-1);>voltar</a></center>";
               exit;
             }
         ?>
@@ -99,10 +94,8 @@
                     ?>
                       <img src="../static/img/badge.jpg" class="img-badge img-circle img-responsive img-raised">
 
-                      <br>
-
                       <h3>
-                        Item Cadastrado Previamente
+                        Previously Registered
                       </h3>
                     <?php } ?>
                   </div>
@@ -115,65 +108,65 @@
 
                         <dl class="dl-horizontal">
 
-                          <dt>Data Criação do Report: </dt>
+                          <dt>Creation Date: </dt>
                           <dd class="dd-data"><?php echo $dados[0]['dataCadastro'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Marca: </dt>
+                          <dt>Brand: </dt>
                           <dd><?php echo $dados[0]['marca'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Identificador: </dt>
+                          <dt>ID: </dt>
                           <dd><?php echo $dados[0]['identificador'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Cor Predominante: </dt>
+                          <dt>Main Color: </dt>
                           <dd><span style="background-color:#<?php echo $dados[0]['cor1'];?>;color:#000000;padding:6px 8px"><?php echo $arrCores[$dados[0]['cor1']];?></span></dd>
 
                           <br><br><br>
 
-                          <dt>Cor Secundária: </dt>
+                          <dt>Secundary Color: </dt>
                           <dd><span style="background-color:#<?php echo $dados[0]['cor2'];?>;color:#000000;padding:6px 8px"><?php echo $arrCores[$dados[0]['cor2']];?></span></dd>
 
                           <br><br><br>
 
-                          <dt>Categoria: </dt>
+                          <dt>Category: </dt>
                           <dd><?php echo $arrCategorias[$dados[0]['idCategoria']];?></dd>
 
                           <br><br><br>
 
-                          <dt>Subcategoria: </dt>
+                          <dt>Subcategory: </dt>
                           <dd><?php echo $arrSubcategorias[$dados[0]['idSubcategoria']];?></dd>
 
                           <br><br><br>
 
-                          <dt>Caracteristicas: </dt>
+                          <dt>Characteristics: </dt>
                           <dd class="dd-caracteristicas"><?php echo $dados[0]['caracteristicas'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Descrição: </dt>
+                          <dt>Description: </dt>
                           <dd class="dd-descricao"><?php echo $dados[0]['descricao'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Informação: </dt>
+                          <dt>Information: </dt>
                           <dd class="dd-descricao"><?php echo $dados[0]['informacao'];?></dd>
 
                           <br><br><br>
 
-                          <dt>Data aproximada: </dt>
+                          <dt>Approximate date: </dt>
                           <dd class="dd-data"><?php echo $dados[0]['data'];?></dd>
                           <br>
 
-                          <dt>Hora aproximada : </dt>
+                          <dt>Approximate time : </dt>
                           <dd class="dd-data"><?php echo $dados[0]['hora'];?></dd>
                           <br>
 
-                          <dt>Localização : </dt>
+                          <dt>Location : </dt>
                           <dd class="dd-data"><?php echo $dados[0]['mapsLocal'];?></dd>
 
                           <br><hr>
@@ -224,8 +217,6 @@
                                         infowindow.open(map, marker);
                                     });
 
-
-
                                     infowindow.open(map, marker);
                                 }
                                 google.maps.event.addDomListener(window, 'load', init_map);
@@ -240,6 +231,13 @@
 
                     <div class="row">
                       <div class="col-md-4 col-md-offset-4">
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+
+                      <strong><h4>If you are the owner, comment below and </h4></strong>
                         <br>
                     <hr>
                     <div id="disqus_thread"></div>
@@ -268,12 +266,6 @@
                     <br><br><br>
 
 
-                  <div class="footer text-center">
-                      <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="form-editar-report.php?id=<?php echo $dados[0]['id'];?>">Editar Report</a>
-                      <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="javascript:if(confirm('Você tem certeza que deseja remover o Report?')){window.location = 'meus-reports.php?remove=<?php echo $dados[0]['id'];?>';}">Deletar Report</a>
-                      <a class="btn-salvar btn btn-default  btn-lg btn-cor-estilo-escuro" href="#" >Encerrar o Report</a>
-                  </div>
-
               </div>
 
             </div>
@@ -284,9 +276,8 @@
 
       </div>
 
-    </div>
 
-    <script id="dsq-count-scr" src="//los-1.disqus.com/count.js" async></script>
+    </div>
 
   </body>
 
